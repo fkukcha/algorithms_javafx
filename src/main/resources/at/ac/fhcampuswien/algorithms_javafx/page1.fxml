@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<TitledPane animated="false" maxHeight="650.0" maxWidth="750.0" minHeight="650.0" minWidth="750.0" prefHeight="650.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="at.ac.fhcampuswien.algorithms_javafx.Page1Controller">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="750.0" prefWidth="850.0">
+         <children>
+            <Label layoutX="403.0" layoutY="563.0" prefHeight="18.0" prefWidth="341.0" text="Sorting Algorithms 2022 - Burak Kongo, Besim Kurteshi, Ferdaws Kukcha" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="251.0" layoutY="30.0" prefHeight="28.0" prefWidth="247.0" text="Please select an array size:">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cBArraySize" layoutX="254.0" layoutY="73.0" prefHeight="26.0" prefWidth="240.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Thousand"/>
+                     <String fx:value="Ten thousand"/>
+                     <String fx:value="Hundred thousand"/>
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <Label layoutX="220.0" layoutY="134.0" prefHeight="28.0" prefWidth="310.0" text="Please select a sorting algorithm:">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cBSelectSortingAlgorithm" layoutX="255.0" layoutY="173.0" prefHeight="26.0" prefWidth="240.0" >
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="BubbleSort"/>
+                     <String fx:value="CocktailSort"/>
+                     <String fx:value="CombSort"/>
+                     <String fx:value="CycleSort"/>
+                     <String fx:value="GnomeSort"/>
+                     <String fx:value="HeapSort"/>
+                     <String fx:value="OddEvenSort"/>
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <AnchorPane fx:id="aPExecTime" layoutX="-4.0" layoutY="322.0" prefHeight="220.0" prefWidth="381.0" style="-fx-border-color: black;">
+               <children>
+                  <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="17.0" prefWidth="371.0" text="Total execution time of the algorithm:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lBExecutionTime" alignment="CENTER" layoutX="2.0" layoutY="90.0" prefHeight="74.0" prefWidth="377.0" style="-fx-border-color: darkgrey; -fx-background-color: lightgrey;">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="aPMemoryUsage" layoutX="377.0" layoutY="322.0" prefHeight="219.0" prefWidth="375.0" style="-fx-border-color: black;">
+               <children>
+                  <Label alignment="CENTER" layoutX="2.0" layoutY="14.0" prefHeight="17.0" prefWidth="371.0" text="Total memory usage of the algorithm:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lBMemoryUsage" alignment="CENTER" layoutX="2.0" layoutY="90.0" prefHeight="74.0" prefWidth="370.0" style="-fx-border-color: darkgrey; -fx-background-color: lightgrey;">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnSortArray" layoutX="256.0" layoutY="241.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="238.0" text="Execute" onAction="#onBtnSortArrayClick">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </content>
+   <graphic>
+      <AnchorPane prefHeight="55.0" prefWidth="722.0">
+         <children>
+            <Button fx:id="btnPage1" layoutX="34.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Full sorting algorithm list" onAction="#onBtnPage1Click"/>
+            <Button fx:id="btnPage2" layoutX="281.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Compare two algorithms" onAction="#onBtnPage2Click"/>
+            <Button fx:id="btnPage3" layoutX="521.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Show fastest algorithm" onAction="#onBtnPage3Click"/>
+         </children>
+      </AnchorPane>
+   </graphic>
+</TitledPane>

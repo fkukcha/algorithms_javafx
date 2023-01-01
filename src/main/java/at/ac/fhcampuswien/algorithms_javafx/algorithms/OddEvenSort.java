@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class OddEvenSort {
+    public OddEvenSort(){
+    }
     /**
      * The totalExecutionTimeOddEvenSort variable is used for the storage
      * of the value of the total execution time of the Odd Even Sort algorithm to perform the sorting

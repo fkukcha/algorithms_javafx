@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class CreateRandomArray {
     private int[] randomArray;
-    public void setRandomArray(int[] randomArray) {
+    private void setRandomArray(int[] randomArray) {
         this.randomArray = randomArray;
     }
     public int[] getRandomArray() {

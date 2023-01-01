@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class CombSort {
+    public CombSort(){
+    }
     /**
      * The totalExecutionTimeCombSort variable is used for the storage
      * of the value of the total execution time of the Comb Sort algorithm to perform the sorting

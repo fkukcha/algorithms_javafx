@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class GnomeSort {
+    public GnomeSort(){
+    }
     /**
      * The totalExecutionTimeGnomeSort variable is used for the storage
      * of the value of the total execution time of the Gnome Sort algorithm to perform the sorting

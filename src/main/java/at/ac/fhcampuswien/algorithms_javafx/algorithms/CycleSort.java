@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class CycleSort {
+    public CycleSort(){
+    }
     /**
      * The totalExecutionTimeCycleSort variable is used for the storage
      * of the value of the total execution time of the Cycle Sort algorithm to perform the sorting

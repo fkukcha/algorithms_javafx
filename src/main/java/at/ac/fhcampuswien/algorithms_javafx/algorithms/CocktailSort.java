@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class CocktailSort {
+    public CocktailSort(){
+    }
     /**
      * The totalExecutionTimeCocktailSort variable is used for the storage
      * of the value of the total execution time of the Cocktail Sort algorithm to perform the sorting
@@ -25,7 +27,7 @@ public class CocktailSort {
         return usedMemoryCocktailSort;
     }
 
-    void cocktailSort(int[] inputArray)
+    public void cocktailSort(int[] inputArray)
     {
         boolean swapped = true;
         int start = 0;

@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class HeapSort {
+    public HeapSort(){
+    }
     /**
      * The totalExecutionTimeHeapSort variable is used for the storage
      * of the value of the total execution time of the Heap Sort algorithm to perform the sorting

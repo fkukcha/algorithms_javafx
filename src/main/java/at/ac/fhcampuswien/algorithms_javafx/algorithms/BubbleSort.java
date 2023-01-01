@@ -1,12 +1,14 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class BubbleSort {
+    public BubbleSort() {
+    }
     /**
      * The totalExecutionTimeBubbleSort variable is used for the storage
      * of the value of the total execution time of the Bubble Sort algorithm to perform the sorting
      */
     private long totalExecutionTimeBubbleSort;
-    public void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
+    private void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
         this.totalExecutionTimeBubbleSort = totalExecutionTime;
     }
     public long getTotalExecutionTimeBubbleSort() {
@@ -18,7 +20,7 @@ public class BubbleSort {
      * of the used memory of the Bubble Sort algorithm to perform the sorting
      */
     private long usedMemoryBubbleSort;
-    public void setUsedMemoryBubbleSort(long usedMemory) {
+    private void setUsedMemoryBubbleSort(long usedMemory) {
         this.usedMemoryBubbleSort = usedMemory;
     }
     public long getUsedMemoryBubbleSort() {
