@@ -4,6 +4,22 @@ public class ArrayStructures {
     private int[] array = new int[50];
     private int arraySize = 10;
 
+    public int[] getArray() {
+        return array;
+    }
+
+    public void setArray(int[] array) {
+        this.array = array;
+    }
+
+    public int getArraySize() {
+        return arraySize;
+    }
+
+    public void setArraySize(int arraySize) {
+        this.arraySize = arraySize;
+    }
+
     public void generateRandomArray() {
         for (int i=0; i<arraySize; i++) {
             array[i] = (int) (Math.random()*10) + 10;
@@ -150,46 +166,19 @@ public class ArrayStructures {
         }
     }
 
-    public void selectionSort() {
-        for (int m=0; m<arraySize; m++) {
-            int min = m;
-            for (int n=m; n<arraySize; n++) {
-                if (array[min] > array[n]) {
-                    min = n;
-                }
-            }
-            swapValues(m, min);
-            printHorizontalArray(m, -1);
-        }
-    }
 
-    public void insertionSort() {
-        for (int i=1; i<arraySize; i++) {
-            int j = i;
-            int toInsert = array[i];
-            while ((j>0) && (array[j-1] > toInsert)) {
-                array[j] = array[j-1];
-                j--;
-                printHorizontalArray(i, j);
-            }
-            array[j] = toInsert;
-            printHorizontalArray(i, j);
-            System.out.println("\nArray[i] = " + array[i] +
-                        " Array[j] = " + array[j] + " toInsert = " + toInsert);
-        }
-    }
 
     public static void main(String[] args) {
         ArrayStructures newArray = new ArrayStructures();
-        newArray.generateRandomArray();
-        newArray.printArray();
-        System.out.println(newArray.getValueAtIndex(2));
-        System.out.println(newArray.doesArrayContainsThisValue(18));
-        newArray.deleteIndex(3);
-        newArray.printArray();
-        newArray.insertValue(54);
-        newArray.printArray();
-        newArray.linearSearchForValue(12);
+        //newArray.generateRandomArray();
+        //newArray.printArray();
+        //System.out.println(newArray.getValueAtIndex(2));
+        //System.out.println(newArray.doesArrayContainsThisValue(18));
+        //newArray.deleteIndex(3);
+        //newArray.printArray();
+        //newArray.insertValue(54);
+        //newArray.printArray();
+        //newArray.linearSearchForValue(12);
 
         // Bubble sort.
         //newArray.bubbleSort();
@@ -201,7 +190,19 @@ public class ArrayStructures {
         //newArray.selectionSort();
 
         // Insertion sort.
-        newArray.insertionSort();
+        //newArray.insertionSort();
+
+        // Selection sort.
+        //SelectionSort mySelection = new SelectionSort();
+        //mySelection.selectionSort();
+
+        // Insertion sort.
+        InsertionSort myInsertion = new InsertionSort();
+        myInsertion.insertionSort();
+
+
+
+
 
     }
 }
