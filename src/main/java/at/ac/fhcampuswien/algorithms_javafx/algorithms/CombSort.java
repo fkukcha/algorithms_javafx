@@ -1,12 +1,17 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 
+/**
+ * A class that sorts an array using the comb sort algorithm, and also measures
+ * the execution time, memory consumption, total number of comparisons, and total
+ * number of swaps.
+ *
+ * @author  Burak Kongo
+ * @version 1.0
+ */
 public class CombSort {
-    public CombSort(){
-    }
-    /**
-     * The totalExecutionTimeCombSort variable is used for the storage
-     * of the value of the total execution time of the Comb Sort algorithm to perform the sorting
-     */
+
     private long totalExecutionTimeCombSort;
     public void setTotalExecutionTimeCombSort(long totalExecutionTime) {
         this.totalExecutionTimeCombSort = totalExecutionTime;
@@ -15,80 +20,66 @@ public class CombSort {
         return totalExecutionTimeCombSort;
     }
 
+    private long comparisonsCombSort = 0;
+    public void setComparisonsCombSort(long comparisons) {
+        this.comparisonsCombSort = comparisons;
+    }
+    public long getComparisonsCombSort() {
+        return comparisonsCombSort;
+    }
+
+    private long swapsCombSort = 0;
+    public void setSwapsCombSort(long swaps) {
+        this.swapsCombSort = swaps;
+    }
+    public long getSwapsCombSort() {
+        return swapsCombSort;
+    }
+
+
     /**
-     * The usedMemoryCombSort variable is used for the storage
-     * of the used memory of the Comb Sort algorithm to perform the sorting
+     * Sorts an array using the comb sort algorithm and prints out the execution time,
+     * number of comparisons, and number of swaps.
+     *
+     * @param inputArray the array to sort
      */
-    private long usedMemoryCombSort;
-    public void setUsedMemoryCombSort(long usedMemory) {
-        this.usedMemoryCombSort = usedMemory;
-    }
-    public long getUsedMemoryCombSort() {
-        return usedMemoryCombSort;
-    }
+    public void combSort(int[] inputArray) {
 
-    // method to find gap between elements
-    private int getNextGap(int gap)
-    {
-        // Shrink gap by Shrink factor
-        gap = (gap * 10)/13;
-        if (gap < 1)
-            return 1;
-        return gap;
-    }
+        long startTime = System.nanoTime();  // start timer
 
-    public void combSort(int[] inputArray)
-    {
-        int arraySize = inputArray.length;
-
-        // initialize gap
-        int gap = arraySize;
-
-        // Initialize swapped as true to make sure that
-        // loop runs
+        int n = inputArray.length;
+        int gap = n;  // initialize gap size
         boolean swapped = true;
 
-        // using the Runtime object to determine the total memory usage
-        Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long usedMemory = totalMemory - freeMemory;
-        // start of time counter of the algorithm execution
-        long startTime = System.nanoTime();
+        // loop until the array is sorted
+        while (gap > 1 || swapped) {
+            // update the gap value for the next comb
+            gap = (int) (gap / 1.3);
+            if (gap < 1) {
+                gap = 1;
+            }
 
-        // Keep running while gap is more than 1 and last
-        // iteration caused a swap
-        while (gap != 1 || swapped)
-        {
-            // Find next gap
-            gap = getNextGap(gap);
-
-            // Initialize swapped as false so that we can
-            // check if swap happened or not
             swapped = false;
-
-            // Compare all elements with current gap
-            for (int i=0; i<arraySize-gap; i++)
-            {
-                if (inputArray[i] > inputArray[i+gap])
-                {
-                    // Swap arr[i] and arr[i+gap]
+            for (int i = 0; i + gap < n; i++) {
+                int j = i + gap;
+                // compare elements at i and j and swap if necessary
+                if (inputArray[i] > inputArray[j]) {
                     int temp = inputArray[i];
-                    inputArray[i] = inputArray[i+gap];
-                    inputArray[i+gap] = temp;
-                    // Set swapped
+                    inputArray[i] = inputArray[j];
+                    inputArray[j] = temp;
                     swapped = true;
+                    setSwapsCombSort(getSwapsCombSort()+1);
                 }
+                setComparisonsCombSort(getComparisonsCombSort()+1);
             }
         }
 
-        // end of time counter of the algorithm execution
+        // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        // total execution time of bubbleSort
-        long totalExecutionTime = endTime - startTime;
+        long executionTime = endTime - startTime;
 
-        // set the total execution time and the total used memory variables
-        setTotalExecutionTimeCombSort(totalExecutionTime);
-        setUsedMemoryCombSort(usedMemory);
+        // set execution time, comparison count, swap count, and memory consumption
+        setTotalExecutionTimeCombSort(executionTime);
+
     }
 }

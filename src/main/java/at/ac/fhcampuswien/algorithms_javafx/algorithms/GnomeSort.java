@@ -1,12 +1,18 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 
+
+/**
+ * A class that sorts an array using the gnome sort algorithm, and also measures
+ * the execution time, memory consumption, total number of comparisons, and total
+ * number of swaps.
+ *
+ * @author  Burak Kongo
+ * @version 1.0
+ */
 public class GnomeSort {
-    public GnomeSort(){
-    }
-    /**
-     * The totalExecutionTimeGnomeSort variable is used for the storage
-     * of the value of the total execution time of the Gnome Sort algorithm to perform the sorting
-     */
+
     private long totalExecutionTimeGnomeSort;
     public void setTotalExecutionTimeGnomeSort(long totalExecutionTime) {
         this.totalExecutionTimeGnomeSort = totalExecutionTime;
@@ -15,51 +21,65 @@ public class GnomeSort {
         return totalExecutionTimeGnomeSort;
     }
 
-    /**
-     * The usedMemoryGnomeSort variable is used for the storage
-     * of the used memory of the Gnome Sort algorithm to perform the sorting
-     */
-    private long usedMemoryGnomeSort;
-    public void setUsedMemoryGnomeSort(long usedMemory) {
-        this.usedMemoryGnomeSort = usedMemory;
+    private long comparisonsGnomeSort;
+    public void setComparisonsGnomeSort(long comparisons) {
+        this.comparisonsGnomeSort = comparisons;
     }
-    public long getUsedMemoryGnomeSort() {
-        return usedMemoryGnomeSort;
+    public long getComparisonsGnomeSort() {
+        return comparisonsGnomeSort;
     }
 
-    public void gnomeSort(int[] inputArray)
-    {
-        int arraySize = inputArray.length;
+    private long swapsGnomeSort;
+    public void setSwapsGnomeSort(long swaps) {
+        this.swapsGnomeSort = swaps;
+    }
+    public long getSwapsGnomeSort() {
+        return swapsGnomeSort;
+    }
+
+    /**
+     * Sorts an array using the gnome sort algorithm and prints out the execution time,
+     * memory consumption, number of comparisons, and number of swaps.
+     *
+     * @param inputArray the array to sort
+     */
+    public void gnomeSort(int[] inputArray) {
+
+        long startTime = System.nanoTime();  // start timer
+
         int index = 0;
 
-        // using the Runtime object to determine the total memory usage
-        Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long usedMemory = totalMemory - freeMemory;
-        // start of time counter of the algorithm execution
-        long startTime = System.nanoTime();
-
-        while (index < arraySize) {
-            if (index == 0)
+        // While the index is less than the length of the array
+        while (index < inputArray.length) {
+            // If the index is zero or the element at the index is greater
+            // than or equal to the element at the previous index, move to the
+            // next index
+            if (index == 0 || inputArray[index] >= inputArray[index - 1]) {
                 index++;
-            if (inputArray[index] >= inputArray[index - 1])
-                index++;
+            }
+            // If the element at the index is less than the element at the
+            // previous index, swap the elements and move the index back by one
             else {
-                int temp = 0;
-                temp = inputArray[index];
+                int temp = inputArray[index];
                 inputArray[index] = inputArray[index - 1];
                 inputArray[index - 1] = temp;
+
+                // Increment the number of swaps
+                setSwapsGnomeSort(getSwapsGnomeSort()+1);
+
                 index--;
             }
-        }
-        // end of time counter of the algorithm execution
-        long endTime = System.nanoTime();
-        // total execution time of bubbleSort
-        long totalExecutionTime = endTime - startTime;
 
-        // set the total execution time and the total used memory variables
-        setTotalExecutionTimeGnomeSort(totalExecutionTime);
-        setUsedMemoryGnomeSort(usedMemory);
+            // Increment the number of comparisons
+            setComparisonsGnomeSort(getComparisonsGnomeSort()+1);
+        }
+
+        // Get the current time in nanoseconds and calculate the execution time.
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+
+        // set execution time, comparison count, swap count, and memory consumption
+        setTotalExecutionTimeGnomeSort(executionTime);
     }
 }

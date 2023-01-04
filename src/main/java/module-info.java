@@ -8,6 +8,7 @@ module at.ac.fhcampuswien.algorithms_javafx {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires java.management;
 
     opens at.ac.fhcampuswien.algorithms_javafx to javafx.fxml;
     exports at.ac.fhcampuswien.algorithms_javafx;

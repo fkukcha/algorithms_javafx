@@ -53,134 +53,222 @@ public class Page2Controller {
             default -> 0;
         };
         CreateRandomArray createRandomArray = new CreateRandomArray(arraySize);
+        int[] randomArray = createRandomArray.getRandomArray();
+        // creation of two array copies to avoid altering the original array
+        int[] randomArrayAlgorithmOne = randomArray.clone();
+        int[] randomArrayAlgorithmTwo = randomArray.clone();
+
+
         long totalExecutionTime = 0;
-        long usedMemory = 0;
+        long usedMemoryAlgorithmOne = 0;
+        long usedMemoryAlgorithmTwo = 0;
+
+
+
+
 
         switch (selectedAlgorithmOne) {
             case "BubbleSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 BubbleSort bubbleSort = new BubbleSort();
-                bubbleSort.bubbleSort(createRandomArray.getRandomArray());
-                usedMemory = bubbleSort.getUsedMemoryBubbleSort();
+                bubbleSort.bubbleSort(randomArrayAlgorithmOne);
+                usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                System.out.println("Used Memory Algo 1: "+usedMemoryAlgorithmOne);
                 totalExecutionTime = bubbleSort.getTotalExecutionTimeBubbleSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Bubble Sort:");
             }
             case "CocktailSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 CocktailSort cocktailSort = new CocktailSort();
-                cocktailSort.cocktailSort(createRandomArray.getRandomArray());
-                usedMemory = cocktailSort.getUsedMemoryCocktailSort();
+                cocktailSort.cocktailSort(randomArrayAlgorithmOne);
+                usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                //usedMemory = cocktailSort.getUsedMemoryCocktailSort();
                 totalExecutionTime = cocktailSort.getTotalExecutionTimeCocktailSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Cocktail Sort:");
             }
             case "CombSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 CombSort combSort = new CombSort();
-                combSort.combSort(createRandomArray.getRandomArray());
-                usedMemory = combSort.getUsedMemoryCombSort();
+                combSort.combSort(randomArrayAlgorithmOne);
+                 usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                //usedMemory = combSort.getUsedMemoryCombSort();
                 totalExecutionTime = combSort.getTotalExecutionTimeCombSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Comb Sort:");
             }
             case "CycleSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 CycleSort cycleSort = new CycleSort();
-                cycleSort.cycleSort(createRandomArray.getRandomArray());
-                usedMemory = cycleSort.getUsedMemoryCycleSort();
+                cycleSort.cycleSort(randomArrayAlgorithmOne);
+                usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                //usedMemory = cycleSort.getUsedMemoryCycleSort();
                 totalExecutionTime = cycleSort.getTotalExecutionTimeCycleSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Cycle Sort:");
             }
             case "GnomeSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 GnomeSort gnomeSort = new GnomeSort();
-                gnomeSort.gnomeSort(createRandomArray.getRandomArray());
-                usedMemory = gnomeSort.getUsedMemoryGnomeSort();
+                gnomeSort.gnomeSort(randomArrayAlgorithmOne);
+                usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                //usedMemory = gnomeSort.getUsedMemoryGnomeSort();
                 totalExecutionTime = gnomeSort.getTotalExecutionTimeGnomeSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Gnome Sort:");
             }
             case "HeapSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 HeapSort heapSort = new HeapSort();
-                heapSort.heapSort(createRandomArray.getRandomArray());
-                usedMemory = heapSort.getUsedMemoryHeapSort();
+                heapSort.heapSort(randomArrayAlgorithmOne);
+                usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                //usedMemory = heapSort.getUsedMemoryHeapSort();
                 totalExecutionTime = heapSort.getTotalExecutionTimeHeapSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Heap Sort:");
             }
             case "OddEvenSort" -> {
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
                 OddEvenSort oddEvenSort = new OddEvenSort();
-                oddEvenSort.oddEvenSort(createRandomArray.getRandomArray());
-                usedMemory = oddEvenSort.getUsedMemoryOddEvenSort();
+                oddEvenSort.oddEvenSort(randomArrayAlgorithmOne);
+                usedMemoryAlgorithmOne = totalMemory - freeMemory;
+                //usedMemory = oddEvenSort.getUsedMemoryOddEvenSort();
                 totalExecutionTime = oddEvenSort.getTotalExecutionTimeOddEvenSort();
                 lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
                 lBSelectedAlgorithmOne.setText("Odd Even Sort:");
             }
             default -> {
             }
         }
 
+
         switch (selectedAlgorithmTwo) {
             case "BubbleSort" -> {
-                BubbleSort bubbleSort = new BubbleSort();
-                bubbleSort.bubbleSort(createRandomArray.getRandomArray());
-                usedMemory = bubbleSort.getUsedMemoryBubbleSort();
-                totalExecutionTime = bubbleSort.getTotalExecutionTimeBubbleSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                BubbleSort bubbleSort2 = new BubbleSort();
+                bubbleSort2.bubbleSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = bubbleSort2.getUsedMemoryBubbleSort();
+                totalExecutionTime = bubbleSort2.getTotalExecutionTimeBubbleSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Bubble Sort:");
             }
             case "CocktailSort" -> {
-                CocktailSort cocktailSort = new CocktailSort();
-                cocktailSort.cocktailSort(createRandomArray.getRandomArray());
-                usedMemory = cocktailSort.getUsedMemoryCocktailSort();
-                totalExecutionTime = cocktailSort.getTotalExecutionTimeCocktailSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                CocktailSort cocktailSort2 = new CocktailSort();
+                cocktailSort2.cocktailSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = cocktailSort2.getUsedMemoryCocktailSort();
+                totalExecutionTime = cocktailSort2.getTotalExecutionTimeCocktailSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Cocktail Sort:");
             }
             case "CombSort" -> {
-                CombSort combSort = new CombSort();
-                combSort.combSort(createRandomArray.getRandomArray());
-                usedMemory = combSort.getUsedMemoryCombSort();
-                totalExecutionTime = combSort.getTotalExecutionTimeCombSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                CombSort combSort2 = new CombSort();
+                combSort2.combSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = combSort2.getUsedMemoryCombSort();
+                totalExecutionTime = combSort2.getTotalExecutionTimeCombSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Comb Sort:");
             }
             case "CycleSort" -> {
-                CycleSort cycleSort = new CycleSort();
-                cycleSort.cycleSort(createRandomArray.getRandomArray());
-                usedMemory = cycleSort.getUsedMemoryCycleSort();
-                totalExecutionTime = cycleSort.getTotalExecutionTimeCycleSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                CycleSort cycleSort2 = new CycleSort();
+                cycleSort2.cycleSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = cycleSort2.getUsedMemoryCycleSort();
+                totalExecutionTime = cycleSort2.getTotalExecutionTimeCycleSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Cycle Sort:");
             }
             case "GnomeSort" -> {
-                GnomeSort gnomeSort = new GnomeSort();
-                gnomeSort.gnomeSort(createRandomArray.getRandomArray());
-                usedMemory = gnomeSort.getUsedMemoryGnomeSort();
-                totalExecutionTime = gnomeSort.getTotalExecutionTimeGnomeSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                GnomeSort gnomeSort2 = new GnomeSort();
+                gnomeSort2.gnomeSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = gnomeSort2.getUsedMemoryGnomeSort();
+                totalExecutionTime = gnomeSort2.getTotalExecutionTimeGnomeSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Gnome Sort:");
             }
             case "HeapSort" -> {
-                HeapSort heapSort = new HeapSort();
-                heapSort.heapSort(createRandomArray.getRandomArray());
-                usedMemory = heapSort.getUsedMemoryHeapSort();
-                totalExecutionTime = heapSort.getTotalExecutionTimeHeapSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                HeapSort heapSort2 = new HeapSort();
+                heapSort2.heapSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = heapSort2.getUsedMemoryHeapSort();
+                totalExecutionTime = heapSort2.getTotalExecutionTimeHeapSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Heap Sort:");
             }
             case "OddEvenSort" -> {
-                OddEvenSort oddEvenSort = new OddEvenSort();
-                oddEvenSort.oddEvenSort(createRandomArray.getRandomArray());
-                usedMemory = oddEvenSort.getUsedMemoryOddEvenSort();
-                totalExecutionTime = oddEvenSort.getTotalExecutionTimeOddEvenSort();
+                Runtime runtime = Runtime.getRuntime();
+                long totalMemory = runtime.totalMemory();
+                long freeMemory = runtime.freeMemory();
+
+                OddEvenSort oddEvenSort2 = new OddEvenSort();
+                oddEvenSort2.oddEvenSort(randomArrayAlgorithmTwo);
+                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
+                //usedMemory = oddEvenSort2.getUsedMemoryOddEvenSort();
+                totalExecutionTime = oddEvenSort2.getTotalExecutionTimeOddEvenSort();
                 lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(usedMemory / 1000_000f + " MB");
-                lBSelectedAlgorithmOne.setText("Odd Even Sort:");
+                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
+                lBSelectedAlgorithmTwo.setText("Odd Even Sort:");
             }
             default -> {
             }

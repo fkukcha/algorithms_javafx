@@ -1,12 +1,18 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+
+/**
+ * A class that sorts an array using the cocktail sort algorithm, and also measures
+ * the execution time, memory consumption, total number of comparisons, and total
+ * number of swaps.
+ *
+ * @author  Burak Kongo
+ * @version 1.0
+ */
 public class CocktailSort {
-    public CocktailSort(){
-    }
-    /**
-     * The totalExecutionTimeCocktailSort variable is used for the storage
-     * of the value of the total execution time of the Cocktail Sort algorithm to perform the sorting
-     */
+
     private long totalExecutionTimeCocktailSort;
     public void setTotalExecutionTimeCocktailSort(long totalExecutionTime) {
         this.totalExecutionTimeCocktailSort = totalExecutionTime;
@@ -15,10 +21,6 @@ public class CocktailSort {
         return totalExecutionTimeCocktailSort;
     }
 
-    /**
-     * The usedMemoryCocktailSort variable is used for the storage
-     * of the used memory of the Cocktail Sort algorithm to perform the sorting
-     */
     private long usedMemoryCocktailSort;
     public void setUsedMemoryCocktailSort(long usedMemory) {
         this.usedMemoryCocktailSort = usedMemory;
@@ -27,75 +29,81 @@ public class CocktailSort {
         return usedMemoryCocktailSort;
     }
 
-    public void cocktailSort(int[] inputArray)
-    {
-        boolean swapped = true;
-        int start = 0;
-        int end = inputArray.length;
+    private long comparisonsCocktailSort;
+    public void setComparisonsCocktailSort(long comparisons) {
+        this.comparisonsCocktailSort = comparisons;
+    }
+    public long getComparisonsCocktailSort() {
+        return comparisonsCocktailSort;
+    }
 
-        // using the Runtime object to determine the total memory usage
+    private long swapsCocktailSort;
+    public void setSwapsCocktailSort(long swaps) {
+        this.swapsCocktailSort = swaps;
+    }
+    public long getSwapsCocktailSort() {
+        return swapsCocktailSort;
+    }
+
+
+    /**
+     * Sorts an array using the cocktail sort algorithm, and also measures the
+     * execution time, memory consumption, total number of comparisons, and total
+     * number of swaps.
+     *
+     * @param inputArray The array to be sorted.
+     */
+    public void cocktailSort(int[] inputArray) {
+        // Get the current runtime
         Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long usedMemory = totalMemory - freeMemory;
-        // start of time counter of the algorithm execution
+
+        long memoryConsumed = runtime.totalMemory() - runtime.freeMemory();
+
+        // Get the current time in nanoseconds.
         long startTime = System.nanoTime();
 
-        while (swapped)
-        {
-            // reset the swapped flag on entering the
-            // loop, because it might be true from a previous iteration.
-            swapped = false;
 
-            // loop from bottom to top same as
-            // the bubble sort
-            for (int i = start; i < end - 1; ++i)
-            {
+        // Perform cocktail sort
+        boolean isSorted = false;
+        int start = 0;
+        int end = inputArray.length;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = start; i < end - 1; i++) {
+                setComparisonsCocktailSort(getComparisonsCocktailSort()+1);
                 if (inputArray[i] > inputArray[i + 1]) {
+                    setSwapsCocktailSort(getSwapsCocktailSort()+1);
                     int temp = inputArray[i];
                     inputArray[i] = inputArray[i + 1];
                     inputArray[i + 1] = temp;
-                    swapped = true;
+                    isSorted = false;
                 }
             }
-
-            // if nothing moved, then array is sorted.
-            if (!swapped)
+            if (isSorted) {
                 break;
-
-            // otherwise, reset the swapped flag so that it
-            //can be used in the next stage
-            swapped = false;
-
-            // move the end point back by one, because
-            // item at the end is in its rightful spot
-            end = end - 1;
-
-            // from top to bottom, doing the
-            // same comparison as in the previous stage
-            for (int i = end - 1; i >= start; i--)
-            {
-                if (inputArray[i] > inputArray[i + 1])
-                {
+            }
+            isSorted = true;
+            end--;
+            for (int i = end - 1; i >= start; i--) {
+                setComparisonsCocktailSort(getComparisonsCocktailSort()+1);
+                if (inputArray[i] > inputArray[i + 1]) {
+                    setSwapsCocktailSort(getSwapsCocktailSort()+1);
                     int temp = inputArray[i];
                     inputArray[i] = inputArray[i + 1];
                     inputArray[i + 1] = temp;
-                    swapped = true;
+                    isSorted = false;
                 }
             }
-            // increase the starting point, because
-            // the last stage would have moved the next
-            // smallest number to its rightful spot.
-            start = start + 1;
+            start++;
         }
 
-        // end of time counter of the algorithm execution
+        // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        // total execution time of bubbleSort
-        long totalExecutionTime = endTime - startTime;
+        long executionTime = endTime - startTime;
 
-        // set the total execution time and the total used memory variables
-        setTotalExecutionTimeCocktailSort(totalExecutionTime);
-        setUsedMemoryCocktailSort(usedMemory);
+
+        // set execution time, comparison count, swap count, and memory consumption
+        setTotalExecutionTimeCocktailSort(executionTime);
+        setUsedMemoryCocktailSort(memoryConsumed);
     }
 }

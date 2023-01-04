@@ -1,12 +1,17 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 
+/**
+ * A class that sorts an array using the cycle sort algorithm, and also measures
+ * the execution time, memory consumption, total number of comparisons, and total
+ * number of swaps.
+ *
+ * @author  Burak Kongo
+ * @version 1.0
+ */
 public class CycleSort {
-    public CycleSort(){
-    }
-    /**
-     * The totalExecutionTimeCycleSort variable is used for the storage
-     * of the value of the total execution time of the Cycle Sort algorithm to perform the sorting
-     */
+
     private long totalExecutionTimeCycleSort;
     public void setTotalExecutionTimeCycleSort(long totalExecutionTime) {
         this.totalExecutionTimeCycleSort = totalExecutionTime;
@@ -15,86 +20,89 @@ public class CycleSort {
         return totalExecutionTimeCycleSort;
     }
 
+
+    private long comparisonsCycleSort;
+    public void setComparisonsCycleSort(long comparisons) {
+        this.comparisonsCycleSort = comparisons;
+    }
+    public long getComparisonsCycleSort() {
+        return comparisonsCycleSort;
+    }
+
+    private long swapsCycleSort;
+    public void setSwapsCycleSort(long swaps) {
+        this.swapsCycleSort = swaps;
+    }
+    public long getSwapsCycleSort() {
+        return swapsCycleSort;
+    }
+
     /**
-     * The usedMemoryCycleSort variable is used for the storage
-     * of the used memory of the Cycle Sort algorithm to perform the sorting
+     * Sorts an array using the cycle sort algorithm and prints out the execution time,
+     * memory consumption, number of comparisons, and number of swaps.
+     *
+     * @param inputArray the array to sort
      */
-    private long usedMemoryCycleSort;
-    public void setUsedMemoryCycleSort(long usedMemory) {
-        this.usedMemoryCycleSort = usedMemory;
-    }
-    public long getUsedMemoryCycleSort() {
-        return usedMemoryCycleSort;
-    }
+    public void cycleSort(int[] inputArray) {
 
-    public void cycleSort(int[] inputArray)
-    {
-        int arraySize = inputArray.length;
 
-        // using the Runtime object to determine the total memory usage
-        Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long usedMemory = totalMemory - freeMemory;
-        // start of time counter of the algorithm execution
-        long startTime = System.nanoTime();
+        long startTime = System.nanoTime();  // start timer
 
-        // traverse array elements and put it to on
-        // the right place
-        for (int cycle_start = 0; cycle_start <= arraySize - 2; cycle_start++) {
-            // initialize item as starting point
-            int item = inputArray[cycle_start];
+        int arrayLength = inputArray.length;
 
-            // Find position where we put the item. We basically
-            // count all smaller elements on right side of item.
-            int position = cycle_start;
-            for (int i = cycle_start + 1; i < arraySize; i++)
-                if (inputArray[i] < item)
-                    position++;
 
-            // If item is already in correct position
-            if (position == cycle_start)
-                continue;
+        // loop through the array
+        for (int cycleStart = 0; cycleStart < arrayLength - 1; cycleStart++) {
+            int item = inputArray[cycleStart];
 
-            // ignore all duplicate elements
-            while (item == inputArray[position])
-                position += 1;
-
-            // put the item to it's right position
-            if (position != cycle_start) {
-                int temp = item;
-                item = inputArray[position];
-                inputArray[position] = temp;
+            // find the position where the item belongs
+            int pos = cycleStart;
+            for (int i = cycleStart + 1; i < arrayLength; i++) {
+                if (inputArray[i] < item) {
+                    pos++;
+                }
+                setComparisonsCycleSort(getComparisonsCycleSort()+1);
             }
 
-            // Rotate rest of the cycle
-            while (position != cycle_start) {
-                position = cycle_start;
+            // if the item is already in the correct position, move on to the next item
+            if (pos == cycleStart) {
+                continue;
+            }
 
-                // Find position where we put the element
-                for (int i = cycle_start + 1; i < arraySize; i++)
-                    if (inputArray[i] < item)
-                        position += 1;
+            // put the item into the correct position
+            while (item == inputArray[pos]) {
+                pos++;
+            }
+            int temp = item;
+            item = inputArray[pos];
+            inputArray[pos] = temp;
+            setSwapsCycleSort(getSwapsCycleSort()+1);
 
-                // ignore all duplicate elements
-                while (item == inputArray[position])
-                    position += 1;
-
-                // put the item to it's right position
-                if (item != inputArray[position]) {
-                    int temp = item;
-                    item = inputArray[position];
-                    inputArray[position] = temp;
+            // rotate the rest of the cycle
+            while (pos != cycleStart) {
+                pos = cycleStart;
+                for (int i = cycleStart + 1; i < arrayLength; i++) {
+                    if (inputArray[i] < item) {
+                        pos++;
+                    }
                 }
+                while (item == inputArray[pos]) {
+                    pos++;
+                }
+                temp = item;
+                item = inputArray[pos];
+                inputArray[pos] = temp;
+                setSwapsCycleSort(getSwapsCycleSort()+1);
             }
         }
-        // end of time counter of the algorithm execution
-        long endTime = System.nanoTime();
-        // total execution time of bubbleSort
-        long totalExecutionTime = endTime - startTime;
 
-        // set the total execution time and the total used memory variables
-        setTotalExecutionTimeCycleSort(totalExecutionTime);
-        setUsedMemoryCycleSort(usedMemory);
+        // Get the current time in nanoseconds and calculate the execution time.
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+
+        // set execution time, comparison count, swap count, and memory consumption
+        setTotalExecutionTimeCycleSort(executionTime);
     }
+
 }

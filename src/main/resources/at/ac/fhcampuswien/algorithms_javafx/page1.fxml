@@ -35,27 +35,43 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<TitledPane animated="false" maxHeight="650.0" maxWidth="750.0" minHeight="650.0" minWidth="750.0" prefHeight="650.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="at.ac.fhcampuswien.algorithms_javafx.Page1Controller">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="750.0" prefWidth="850.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="734.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.algorithms_javafx.Page1Controller">
+   <children>
+      <Rectangle fill="#dddddd" height="175.0" layoutY="-5.0" stroke="#c6c6c6" strokeType="INSIDE" width="700.0" />
+      <AnchorPane prefHeight="168.0" prefWidth="700.0">
          <children>
-            <Label layoutX="403.0" layoutY="563.0" prefHeight="18.0" prefWidth="341.0" text="Sorting Algorithms 2022 - Burak Kongo, Besim Kurteshi, Ferdaws Kukcha" textAlignment="CENTER" textFill="RED">
+            <Button layoutX="39.0" layoutY="103.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Full sorting algorithm list" />
+            <Button layoutX="264.0" layoutY="103.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Compare two algorithms" />
+            <Button layoutX="488.0" layoutY="103.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Show fastest algorithm" />
+            <Label alignment="CENTER" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: darkgrey;" text="Sorting Algorithms" textFill="WHITE">
                <font>
-                  <Font size="11.0" />
+                  <Font name="Impact" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="251.0" layoutY="30.0" prefHeight="28.0" prefWidth="247.0" text="Please select an array size:">
+            <Rectangle height="3.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="170.0" prefHeight="564.0" prefWidth="702.0">
+         <children>
+            <Rectangle fill="#868686" height="46.0" layoutY="518.0" stroke="#bcbcbc" strokeType="INSIDE" width="700.0" />
+            <Label layoutX="372.0" layoutY="538.0" prefHeight="17.0" prefWidth="316.0" text="Sorting Algorithms 2022 - Burak Kongo, Besim Kurteshi, Ferdaws Kukcha" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cBArraySize" layoutX="254.0" layoutY="73.0" prefHeight="26.0" prefWidth="240.0">
+            <Label alignment="CENTER" layoutX="-4.0" layoutY="24.0" prefHeight="17.0" prefWidth="701.0" text="Please select an array size:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbArraySize" layoutX="166.0" layoutY="57.0" prefHeight="25.0" prefWidth="355.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="Thousand"/>
@@ -64,12 +80,12 @@
                   </FXCollections>
                </items>
             </ComboBox>
-            <Label layoutX="220.0" layoutY="134.0" prefHeight="28.0" prefWidth="310.0" text="Please select a sorting algorithm:">
+            <Label alignment="CENTER" layoutX="1.0" layoutY="108.0" prefHeight="17.0" prefWidth="701.0" text="Please select an sorting algorithm:">
                <font>
-                  <Font size="22.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cBSelectSortingAlgorithm" layoutX="255.0" layoutY="173.0" prefHeight="26.0" prefWidth="240.0" >
+            <ComboBox fx:id="cbSelectedAlgorithm" layoutX="172.0" layoutY="139.0" prefHeight="25.0" prefWidth="355.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="BubbleSort"/>
@@ -82,48 +98,48 @@
                   </FXCollections>
                </items>
             </ComboBox>
-            <AnchorPane fx:id="aPExecTime" layoutX="-4.0" layoutY="322.0" prefHeight="220.0" prefWidth="381.0" style="-fx-border-color: black;">
-               <children>
-                  <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="17.0" prefWidth="371.0" text="Total execution time of the algorithm:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lBExecutionTime" alignment="CENTER" layoutX="2.0" layoutY="90.0" prefHeight="74.0" prefWidth="377.0" style="-fx-border-color: darkgrey; -fx-background-color: lightgrey;">
-                     <font>
-                        <Font size="33.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="aPMemoryUsage" layoutX="377.0" layoutY="322.0" prefHeight="219.0" prefWidth="375.0" style="-fx-border-color: black;">
-               <children>
-                  <Label alignment="CENTER" layoutX="2.0" layoutY="14.0" prefHeight="17.0" prefWidth="371.0" text="Total memory usage of the algorithm:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lBMemoryUsage" alignment="CENTER" layoutX="2.0" layoutY="90.0" prefHeight="74.0" prefWidth="370.0" style="-fx-border-color: darkgrey; -fx-background-color: lightgrey;">
-                     <font>
-                        <Font size="33.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <Button fx:id="btnSortArray" layoutX="256.0" layoutY="241.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="238.0" text="Execute" onAction="#onBtnSortArrayClick">
+            <Button fx:id="btnSortArray" layoutX="268.0" layoutY="196.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="153.0" style="-fx-background-color: lightgreen;" text="Sort the Array" onAction="#onBtnSortArrayClick">
                <font>
-                  <Font size="19.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
-         </children></AnchorPane>
-  </content>
-   <graphic>
-      <AnchorPane prefHeight="55.0" prefWidth="722.0">
-         <children>
-            <Button fx:id="btnPage1" layoutX="34.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Full sorting algorithm list" onAction="#onBtnPage1Click"/>
-            <Button fx:id="btnPage2" layoutX="281.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Compare two algorithms" onAction="#onBtnPage2Click"/>
-            <Button fx:id="btnPage3" layoutX="521.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Show fastest algorithm" onAction="#onBtnPage3Click"/>
+            <Rectangle fill="#8a8a8a" height="263.0" layoutY="262.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0" />
+            <Label fx:id="lbSelectedAlgorithm" alignment="CENTER" layoutY="263.0" prefHeight="56.0" prefWidth="700.0" style="-fx-background-color: lightblue;" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="320.0" prefHeight="28.0" prefWidth="700.0" style="-fx-background-color: lightgrey;" text="Total execution time:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbExecutionTime" alignment="CENTER" layoutY="349.0" prefHeight="34.0" prefWidth="700.0" style="-fx-background-color: white;">
+               <font>
+                  <Font name="Lucida Grande" size="17.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="392.0" prefHeight="28.0" prefWidth="700.0" style="-fx-background-color: lightgrey;" text="Number of array swaps:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbArraySwaps" alignment="CENTER" layoutY="421.0" prefHeight="34.0" prefWidth="700.0" style="-fx-background-color: white;">
+               <font>
+                  <Font name="Lucida Grande" size="17.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="460.0" prefHeight="28.0" prefWidth="700.0" style="-fx-background-color: lightgrey;" text="Number of comparisons:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbComparisons" alignment="CENTER" layoutY="489.0" prefHeight="34.0" prefWidth="700.0" style="-fx-background-color: white;">
+               <font>
+                  <Font name="Lucida Grande" size="17.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-   </graphic>
-</TitledPane>
+   </children>
+</Pane>

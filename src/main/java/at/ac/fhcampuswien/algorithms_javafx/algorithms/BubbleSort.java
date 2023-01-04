@@ -1,64 +1,75 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.MemoryUsage;
+
+/**
+ * A class that sorts an array using the bubble sort algorithm, and also measures
+ * the execution time, total number of comparisons, and total
+ * number of swaps.
+ *
+ * @author  Burak Kongo
+ * @version 1.0
+ */
+
 public class BubbleSort {
-    public BubbleSort() {
-    }
-    /**
-     * The totalExecutionTimeBubbleSort variable is used for the storage
-     * of the value of the total execution time of the Bubble Sort algorithm to perform the sorting
-     */
     private long totalExecutionTimeBubbleSort;
-    private void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
+    public void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
         this.totalExecutionTimeBubbleSort = totalExecutionTime;
     }
     public long getTotalExecutionTimeBubbleSort() {
         return totalExecutionTimeBubbleSort;
     }
 
-    /**
-     * The usedMemoryBubbleSort variable is used for the storage
-     * of the used memory of the Bubble Sort algorithm to perform the sorting
-     */
-    private long usedMemoryBubbleSort;
-    private void setUsedMemoryBubbleSort(long usedMemory) {
-        this.usedMemoryBubbleSort = usedMemory;
+
+    private int comparisonsBubbleSort;
+    public void setComparisonsBubbleSort(int comparisons) {
+        this.comparisonsBubbleSort = comparisons;
     }
-    public long getUsedMemoryBubbleSort() {
-        return usedMemoryBubbleSort;
+    public int getComparisonsBubbleSort() {
+        return comparisonsBubbleSort;
     }
 
+    private int swapsBubbleSort;
+    public void setSwapsBubbleSort(int swaps) {
+        this.swapsBubbleSort = swaps;
+    }
+    public int getSwapsBubbleSort() {
+        return swapsBubbleSort;
+    }
+
+
+    /**
+     * Sorts the specified array using the bubble sort algorithm.
+     *
+     * @param  inputArray the array to be sorted
+     */
     public void bubbleSort(int[] inputArray) {
 
-        int arraySize = inputArray.length;
+        long startTime = System.nanoTime();  // record start time
 
-        // using the Runtime object to determine the total memory usage
-        Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long usedMemory = totalMemory - freeMemory;
-        // start of time counter of the algorithm execution
-        long startTime = System.nanoTime();
 
-        // loop over each element of the array to access them
-        for (int i = 0; i < arraySize - 1; i++) {
-            // compare the elements of the array with a loop
-            for (int j = 0; j < arraySize - i - 1; j++) {
-                // compare two adjacent elements in the array
+        // perform bubble sort
+        for (int i = 0; i < inputArray.length - 1; i++) {
+            for (int j = 0; j < inputArray.length - i - 1; j++) {
+                setComparisonsBubbleSort(getComparisonsBubbleSort()+1);  // increment comparison count
                 if (inputArray[j] > inputArray[j + 1]) {
-                    // Swap if the elements aren't in the right order
+                    // swap elements if necessary
                     int temp = inputArray[j];
                     inputArray[j] = inputArray[j + 1];
                     inputArray[j + 1] = temp;
+                    setSwapsBubbleSort(getSwapsBubbleSort()+1);  // increment swap count
                 }
             }
         }
-        // end of time counter of the algorithm execution
-        long endTime = System.nanoTime();
-        // total execution time of bubbleSort
-        long totalExecutionTime = endTime - startTime;
 
-        // set the total execution time and the total used memory variables
-        setTotalExecutionTimeBubbleSort(totalExecutionTime);
-        setUsedMemoryBubbleSort(usedMemory);
+        // Get the current time in nanoseconds and calculate the execution time.
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+        // set execution time, comparison count, swap count, and memory consumption
+        setTotalExecutionTimeBubbleSort(executionTime);
+
     }
 }

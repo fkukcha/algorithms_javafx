@@ -1,13 +1,19 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 
+/**
+ * A class that sorts an array using the odd/even sort algorithm, and also measures
+ * the execution time, memory consumption, total number of comparisons, and total
+ * number of swaps.
+ *
+ * @author  Burak Kongo
+ * @version 1.0
+ */
 public class OddEvenSort {
-    public OddEvenSort(){
-    }
-    /**
-     * The totalExecutionTimeOddEvenSort variable is used for the storage
-     * of the value of the total execution time of the Odd Even Sort algorithm to perform the sorting
-     */
+
     private long totalExecutionTimeOddEvenSort;
+
     public void setTotalExecutionTimeOddEvenSort(long totalExecutionTime) {
         this.totalExecutionTimeOddEvenSort = totalExecutionTime;
     }
@@ -15,66 +21,83 @@ public class OddEvenSort {
         return totalExecutionTimeOddEvenSort;
     }
 
+
+    private long comparisonsOddEvenSort;
+    public void setComparisonsOddEvenSort(long comparisons) {
+        this.comparisonsOddEvenSort = comparisons;
+    }
+    public long getComparisonsOddEvenSort() {
+        return comparisonsOddEvenSort;
+    }
+
+    private long swapsOddEvenSort;
+    public void setSwapsOddEvenSort(long swaps) {
+        this.swapsOddEvenSort = swaps;
+    }
+    public long getSwapsOddEvenSort() {
+        return swapsOddEvenSort;
+    }
+
     /**
-     * The usedMemoryOddEvenSort variable is used for the storage
-     * of the used memory of the Odd Even Sort algorithm to perform the sorting
+     * Sorts an array using the odd-even sort algorithm and prints out the execution time,
+     * number of comparisons, and number of swaps.
+     *
+     * @param inputArray the array to sort
      */
-    private long usedMemoryOddEvenSort;
-    public void setUsedMemoryOddEvenSort(long usedMemory) {
-        this.usedMemoryOddEvenSort = usedMemory;
-    }
-    public long getUsedMemoryOddEvenSort() {
-        return usedMemoryOddEvenSort;
-    }
+    public void oddEvenSort(int[] inputArray) {
 
-    public void oddEvenSort(int[]inputArray)
-    {
-        int arraySize = inputArray.length;
-        boolean isSorted = false; // Initially array is unsorted
+        long startTime = System.nanoTime();  // start timer
 
-        // using the Runtime object to determine the total memory usage
-        Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long usedMemory = totalMemory - freeMemory;
-        // start of time counter of the algorithm execution
-        long start = System.nanoTime();
 
-        while (!isSorted)
-        {
+        // Set the sorted flag to false
+        boolean isSorted = false;
+
+        // While the array is not sorted
+        while (!isSorted) {
+            // Set the sorted flag to true (assume the array is sorted)
             isSorted = true;
-            int temp = 0;
 
-            // Perform Bubble sort on odd indexed element
-            for (int i=1; i <= arraySize-2; i = i+2)
-            {
-                if (inputArray[i] > inputArray[i+1])
-                {
-                    temp = inputArray[i];
-                    inputArray[i] = inputArray[i+1];
-                    inputArray[i+1] = temp;
+            // Perform the sort on the even indices
+            for (int i = 0; i < inputArray.length - 1; i += 2) {
+                // If the current element is greater than the next element, swap them and set the sorted flag to false
+                if (inputArray[i] > inputArray[i + 1]) {
+                    int temp = inputArray[i];
+                    inputArray[i] = inputArray[i + 1];
+                    inputArray[i + 1] = temp;
                     isSorted = false;
-                }
-            }
-            // Perform Bubble sort on even indexed element
-            for (int i = 0; i <= arraySize-2; i = i+2)
-            {
-                if (inputArray[i] > inputArray[i+1])
-                {
-                    temp = inputArray[i];
-                    inputArray[i] = inputArray[i+1];
-                    inputArray[i+1] = temp;
-                    isSorted = false;
-                }
-            }
-            // end of time counter of the algorithm execution
-            long end = System.nanoTime();
-            // total execution time of the algorithm
-            long totalExecutionTime = end - start;
 
-            // set the total execution time and the total used memory variables
-            setTotalExecutionTimeOddEvenSort(totalExecutionTime);
-            setUsedMemoryOddEvenSort(usedMemory);
+                    // Increment the number of swaps
+                    setSwapsOddEvenSort(getSwapsOddEvenSort() + 1);
+                }
+
+                // Increment the number of comparisons
+                setComparisonsOddEvenSort(getComparisonsOddEvenSort() + 1);
+            }
+
+            // Perform the sort on the odd indices
+            for (int i = 1; i < inputArray.length - 1; i += 2) {
+                // If the current element is greater than the next element, swap them and set the sorted flag to false
+                if (inputArray[i] > inputArray[i + 1]) {
+                    int temp = inputArray[i];
+                    inputArray[i] = inputArray[i + 1];
+                    inputArray[i + 1] = temp;
+                    isSorted = false;
+
+                    // Increment the number of swaps
+                    setSwapsOddEvenSort(getSwapsOddEvenSort() + 1);
+                }
+
+                // Increment the number of comparisons
+                setComparisonsOddEvenSort(getComparisonsOddEvenSort() + 1);
+            }
+
+            // Get the current time in nanoseconds and calculate the execution time.
+            long endTime = System.nanoTime();
+            long executionTime = endTime - startTime;
+
+
+            // set execution time, comparison count, swap count
+            setTotalExecutionTimeOddEvenSort(executionTime);
         }
     }
 }
