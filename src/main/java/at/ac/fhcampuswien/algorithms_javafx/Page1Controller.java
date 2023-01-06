@@ -3,23 +3,22 @@ package at.ac.fhcampuswien.algorithms_javafx;
 import at.ac.fhcampuswien.algorithms_javafx.algorithms.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class Page1Controller {
 
     @FXML
     private Button btnPage2;
-    @FXML
-    private Stage stage;
 
     DecimalFormat df = new DecimalFormat("0.0000");
     @FXML
@@ -36,15 +35,6 @@ public class Page1Controller {
     @FXML
     private ComboBox cbArraySize;
 
-    private Parent root;
-
-    @FXML
-    private void initialize() {
-        btnPage2.setOnAction(event -> {
-            Scene scene = new Scene(new Pane());
-            stage.setScene(scene);
-        });
-    }
 
     @FXML
     protected void onBtnSortArrayClick() {
@@ -62,7 +52,9 @@ public class Page1Controller {
         };
 
         CreateRandomArray createRandomArray = new CreateRandomArray(arraySize);
+
         long totalExecutionTime = 0;
+
 
         switch (selectedAlgorithm) {
             case "BubbleSort" -> {
@@ -179,10 +171,17 @@ public class Page1Controller {
             }
         }
     }
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    @FXML
+    protected void onChangeToSecondScene (ActionEvent event) throws Exception {
+        Stage stage;
+        Parent root;
+
+        stage = (Stage) btnPage2.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("secondPage.fxml")));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-
-
 
 }

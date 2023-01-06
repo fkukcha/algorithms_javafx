@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class Page2Controller {
     @FXML
@@ -298,7 +300,18 @@ public class Page2Controller {
             }
         }
     }
+    @FXML
+    protected void onChangeToFirstScene (ActionEvent event) throws Exception {
+        Stage stage;
+        Parent root;
 
+        stage = (Stage) btnPage1.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstPage.fxml")));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 

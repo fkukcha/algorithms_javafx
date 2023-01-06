@@ -49,7 +49,7 @@
       <AnchorPane prefHeight="168.0" prefWidth="700.0">
          <children>
             <Button layoutX="114.0" layoutY="102.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Full sorting algorithm list" />
-            <Button fx:id="btnPage2" layoutX="412.0" layoutY="103.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Compare two algorithms" />
+            <Button fx:id="btnPage2" layoutX="412.0" layoutY="103.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Compare two algorithms" onAction="#onChangeToSecondScene"/>
             <Label alignment="CENTER" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: darkgrey;" text="Sorting Algorithms" textFill="WHITE">
                <font>
                   <Font name="Impact" size="27.0" />

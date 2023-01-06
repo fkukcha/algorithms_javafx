@@ -47,7 +47,7 @@
       <Rectangle fill="#dddddd" height="175.0" layoutY="-5.0" stroke="#c6c6c6" strokeType="INSIDE" width="700.0" />
       <AnchorPane prefHeight="168.0" prefWidth="700.0">
          <children>
-            <Button fx:id="btnPage1" layoutX="114.0" layoutY="102.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Full sorting algorithm list"/>
+            <Button fx:id="btnPage1" layoutX="114.0" layoutY="102.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Full sorting algorithm list" onAction="#onChangeToFirstScene"/>
             <Button  layoutX="412.0" layoutY="103.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="173.0" text="Compare two algorithms" />
             <Label alignment="CENTER" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: darkgrey;" text="Sorting Algorithms" textFill="WHITE">
                <font>
