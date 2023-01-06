@@ -1,11 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
 
 /**
  * A class that sorts an array using the heap sort algorithm, and also measures
- * the execution time, memory consumption, total number of comparisons, and total
- * number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -19,7 +16,6 @@ public class HeapSort {
     public long getTotalExecutionTimeHeapSort() {
         return totalExecutionTimeHeapSort;
     }
-
 
     private long comparisonsHeapSort;
     public void setComparisonsHeapSort(long comparisons) {
@@ -47,7 +43,6 @@ public class HeapSort {
 
         long startTime = System.nanoTime();  // start timer
 
-
         // Build the heap
         for (int i = inputArray.length / 2 - 1; i >= 0; i--) {
             heapify(inputArray, inputArray.length, i);
@@ -66,7 +61,7 @@ public class HeapSort {
         long executionTime = endTime - startTime;
 
 
-        // set execution time, comparison count, swap count
+        // set execution time
         setTotalExecutionTimeHeapSort(executionTime);
     }
 

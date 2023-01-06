@@ -1,13 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
-
 /**
  * A class that sorts an array using the bubble sort algorithm, and also measures
- * the execution time, total number of comparisons, and total
- * number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -21,7 +16,6 @@ public class BubbleSort {
     public long getTotalExecutionTimeBubbleSort() {
         return totalExecutionTimeBubbleSort;
     }
-
 
     private int comparisonsBubbleSort;
     public void setComparisonsBubbleSort(int comparisons) {
@@ -49,7 +43,6 @@ public class BubbleSort {
 
         long startTime = System.nanoTime();  // record start time
 
-
         // perform bubble sort
         for (int i = 0; i < inputArray.length - 1; i++) {
             for (int j = 0; j < inputArray.length - i - 1; j++) {
@@ -68,8 +61,7 @@ public class BubbleSort {
         long endTime = System.nanoTime();
         long executionTime = endTime - startTime;
 
-        // set execution time, comparison count, swap count, and memory consumption
+        // set execution time
         setTotalExecutionTimeBubbleSort(executionTime);
-
     }
 }

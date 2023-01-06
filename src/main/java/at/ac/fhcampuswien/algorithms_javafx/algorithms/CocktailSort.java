@@ -1,12 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
-
 /**
  * A class that sorts an array using the cocktail sort algorithm, and also measures
- * the execution time, memory consumption, total number of comparisons, and total
- * number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -21,13 +17,6 @@ public class CocktailSort {
         return totalExecutionTimeCocktailSort;
     }
 
-    private long usedMemoryCocktailSort;
-    public void setUsedMemoryCocktailSort(long usedMemory) {
-        this.usedMemoryCocktailSort = usedMemory;
-    }
-    public long getUsedMemoryCocktailSort() {
-        return usedMemoryCocktailSort;
-    }
 
     private long comparisonsCocktailSort;
     public void setComparisonsCocktailSort(long comparisons) {
@@ -48,20 +37,14 @@ public class CocktailSort {
 
     /**
      * Sorts an array using the cocktail sort algorithm, and also measures the
-     * execution time, memory consumption, total number of comparisons, and total
-     * number of swaps.
+     * execution time, total number of comparisons, and total number of swaps.
      *
      * @param inputArray The array to be sorted.
      */
     public void cocktailSort(int[] inputArray) {
-        // Get the current runtime
-        Runtime runtime = Runtime.getRuntime();
-
-        long memoryConsumed = runtime.totalMemory() - runtime.freeMemory();
 
         // Get the current time in nanoseconds.
         long startTime = System.nanoTime();
-
 
         // Perform cocktail sort
         boolean isSorted = false;
@@ -101,9 +84,7 @@ public class CocktailSort {
         long endTime = System.nanoTime();
         long executionTime = endTime - startTime;
 
-
-        // set execution time, comparison count, swap count, and memory consumption
+        // set execution time
         setTotalExecutionTimeCocktailSort(executionTime);
-        setUsedMemoryCocktailSort(memoryConsumed);
     }
 }

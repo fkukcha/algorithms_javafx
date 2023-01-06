@@ -1,11 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
 
 /**
  * A class that sorts an array using the comb sort algorithm, and also measures
- * the execution time, memory consumption, total number of comparisons, and total
- * number of swaps.
+ * the execution time total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -35,7 +32,6 @@ public class CombSort {
     public long getSwapsCombSort() {
         return swapsCombSort;
     }
-
 
     /**
      * Sorts an array using the comb sort algorithm and prints out the execution time,
@@ -78,8 +74,7 @@ public class CombSort {
         long endTime = System.nanoTime();
         long executionTime = endTime - startTime;
 
-        // set execution time, comparison count, swap count, and memory consumption
+        // set execution time
         setTotalExecutionTimeCombSort(executionTime);
-
     }
 }

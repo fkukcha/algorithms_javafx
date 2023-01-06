@@ -3,47 +3,53 @@ package at.ac.fhcampuswien.algorithms_javafx;
 import at.ac.fhcampuswien.algorithms_javafx.algorithms.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class Page2Controller {
+    @FXML
     public Button btnPage1;
-    public Button btnPage2;
-    public Button btnPage3;
+    @FXML
+    private Stage stage;
     DecimalFormat df = new DecimalFormat("0.0000");
     @FXML
-    private Label lBExecutionTimeOne;
+    private Label lbExecutionTimeOne;
     @FXML
-    private Label lBExecutionTimeTwo;
+    private Label lbExecutionTimeTwo;
+
     @FXML
-    private Label lBMemoryUsageOne;
+    private ComboBox cBSelectedAlgorithmOne;
     @FXML
-    private Label lBMemoryUsageTwo;
-    @FXML
-    private ComboBox cBSelectSortingAlgorithmOne;
-    @FXML
-    private ComboBox cBSelectSortingAlgorithmTwo;
+    private ComboBox cBSelectedAlgorithmTwo;
     @FXML
     private ComboBox cBArraySize;
     @FXML
     private Label lBSelectedAlgorithmOne;
     @FXML
     private Label lBSelectedAlgorithmTwo;
+    @FXML
+    private Label lbArraySwapsOne;
+    @FXML
+    private Label lbComparisonsOne;
+    @FXML
+    private Label lbArraySwapsTwo;
+    @FXML
+    private Label lbComparisonsTwo;
 
 
     @FXML
     protected void onBtnSortArrayClick() {
 
-        cBSelectSortingAlgorithmOne.getValue();
-        cBSelectSortingAlgorithmTwo.getValue();
-        cBArraySize.getValue();
-
-        String selectedAlgorithmOne =  cBSelectSortingAlgorithmOne.getValue().toString();
-        String selectedAlgorithmTwo =  cBSelectSortingAlgorithmTwo.getValue().toString();
+        String selectedAlgorithmOne =  cBSelectedAlgorithmOne.getValue().toString();
+        String selectedAlgorithmTwo =  cBSelectedAlgorithmTwo.getValue().toString();
         String selectedArraySize =  cBArraySize.getValue().toString();
 
         int arraySize = switch (selectedArraySize) {
@@ -52,235 +58,248 @@ public class Page2Controller {
             case "Hundred thousand" -> 100000;
             default -> 0;
         };
+
         CreateRandomArray createRandomArray = new CreateRandomArray(arraySize);
         int[] randomArray = createRandomArray.getRandomArray();
         // creation of two array copies to avoid altering the original array
         int[] randomArrayAlgorithmOne = randomArray.clone();
         int[] randomArrayAlgorithmTwo = randomArray.clone();
 
-
-        long totalExecutionTime = 0;
-        long usedMemoryAlgorithmOne = 0;
-        long usedMemoryAlgorithmTwo = 0;
-
-
-
-
+        long totalExecutionTimeOne = 0;
+        long totalExecutionTimeTwo = 0;
 
         switch (selectedAlgorithmOne) {
             case "BubbleSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 BubbleSort bubbleSort = new BubbleSort();
                 bubbleSort.bubbleSort(randomArrayAlgorithmOne);
-                usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                System.out.println("Used Memory Algo 1: "+usedMemoryAlgorithmOne);
-                totalExecutionTime = bubbleSort.getTotalExecutionTimeBubbleSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Bubble Sort:");
+                totalExecutionTimeOne = bubbleSort.getTotalExecutionTimeBubbleSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(bubbleSort.getComparisonsBubbleSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(bubbleSort.getSwapsBubbleSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Bubble Sort");
             }
             case "CocktailSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 CocktailSort cocktailSort = new CocktailSort();
                 cocktailSort.cocktailSort(randomArrayAlgorithmOne);
-                usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                //usedMemory = cocktailSort.getUsedMemoryCocktailSort();
-                totalExecutionTime = cocktailSort.getTotalExecutionTimeCocktailSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Cocktail Sort:");
+                totalExecutionTimeOne = cocktailSort.getTotalExecutionTimeCocktailSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(cocktailSort.getComparisonsCocktailSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(cocktailSort.getSwapsCocktailSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Cocktail Sort");
             }
             case "CombSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 CombSort combSort = new CombSort();
                 combSort.combSort(randomArrayAlgorithmOne);
-                 usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                //usedMemory = combSort.getUsedMemoryCombSort();
-                totalExecutionTime = combSort.getTotalExecutionTimeCombSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Comb Sort:");
+                totalExecutionTimeOne = combSort.getTotalExecutionTimeCombSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(combSort.getComparisonsCombSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(combSort.getSwapsCombSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Comb Sort");
             }
             case "CycleSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 CycleSort cycleSort = new CycleSort();
                 cycleSort.cycleSort(randomArrayAlgorithmOne);
-                usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                //usedMemory = cycleSort.getUsedMemoryCycleSort();
-                totalExecutionTime = cycleSort.getTotalExecutionTimeCycleSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Cycle Sort:");
+                totalExecutionTimeOne = cycleSort.getTotalExecutionTimeCycleSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(cycleSort.getComparisonsCycleSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(cycleSort.getSwapsCycleSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Cycle Sort");
             }
             case "GnomeSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 GnomeSort gnomeSort = new GnomeSort();
                 gnomeSort.gnomeSort(randomArrayAlgorithmOne);
-                usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                //usedMemory = gnomeSort.getUsedMemoryGnomeSort();
-                totalExecutionTime = gnomeSort.getTotalExecutionTimeGnomeSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Gnome Sort:");
+                totalExecutionTimeOne = gnomeSort.getTotalExecutionTimeGnomeSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(gnomeSort.getComparisonsGnomeSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(gnomeSort.getSwapsGnomeSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Gnome Sort");
             }
             case "HeapSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 HeapSort heapSort = new HeapSort();
                 heapSort.heapSort(randomArrayAlgorithmOne);
-                usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                //usedMemory = heapSort.getUsedMemoryHeapSort();
-                totalExecutionTime = heapSort.getTotalExecutionTimeHeapSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Heap Sort:");
+                totalExecutionTimeOne = heapSort.getTotalExecutionTimeHeapSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(heapSort.getSwapsHeapSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Heap Sort");
             }
             case "OddEvenSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
                 OddEvenSort oddEvenSort = new OddEvenSort();
                 oddEvenSort.oddEvenSort(randomArrayAlgorithmOne);
-                usedMemoryAlgorithmOne = totalMemory - freeMemory;
-                //usedMemory = oddEvenSort.getUsedMemoryOddEvenSort();
-                totalExecutionTime = oddEvenSort.getTotalExecutionTimeOddEvenSort();
-                lBExecutionTimeOne.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageOne.setText(df.format(usedMemoryAlgorithmOne / 1000_000f)+ " MB");
-                lBSelectedAlgorithmOne.setText("Odd Even Sort:");
+                totalExecutionTimeOne = oddEvenSort.getTotalExecutionTimeOddEvenSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(oddEvenSort.getComparisonsOddEvenSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(oddEvenSort.getSwapsOddEvenSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Odd/Even Sort");
+            }
+            case "InsertionSort" -> {
+                InsertionSort insertionSort = new InsertionSort();
+                insertionSort.insertionSort(randomArrayAlgorithmOne);
+                totalExecutionTimeOne = insertionSort.getTotalExecutionTimeInsertionSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(insertionSort.getSwapsInsertionSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Insertion Sort");
+            }
+            case "SelectionSort" -> {
+                SelectionSort selectionSort = new SelectionSort();
+                selectionSort.selectionSort(randomArrayAlgorithmOne);
+                totalExecutionTimeOne = selectionSort.getTotalExecutionTimeSelectionSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(selectionSort.getSwapsSelectionSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Selection Sort");
+            }
+            case "QuickSort" -> {
+                QuickSort quickSort = new QuickSort();
+                quickSort.quickSort(randomArrayAlgorithmOne);
+                totalExecutionTimeOne = quickSort.getTotalExecutionTimeQuickSort();
+                lbExecutionTimeOne.setText(df.format(totalExecutionTimeOne / 1000000F) + " ms");
+                String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(quickSort.getSwapsQuickSort());
+                lbArraySwapsOne.setText(swaps);
+                lBSelectedAlgorithmOne.setText("Quick Sort");
             }
             default -> {
             }
         }
-
 
         switch (selectedAlgorithmTwo) {
             case "BubbleSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                BubbleSort bubbleSort2 = new BubbleSort();
-                bubbleSort2.bubbleSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = bubbleSort2.getUsedMemoryBubbleSort();
-                totalExecutionTime = bubbleSort2.getTotalExecutionTimeBubbleSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Bubble Sort:");
+                BubbleSort bubbleSort = new BubbleSort();
+                bubbleSort.bubbleSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = bubbleSort.getTotalExecutionTimeBubbleSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(bubbleSort.getComparisonsBubbleSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(bubbleSort.getSwapsBubbleSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Bubble Sort");
             }
             case "CocktailSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                CocktailSort cocktailSort2 = new CocktailSort();
-                cocktailSort2.cocktailSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = cocktailSort2.getUsedMemoryCocktailSort();
-                totalExecutionTime = cocktailSort2.getTotalExecutionTimeCocktailSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Cocktail Sort:");
+                CocktailSort cocktailSort = new CocktailSort();
+                cocktailSort.cocktailSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = cocktailSort.getTotalExecutionTimeCocktailSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(cocktailSort.getComparisonsCocktailSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(cocktailSort.getSwapsCocktailSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Cocktail Sort");
             }
             case "CombSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                CombSort combSort2 = new CombSort();
-                combSort2.combSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = combSort2.getUsedMemoryCombSort();
-                totalExecutionTime = combSort2.getTotalExecutionTimeCombSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Comb Sort:");
+                CombSort combSort = new CombSort();
+                combSort.combSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = combSort.getTotalExecutionTimeCombSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(combSort.getComparisonsCombSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(combSort.getSwapsCombSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Comb Sort");
             }
             case "CycleSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                CycleSort cycleSort2 = new CycleSort();
-                cycleSort2.cycleSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = cycleSort2.getUsedMemoryCycleSort();
-                totalExecutionTime = cycleSort2.getTotalExecutionTimeCycleSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Cycle Sort:");
+                CycleSort cycleSort = new CycleSort();
+                cycleSort.cycleSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = cycleSort.getTotalExecutionTimeCycleSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(cycleSort.getComparisonsCycleSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(cycleSort.getSwapsCycleSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Cycle Sort");
             }
             case "GnomeSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                GnomeSort gnomeSort2 = new GnomeSort();
-                gnomeSort2.gnomeSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = gnomeSort2.getUsedMemoryGnomeSort();
-                totalExecutionTime = gnomeSort2.getTotalExecutionTimeGnomeSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Gnome Sort:");
+                GnomeSort gnomeSort = new GnomeSort();
+                gnomeSort.gnomeSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = gnomeSort.getTotalExecutionTimeGnomeSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(gnomeSort.getComparisonsGnomeSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(gnomeSort.getSwapsGnomeSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Gnome Sort");
             }
             case "HeapSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                HeapSort heapSort2 = new HeapSort();
-                heapSort2.heapSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = heapSort2.getUsedMemoryHeapSort();
-                totalExecutionTime = heapSort2.getTotalExecutionTimeHeapSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Heap Sort:");
+                HeapSort heapSort = new HeapSort();
+                heapSort.heapSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = heapSort.getTotalExecutionTimeHeapSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
+                lbComparisonsOne.setText(comparisons);
+                String swaps = String.valueOf(heapSort.getSwapsHeapSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Heap Sort");
             }
             case "OddEvenSort" -> {
-                Runtime runtime = Runtime.getRuntime();
-                long totalMemory = runtime.totalMemory();
-                long freeMemory = runtime.freeMemory();
-
-                OddEvenSort oddEvenSort2 = new OddEvenSort();
-                oddEvenSort2.oddEvenSort(randomArrayAlgorithmTwo);
-                usedMemoryAlgorithmTwo = totalMemory - freeMemory;
-                //usedMemory = oddEvenSort2.getUsedMemoryOddEvenSort();
-                totalExecutionTime = oddEvenSort2.getTotalExecutionTimeOddEvenSort();
-                lBExecutionTimeTwo.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-                lBMemoryUsageTwo.setText(df.format(usedMemoryAlgorithmTwo / 1000_000f)+ " MB");
-                lBSelectedAlgorithmTwo.setText("Odd Even Sort:");
+                OddEvenSort oddEvenSort = new OddEvenSort();
+                oddEvenSort.oddEvenSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = oddEvenSort.getTotalExecutionTimeOddEvenSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(oddEvenSort.getComparisonsOddEvenSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(oddEvenSort.getSwapsOddEvenSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Odd/Even Sort");
+            }
+            case "InsertionSort" -> {
+                InsertionSort insertionSort = new InsertionSort();
+                insertionSort.insertionSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = insertionSort.getTotalExecutionTimeInsertionSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(insertionSort.getSwapsInsertionSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Insertion Sort");
+            }
+            case "SelectionSort" -> {
+                SelectionSort selectionSort = new SelectionSort();
+                selectionSort.selectionSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = selectionSort.getTotalExecutionTimeSelectionSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(selectionSort.getSwapsSelectionSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Selection Sort");
+            }
+            case "QuickSort" -> {
+                QuickSort quickSort = new QuickSort();
+                quickSort.quickSort(randomArrayAlgorithmTwo);
+                totalExecutionTimeTwo = quickSort.getTotalExecutionTimeQuickSort();
+                lbExecutionTimeTwo.setText(df.format(totalExecutionTimeTwo / 1000000F) + " ms");
+                String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
+                lbComparisonsTwo.setText(comparisons);
+                String swaps = String.valueOf(quickSort.getSwapsQuickSort());
+                lbArraySwapsTwo.setText(swaps);
+                lBSelectedAlgorithmTwo.setText("Quick Sort");
             }
             default -> {
             }
         }
     }
 
-    public void onBtnPage1Click(ActionEvent event) throws IOException {
-    }
 
-    public void onBtnPage2Click(ActionEvent event) throws IOException{
-    }
 
-    public void onBtnPage3Click(ActionEvent event) throws IOException{
-    }
+
 }

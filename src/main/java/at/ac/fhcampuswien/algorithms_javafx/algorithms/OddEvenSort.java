@@ -1,11 +1,9 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
+
 
 /**
  * A class that sorts an array using the odd/even sort algorithm, and also measures
- * the execution time, memory consumption, total number of comparisons, and total
- * number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -13,14 +11,12 @@ import java.lang.management.MemoryMXBean;
 public class OddEvenSort {
 
     private long totalExecutionTimeOddEvenSort;
-
     public void setTotalExecutionTimeOddEvenSort(long totalExecutionTime) {
         this.totalExecutionTimeOddEvenSort = totalExecutionTime;
     }
     public long getTotalExecutionTimeOddEvenSort() {
         return totalExecutionTimeOddEvenSort;
     }
-
 
     private long comparisonsOddEvenSort;
     public void setComparisonsOddEvenSort(long comparisons) {
@@ -48,7 +44,6 @@ public class OddEvenSort {
 
         long startTime = System.nanoTime();  // start timer
 
-
         // Set the sorted flag to false
         boolean isSorted = false;
 
@@ -59,7 +54,8 @@ public class OddEvenSort {
 
             // Perform the sort on the even indices
             for (int i = 0; i < inputArray.length - 1; i += 2) {
-                // If the current element is greater than the next element, swap them and set the sorted flag to false
+                // If the current element is greater than the next element, swap them and set the
+                // sorted flag to false
                 if (inputArray[i] > inputArray[i + 1]) {
                     int temp = inputArray[i];
                     inputArray[i] = inputArray[i + 1];
@@ -76,7 +72,8 @@ public class OddEvenSort {
 
             // Perform the sort on the odd indices
             for (int i = 1; i < inputArray.length - 1; i += 2) {
-                // If the current element is greater than the next element, swap them and set the sorted flag to false
+                // If the current element is greater than the next element, swap them and set the
+                // sorted flag to false
                 if (inputArray[i] > inputArray[i + 1]) {
                     int temp = inputArray[i];
                     inputArray[i] = inputArray[i + 1];
@@ -96,7 +93,7 @@ public class OddEvenSort {
             long executionTime = endTime - startTime;
 
 
-            // set execution time, comparison count, swap count
+            // set execution time
             setTotalExecutionTimeOddEvenSort(executionTime);
         }
     }

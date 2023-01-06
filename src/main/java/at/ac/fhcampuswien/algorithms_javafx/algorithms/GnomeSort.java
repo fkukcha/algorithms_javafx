@@ -1,12 +1,8 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
-
 
 /**
  * A class that sorts an array using the gnome sort algorithm, and also measures
- * the execution time, memory consumption, total number of comparisons, and total
- * number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -39,7 +35,7 @@ public class GnomeSort {
 
     /**
      * Sorts an array using the gnome sort algorithm and prints out the execution time,
-     * memory consumption, number of comparisons, and number of swaps.
+     * number of comparisons, and number of swaps.
      *
      * @param inputArray the array to sort
      */
@@ -79,7 +75,7 @@ public class GnomeSort {
         long executionTime = endTime - startTime;
 
 
-        // set execution time, comparison count, swap count, and memory consumption
+        // set execution time
         setTotalExecutionTimeGnomeSort(executionTime);
     }
 }

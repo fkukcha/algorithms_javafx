@@ -3,17 +3,23 @@ package at.ac.fhcampuswien.algorithms_javafx;
 import at.ac.fhcampuswien.algorithms_javafx.algorithms.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class Page1Controller {
-    public Button btnPage1;
-    public Button btnPage2;
-    public Button btnPage3;
+
+    @FXML
+    private Button btnPage2;
+    @FXML
+    private Stage stage;
 
     DecimalFormat df = new DecimalFormat("0.0000");
     @FXML
@@ -29,6 +35,16 @@ public class Page1Controller {
     private ComboBox cbSelectedAlgorithm;
     @FXML
     private ComboBox cbArraySize;
+
+    private Parent root;
+
+    @FXML
+    private void initialize() {
+        btnPage2.setOnAction(event -> {
+            Scene scene = new Scene(new Pane());
+            stage.setScene(scene);
+        });
+    }
 
     @FXML
     protected void onBtnSortArrayClick() {
@@ -124,19 +140,49 @@ public class Page1Controller {
                 lbComparisons.setText(comparisons);
                 String swaps = String.valueOf(oddEvenSort.getSwapsOddEvenSort());
                 lbArraySwaps.setText(swaps);
-                lbSelectedAlgorithm.setText("Odd Even Sort");
+                lbSelectedAlgorithm.setText("Odd/Even Sort");
+            }
+            case "InsertionSort" -> {
+                InsertionSort insertionSort = new InsertionSort();
+                insertionSort.insertionSort(createRandomArray.getRandomArray());
+                totalExecutionTime = insertionSort.getTotalExecutionTimeInsertionSort();
+                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
+                String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
+                lbComparisons.setText(comparisons);
+                String swaps = String.valueOf(insertionSort.getSwapsInsertionSort());
+                lbArraySwaps.setText(swaps);
+                lbSelectedAlgorithm.setText("Insertion Sort");
+            }
+            case "SelectionSort" -> {
+                SelectionSort selectionSort = new SelectionSort();
+                selectionSort.selectionSort(createRandomArray.getRandomArray());
+                totalExecutionTime = selectionSort.getTotalExecutionTimeSelectionSort();
+                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
+                String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
+                lbComparisons.setText(comparisons);
+                String swaps = String.valueOf(selectionSort.getSwapsSelectionSort());
+                lbArraySwaps.setText(swaps);
+                lbSelectedAlgorithm.setText("Selection Sort");
+            }
+            case "QuickSort" -> {
+                QuickSort quickSort = new QuickSort();
+                quickSort.quickSort(createRandomArray.getRandomArray());
+                totalExecutionTime = quickSort.getTotalExecutionTimeQuickSort();
+                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
+                String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
+                lbComparisons.setText(comparisons);
+                String swaps = String.valueOf(quickSort.getSwapsQuickSort());
+                lbArraySwaps.setText(swaps);
+                lbSelectedAlgorithm.setText("Quick Sort");
             }
             default -> {
             }
         }
     }
-
-    public void onBtnPage1Click(ActionEvent event) throws IOException {
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
-    public void onBtnPage2Click(ActionEvent event) throws IOException{
-    }
 
-    public void onBtnPage3Click(ActionEvent event) throws IOException{
-    }
+
 }
