@@ -9,31 +9,73 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  */
 
 public class BubbleSort {
+    /**
+     * The total execution time of the bubble sort algorithm, in milliseconds.
+     */
     private long totalExecutionTimeBubbleSort;
+
+    /**
+     * Sets the total execution time of the bubble sort algorithm.
+     * @param totalExecutionTime the total execution time, in milliseconds
+     */
     public void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
         this.totalExecutionTimeBubbleSort = totalExecutionTime;
     }
+
+    /**
+     * Gets the total execution time of the bubble sort algorithm.
+     * @return the total execution time, in milliseconds
+     */
     public long getTotalExecutionTimeBubbleSort() {
         return totalExecutionTimeBubbleSort;
     }
 
     private int comparisonsBubbleSort;
+
+    /**
+     * Sets the number of comparisons made by the bubble sort algorithm.
+     *
+     * @param comparisons the number of comparisons
+     */
     public void setComparisonsBubbleSort(int comparisons) {
         this.comparisonsBubbleSort = comparisons;
     }
+
+    /**
+     * Gets the number of comparisons made by the bubble sort algorithm.
+     *
+     * @return the number of comparisons
+     */
     public int getComparisonsBubbleSort() {
         return comparisonsBubbleSort;
     }
 
+    /**
+     * The number of swaps made by the bubble sort algorithm.
+     */
     private int swapsBubbleSort;
+
+    /**
+     * Sets the number of swaps made by the bubble sort algorithm.
+     *
+     * @param swaps the number of swaps
+     */
     public void setSwapsBubbleSort(int swaps) {
         this.swapsBubbleSort = swaps;
     }
+
+    /**
+     * Gets the number of swaps made by the bubble sort algorithm.
+     *
+     * @return the number of swaps
+     */
     public int getSwapsBubbleSort() {
         return swapsBubbleSort;
     }
 
-
+    /**
+     * The number of comparisons made by the bubble sort algorithm.
+     */
     /**
      * Sorts the specified array using the bubble sort algorithm.
      *
@@ -45,14 +87,21 @@ public class BubbleSort {
 
         // perform bubble sort
         for (int i = 0; i < inputArray.length - 1; i++) {
+
+            // Iterate through the array, comparing pairs of elements
             for (int j = 0; j < inputArray.length - i - 1; j++) {
-                setComparisonsBubbleSort(getComparisonsBubbleSort()+1);  // increment comparison count
+
+                // Increment the comparison count
+                setComparisonsBubbleSort(getComparisonsBubbleSort()+1);
+
+                // If the current element is greater than the next element, swap them
                 if (inputArray[j] > inputArray[j + 1]) {
-                    // swap elements if necessary
                     int temp = inputArray[j];
                     inputArray[j] = inputArray[j + 1];
                     inputArray[j + 1] = temp;
-                    setSwapsBubbleSort(getSwapsBubbleSort()+1);  // increment swap count
+
+                    // Increment the swap count
+                    setSwapsBubbleSort(getSwapsBubbleSort()+1);
                 }
             }
         }

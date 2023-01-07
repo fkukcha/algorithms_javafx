@@ -9,26 +9,71 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  */
 public class GnomeSort {
 
+    /**
+     * Represents the total execution time of the Gnome Sort algorithm.
+     */
     private long totalExecutionTimeGnomeSort;
+
+    /**
+     * Sets the total execution time of the Gnome Sort algorithm.
+     *
+     * @param totalExecutionTime the total execution time of the Gnome Sort algorithm
+     */
     public void setTotalExecutionTimeGnomeSort(long totalExecutionTime) {
         this.totalExecutionTimeGnomeSort = totalExecutionTime;
     }
+
+    /**
+     * Returns the total execution time of the Gnome Sort algorithm.
+     *
+     * @return the total execution time of the Gnome Sort algorithm
+     */
     public long getTotalExecutionTimeGnomeSort() {
         return totalExecutionTimeGnomeSort;
     }
 
+    /**
+     * Represents the number of comparisons made during the Gnome Sort algorithm.
+     */
     private long comparisonsGnomeSort;
+
+    /**
+     * Sets the number of comparisons made during the Gnome Sort algorithm.
+     *
+     * @param comparisons the number of comparisons made during the Gnome Sort algorithm
+     */
     public void setComparisonsGnomeSort(long comparisons) {
         this.comparisonsGnomeSort = comparisons;
     }
+
+    /**
+     * Returns the number of comparisons made during the Gnome Sort algorithm.
+     *
+     * @return the number of comparisons made during the Gnome Sort algorithm
+     */
     public long getComparisonsGnomeSort() {
         return comparisonsGnomeSort;
     }
 
+    /**
+     * Represents the number of swaps made during the Gnome Sort algorithm.
+     */
     private long swapsGnomeSort;
+
+    /**
+     * Sets the number of swaps made during the Gnome Sort algorithm.
+     *
+     * @param swaps the number of swaps made during the Gnome Sort algorithm
+     */
     public void setSwapsGnomeSort(long swaps) {
         this.swapsGnomeSort = swaps;
     }
+
+    /**
+     * Returns the number of swaps made during the Gnome Sort algorithm.
+     *
+     * @return the number of swaps made during the Gnome Sort algorithm
+     */
     public long getSwapsGnomeSort() {
         return swapsGnomeSort;
     }

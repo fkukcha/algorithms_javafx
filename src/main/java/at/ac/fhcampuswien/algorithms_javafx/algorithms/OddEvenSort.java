@@ -10,29 +10,78 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  */
 public class OddEvenSort {
 
+    /**
+     * Represents the total execution time of the Odd-Even Sort algorithm.
+     */
     private long totalExecutionTimeOddEvenSort;
+
+    /**
+     * Sets the total execution time of the Odd-Even Sort algorithm.
+     *
+     * @param totalExecutionTime the total execution time of the Odd-Even Sort algorithm
+     */
     public void setTotalExecutionTimeOddEvenSort(long totalExecutionTime) {
         this.totalExecutionTimeOddEvenSort = totalExecutionTime;
     }
+
+    /**
+     * Returns the total execution time of the Odd-Even Sort algorithm.
+     *
+     * @return the total execution time of the Odd-Even Sort algorithm
+     */
     public long getTotalExecutionTimeOddEvenSort() {
         return totalExecutionTimeOddEvenSort;
     }
 
+
+    /**
+     * Represents the number of comparisons made during the Odd-Even Sort algorithm.
+     */
     private long comparisonsOddEvenSort;
+
+    /**
+     * Sets the number of comparisons made during the Odd-Even Sort algorithm.
+     *
+     * @param comparisons the number of comparisons made during the Odd-Even Sort algorithm
+     */
     public void setComparisonsOddEvenSort(long comparisons) {
         this.comparisonsOddEvenSort = comparisons;
     }
+
+    /**
+     * Returns the number of comparisons made during the Odd-Even Sort algorithm.
+     *
+     * @return the number of comparisons made during the Odd-Even Sort algorithm
+     */
     public long getComparisonsOddEvenSort() {
         return comparisonsOddEvenSort;
     }
 
+
+    /**
+     * Represents the number of swaps made during the Odd-Even Sort algorithm.
+     */
     private long swapsOddEvenSort;
+
+    /**
+     * Sets the number of swaps made during the Odd-Even Sort algorithm.
+     *
+     * @param swaps the number of comparisons made during the Odd-Even Sort algorithm
+     */
     public void setSwapsOddEvenSort(long swaps) {
         this.swapsOddEvenSort = swaps;
     }
+
+    /**
+     * Returns the number of swaps made during the Odd-Even Sort algorithm.
+     *
+     * @return the number swaps made during the Odd-Even Sort algorithm
+     */
     public long getSwapsOddEvenSort() {
         return swapsOddEvenSort;
     }
+
+
 
     /**
      * Sorts an array using the odd-even sort algorithm and prints out the execution time,
