@@ -9,7 +9,6 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  */
 public class SelectionSort {
 
-
     /**
      * Represents the total execution time of the Selection Sort algorithm.
      */
@@ -32,7 +31,6 @@ public class SelectionSort {
     public long getTotalExecutionTimeSelectionSort() {
         return totalExecutionTimeSelectionSort;
     }
-
 
     /**
      * Represents the number of comparisons made during the Selection Sort algorithm.
@@ -57,7 +55,6 @@ public class SelectionSort {
         return comparisonsSelectionSort;
     }
 
-
     /**
      * Represents the number of swaps made during the Selection Sort algorithm.
      */
@@ -81,8 +78,9 @@ public class SelectionSort {
         return swapsSelectionSort;
     }
 
-
     public void selectionSort(int[] inputArray) {
+
+        // set the array length
         int arrayLength = inputArray.length;
 
         // Start the timer

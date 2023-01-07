@@ -2,7 +2,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 /**
  * A class that sorts an array using the cycle sort algorithm, and also measures
- * the execution time total number of comparisons, and total number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -10,14 +10,14 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 public class CycleSort {
 
     /**
-     * The total execution time of the cycle sort algorithm, in milliseconds.
+     * The total execution time of the cycle sort algorithm, in nanoseconds.
      */
     private long totalExecutionTimeCycleSort;
 
     /**
      * Sets the total execution time of the cycle sort algorithm.
      *
-     * @param totalExecutionTime the total execution time, in milliseconds
+     * @param totalExecutionTime the total execution time, in nanoseconds
      */
     public void setTotalExecutionTimeCycleSort(long totalExecutionTime) {
         this.totalExecutionTimeCycleSort = totalExecutionTime;
@@ -26,11 +26,12 @@ public class CycleSort {
     /**
      * Gets the total execution time of the cycle sort algorithm.
      *
-     * @return the total execution time, in milliseconds
+     * @return the total execution time, in nanoseconds
      */
     public long getTotalExecutionTimeCycleSort() {
         return totalExecutionTimeCycleSort;
     }
+
     /**
      * The number of comparisons made by the cycle sort algorithm.
      */
@@ -135,7 +136,6 @@ public class CycleSort {
                         pos++;
                     }
                 }
-
 
                 // skip any duplicates of the item
                 while (item == inputArray[pos]) {

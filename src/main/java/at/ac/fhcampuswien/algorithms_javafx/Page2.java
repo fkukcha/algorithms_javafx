@@ -5,15 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.Objects;
 
 /**
  * The main class for the second page of the application.
  */
 public class Page2 extends Application {
-
 
     /**
      * This method is called when the application is launched. It sets up the window and loads the
@@ -35,7 +32,6 @@ public class Page2 extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
 
     /**
      * The main method, which launches the application.

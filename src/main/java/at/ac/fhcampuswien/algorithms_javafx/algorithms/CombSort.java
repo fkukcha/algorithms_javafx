@@ -2,7 +2,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 /**
  * A class that sorts an array using the comb sort algorithm, and also measures
- * the execution time total number of comparisons, and total number of swaps.
+ * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
  * @version 1.0
@@ -10,14 +10,14 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 public class CombSort {
 
     /**
-     * The total execution time of the comb sort algorithm, in milliseconds.
+     * The total execution time of the comb sort algorithm, in nanoseconds.
      */
     private long totalExecutionTimeCombSort;
 
     /**
      * Sets the total execution time of the comb sort algorithm.
      *
-     * @param totalExecutionTime the total execution time, in milliseconds
+     * @param totalExecutionTime the total execution time, in nanoseconds
      */
     public void setTotalExecutionTimeCombSort(long totalExecutionTime) {
         this.totalExecutionTimeCombSort = totalExecutionTime;
@@ -26,7 +26,7 @@ public class CombSort {
     /**
      * Gets the total execution time of the comb sort algorithm.
      *
-     * @return the total execution time, in milliseconds
+     * @return the total execution time, in nanoseconds
      */
     public long getTotalExecutionTimeCombSort() {
         return totalExecutionTimeCombSort;
@@ -35,7 +35,7 @@ public class CombSort {
     /**
      * The number of comparisons made by the comb sort algorithm.
      */
-    private long comparisonsCombSort = 0;
+    private long comparisonsCombSort;
 
     /**
      * Sets the number of comparisons made by the comb sort algorithm.
@@ -58,7 +58,7 @@ public class CombSort {
     /**
      * The number of swaps made by the comb sort algorithm.
      */
-    private long swapsCombSort = 0;
+    private long swapsCombSort;
 
     /**
      * Sets the number of swaps made by the comb sort algorithm.

@@ -32,7 +32,6 @@ public class QuickSort {
         return totalExecutionTimeQuickSort;
     }
 
-
     /**
      * Represents the number of comparisons made during the Quick Sort algorithm.
      */
@@ -55,7 +54,6 @@ public class QuickSort {
     public int getComparisonsQuickSort() {
         return comparisonsQuickSort;
     }
-
 
     /**
      * Represents the number of swaps made during the Quick Sort algorithm.
@@ -106,7 +104,6 @@ public class QuickSort {
         setTotalExecutionTimeQuickSort(executionTime);
     }
 
-
     /**
      * Helper method for the QuickSort algorithm that sorts the elements of the array between
      * the low and high indices (inclusive).
@@ -141,8 +138,12 @@ public class QuickSort {
      * @return the partition index
      */
     private int partition(int[] array, int low, int high) {
-        int pivot = array[high]; // Choose the pivot element as the last element in the partition
-        int i = low - 1; // index of smaller element
+
+        // Choose the pivot element as the last element in the partition
+        int pivot = array[high];
+
+        // index of smaller element
+        int i = low - 1;
 
         // Iterate through the partition and find the smaller elements
         for (int j = low; j < high; j++) {

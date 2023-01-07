@@ -10,13 +10,13 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
 public class BubbleSort {
     /**
-     * The total execution time of the bubble sort algorithm, in milliseconds.
+     * The total execution time of the bubble sort algorithm, in nanoseconds.
      */
     private long totalExecutionTimeBubbleSort;
 
     /**
      * Sets the total execution time of the bubble sort algorithm.
-     * @param totalExecutionTime the total execution time, in milliseconds
+     * @param totalExecutionTime the total execution time, in nanoseconds
      */
     public void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
         this.totalExecutionTimeBubbleSort = totalExecutionTime;
@@ -24,12 +24,15 @@ public class BubbleSort {
 
     /**
      * Gets the total execution time of the bubble sort algorithm.
-     * @return the total execution time, in milliseconds
+     * @return the total execution time, in nanoseconds
      */
     public long getTotalExecutionTimeBubbleSort() {
         return totalExecutionTimeBubbleSort;
     }
 
+    /**
+     * The total comparisons of the bubble sort algorithm.
+     */
     private int comparisonsBubbleSort;
 
     /**
@@ -74,16 +77,14 @@ public class BubbleSort {
     }
 
     /**
-     * The number of comparisons made by the bubble sort algorithm.
-     */
-    /**
      * Sorts the specified array using the bubble sort algorithm.
      *
      * @param  inputArray the array to be sorted
      */
     public void bubbleSort(int[] inputArray) {
 
-        long startTime = System.nanoTime();  // record start time
+        // record start time
+        long startTime = System.nanoTime();
 
         // perform bubble sort
         for (int i = 0; i < inputArray.length - 1; i++) {

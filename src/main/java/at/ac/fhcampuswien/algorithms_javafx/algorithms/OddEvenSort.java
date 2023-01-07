@@ -1,6 +1,5 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 
-
 /**
  * A class that sorts an array using the odd/even sort algorithm, and also measures
  * the execution time, total number of comparisons, and total number of swaps.
@@ -57,7 +56,6 @@ public class OddEvenSort {
         return comparisonsOddEvenSort;
     }
 
-
     /**
      * Represents the number of swaps made during the Odd-Even Sort algorithm.
      */
@@ -81,8 +79,6 @@ public class OddEvenSort {
         return swapsOddEvenSort;
     }
 
-
-
     /**
      * Sorts an array using the odd-even sort algorithm and prints out the execution time,
      * number of comparisons, and number of swaps.
@@ -91,7 +87,8 @@ public class OddEvenSort {
      */
     public void oddEvenSort(int[] inputArray) {
 
-        long startTime = System.nanoTime();  // start timer
+        // start the timer
+        long startTime = System.nanoTime();
 
         // Set the sorted flag to false
         boolean isSorted = false;
@@ -140,7 +137,6 @@ public class OddEvenSort {
             // Get the current time in nanoseconds and calculate the execution time.
             long endTime = System.nanoTime();
             long executionTime = endTime - startTime;
-
 
             // set execution time
             setTotalExecutionTimeOddEvenSort(executionTime);

@@ -4,7 +4,6 @@ import at.ac.fhcampuswien.algorithms_javafx.algorithms.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,19 +46,19 @@ public class Page2Controller {
     private Label lbExecutionTimeTwo;
 
     /**
-     * The Box for selecting the first sorting algorithm.
+     * The ComboBox for selecting the first sorting algorithm.
      */
     @FXML
     private ComboBox cBSelectedAlgorithmOne;
 
     /**
-     * The Box for selecting the second sorting algorithm.
+     * The ComboBox for selecting the second sorting algorithm.
      */
     @FXML
     private ComboBox cBSelectedAlgorithmTwo;
 
     /**
-     * The Box for selecting the array size.
+     * The ComboBox for selecting the array size.
      */
     @FXML
     private ComboBox cBArraySize;
@@ -100,11 +99,10 @@ public class Page2Controller {
     @FXML
     private Label lbComparisonsTwo;
 
-
     /**
-     * This method is called when the "Sort Arrays" button is clicked. It gets the selected sorting algorithms and array size,
-     * creates 2 random arrays, sorts them using the selected algorithms, and displays the execution time, number of comparisons,
-     * and number of swaps of both arrays.
+     * This method is called when the "Sort Arrays" button is clicked. It gets the selected sorting algorithms
+     * and array size, creates 2 random arrays, sorts them using the selected algorithms, and displays the
+     * execution time, number of comparisons, and number of swaps of both arrays.
      */
     @FXML
     protected void onBtnSortArrayClick() {
@@ -655,10 +653,10 @@ public class Page2Controller {
      * This method is called when the "Full sorting algorithm list" button is clicked. It changes the scene to the first page.
      *
      * @param event the action event that triggered this method
-     * @throws Exception if there is an error loading the FXML file for the second page
+     * @throws IOException if there is an error loading the FXML file for the second page
      */
     @FXML
-    protected void onChangeToFirstScene (ActionEvent event) throws Exception {
+    protected void onChangeToFirstScene (ActionEvent event) throws IOException {
 
         // Get the Stage and set it to the current window
         Stage stage;

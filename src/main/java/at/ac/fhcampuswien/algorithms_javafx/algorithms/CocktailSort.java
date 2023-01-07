@@ -10,14 +10,14 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
 public class CocktailSort {
 
     /**
-     * The total execution time of the cocktail sort algorithm, in milliseconds.
+     * The total execution time of the cocktail sort algorithm, in nanoseconds.
      */
     private long totalExecutionTimeCocktailSort;
 
     /**
      * Sets the total execution time for the Cocktail Sort algorithm.
      *
-     * @param totalExecutionTime the total execution time, in milliseconds
+     * @param totalExecutionTime the total execution time, in nanoseconds
      */
     public void setTotalExecutionTimeCocktailSort(long totalExecutionTime) {
         this.totalExecutionTimeCocktailSort = totalExecutionTime;
@@ -26,7 +26,7 @@ public class CocktailSort {
     /**
      * Returns the total execution time for the Cocktail Sort algorithm.
      *
-     * @return the total execution time, in milliseconds
+     * @return the total execution time, in nanoseconds
      */
     public long getTotalExecutionTimeCocktailSort() {
         return totalExecutionTimeCocktailSort;
@@ -90,8 +90,6 @@ public class CocktailSort {
         // Get the current time in nanoseconds.
         long startTime = System.nanoTime();
 
-        // Perform cocktail sort
-
         // Initialize a flag to track whether the array is sorted or not.
         // Initially, we assume that the array is not sorted.
         boolean isSorted = false;
@@ -111,7 +109,6 @@ public class CocktailSort {
 
                 // Increment the counter for the number of comparisons made in the Cocktail Sort algorithm.
                 setComparisonsCocktailSort(getComparisonsCocktailSort()+1);
-
 
                 if (inputArray[i] > inputArray[i + 1]) {
 

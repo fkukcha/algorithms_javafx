@@ -86,7 +86,8 @@ public class GnomeSort {
      */
     public void gnomeSort(int[] inputArray) {
 
-        long startTime = System.nanoTime();  // start timer
+        // start the timer
+        long startTime = System.nanoTime();
 
         int index = 0;
 
@@ -118,7 +119,6 @@ public class GnomeSort {
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
         long executionTime = endTime - startTime;
-
 
         // set execution time
         setTotalExecutionTimeGnomeSort(executionTime);
