@@ -1,4 +1,11 @@
-package at.ac.fhcampuswien.algorithms_javafx.array_structures;
+/**
+ * An algorithm is a series of steps to take to manipulate data.
+ * Data structures are the way data is arranged in memory.
+ */
+
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+
+import java.util.Arrays;
 
 public class ArrayStructures {
     private int[] array = new int[50];
@@ -8,16 +15,8 @@ public class ArrayStructures {
         return array;
     }
 
-    public void setArray(int[] array) {
-        this.array = array;
-    }
-
     public int getArraySize() {
         return arraySize;
-    }
-
-    public void setArraySize(int arraySize) {
-        this.arraySize = arraySize;
     }
 
     public void generateRandomArray() {
@@ -135,17 +134,6 @@ public class ArrayStructures {
         array[indexTwo] = temp;
     }
 
-    public void bubbleSort() {
-        for (int i=arraySize-1; i>1; i--) {
-            for (int j=0; j<i; j++) {
-                if (array[j] > array[j+1]) {
-                    swapValues(j, j+1);
-                    printHorizontalArray(i, j);
-                }
-                printHorizontalArray(i, j);
-            }
-        }
-    }
 
     public void binarySearchForValue(int value) {
         int minIndex = 0;
@@ -169,6 +157,11 @@ public class ArrayStructures {
 
 
     public static void main(String[] args) {
+        /*
+        Please uncomment the commented lines which are not separated by a new line,
+        in order to see the algorithms separately in action.
+         */
+
         ArrayStructures newArray = new ArrayStructures();
         //newArray.generateRandomArray();
         //newArray.printArray();
@@ -197,12 +190,40 @@ public class ArrayStructures {
         //mySelection.selectionSort();
 
         // Insertion sort.
-        InsertionSort myInsertion = new InsertionSort();
-        myInsertion.insertionSort();
+        //InsertionSort myInsertion = new InsertionSort();
+        //myInsertion.insertionSort();
 
+        // Bubble sort.
+        //BubbleSort myBubble = new BubbleSort();
+        //myBubble.bubbleSort();
 
+        // Shell sort.
+        /*ShellSort myShell = new ShellSort(10);
+        System.out.println("Array to be sorted: ");
+        System.out.println(Arrays.toString(myShell.getMyArray()));
+        System.out.println();
+        myShell.shellSort();
+        System.out.println("Sorted Array: ");
+        System.out.println(Arrays.toString(myShell.getMyArray()));*/
 
+        // Partitioning.
+        //Partitioning myPartition = new Partitioning(10);
+        //System.out.println("Array to be partitioned: ");
+        //System.out.println(Arrays.toString(myPartition.getMyArray()));
+        // Every item smaller than 35 will be on the left and
+        // everything bigger will be on the right
+        //myPartition.partitionArray(35);
+        //System.out.println("Partitioned Array: ");
+        //System.out.println(Arrays.toString(myPartition.getMyArray()));
 
-
+        // Quick sort.
+        QuickSort myQuickSort = new QuickSort(10);
+        System.out.println("Array to be sorted: ");
+        System.out.println(Arrays.toString(myQuickSort.getMyArray()));
+        // Every item smaller than 35 will be on the left and
+        // everything bigger will be on the right
+        myQuickSort.quickSort(0, 9);
+        System.out.println("Sored Array: ");
+        System.out.println(Arrays.toString(myQuickSort.getMyArray()));
     }
 }
