@@ -1,8 +1,7 @@
-package at.ac.fhcampuswien.algorithms_javafx.array_structures;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
 
 
 public class SelectionSort {
-
 
     public void selectionSort() {
         ArrayStructures arrayStructures = new ArrayStructures();
