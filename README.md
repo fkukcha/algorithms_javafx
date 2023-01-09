@@ -1,4 +1,4 @@
-Im Rahmen unseres Projektes werden wir mehrere unterschiedliche Sortier-Algorithmen auswählen und diese gegeneinander, mit Hinsicht auf den Ablauf und die Performance, vergleichen.
+Im Rahmen unseres Projektes haben wir mehrere unterschiedliche Sortier-Algorithmen ausgewählt und diese gegeneinander, mit Hinsicht auf den Ablauf und die Performance, verglichen.
 Die unterschiedlichen Vergleichs-Szenarien werden mithilfe von JavaFX ansprechend und interaktiv dargestellt.
 Die verschiedenen Algorithmen werden auf Dauer des Prozesses, Anzahl der Vergleiche und Anzahl der Tauschungen geprüft.
 
