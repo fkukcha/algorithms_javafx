@@ -1,7 +1,18 @@
+/**
+ * Insertion sort is a simple sorting algorithm that builds the final sorted list
+ * one item at a time. It repeatedly takes the next unsorted element and inserts
+ * it into its proper position in the already sorted portion of the list.
+ * The portion of the list that is already sorted is maintained as a sublist at
+ * the beginning of the array, and it grows as elements are added to it.
+ */
+
 package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
 
 public class InsertionSort {
-
+    // The Insertion Sort is normally the best of
+    // the elementary sorts. Unlike the other sorts that
+    // had a group sorted at any given time, groups are
+    // only partially sorted here.
     public void insertionSort() {
         ArrayStructures arrayStructures = new ArrayStructures();
         arrayStructures.generateRandomArray();

@@ -34,6 +34,7 @@ public class ArrayStructures {
         }
     }
 
+    // Gets value at provided index.
     public int getValueAtIndex(int index) {
         ArrayStructures newArray = new ArrayStructures();
         if (index < arraySize) {
@@ -42,6 +43,7 @@ public class ArrayStructures {
         return 0;
     }
 
+    // Returns true or false if a value is in the Array.
     public boolean doesArrayContainsThisValue(int searchValue) {
         for (int i=0; i<arraySize; i++) {
             if (array[i] == searchValue) {
@@ -67,6 +69,7 @@ public class ArrayStructures {
         }
     }
 
+    // Linear Search : Every index must be looked at.
     public String linearSearchForValue(int value) {
         boolean valueInArray = false;
         String indicesWithValue = "";
@@ -135,6 +138,13 @@ public class ArrayStructures {
     }
 
 
+    // The Binary Search is quicker than the linear search
+    // because all the values are sorted. Because everything
+    // is sorted once you get to a number larger than what
+    // you are looking for you can stop the search. Also
+    // you be able to start searching from the middle
+    // which speeds the search. It also works best when
+    // there are no duplicates.
     public void binarySearchForValue(int value) {
         int minIndex = 0;
         int maxIndex = arraySize - 1;
