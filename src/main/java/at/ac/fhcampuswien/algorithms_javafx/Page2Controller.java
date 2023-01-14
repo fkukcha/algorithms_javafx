@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -111,6 +112,20 @@ public class Page2Controller {
         String selectedAlgorithmOne =  cBSelectedAlgorithmOne.getValue().toString();
         String selectedAlgorithmTwo =  cBSelectedAlgorithmTwo.getValue().toString();
         String selectedArraySize =  cBArraySize.getValue().toString();
+
+        //Make sure that not the same algorithms are chosen
+        if(selectedAlgorithmOne.equals(selectedAlgorithmTwo)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning!");
+            alert.setHeaderText("Please select different algorithms to compare.");
+            alert.showAndWait();
+
+            //Resets the choices
+            cBSelectedAlgorithmOne.setValue(null);
+            cBSelectedAlgorithmTwo.setValue(null);
+            cBArraySize.setValue(null);
+            return;
+        }
 
         // Convert the selected array size to an integer
         int arraySize = switch (selectedArraySize) {
