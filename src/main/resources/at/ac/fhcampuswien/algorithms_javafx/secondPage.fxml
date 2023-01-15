@@ -95,7 +95,7 @@
                      <String fx:value="HeapSort"/>
                      <String fx:value="OddEvenSort"/>
                      <String fx:value="InsertionSort"/>
-                     <String fx:value="SelectionSport"/>
+                     <String fx:value="SelectionSort"/>
                      <String fx:value="QuickSort"/>
                   </FXCollections>
                </items>
@@ -157,7 +157,7 @@
                      <String fx:value="HeapSort"/>
                      <String fx:value="OddEvenSort"/>
                      <String fx:value="InsertionSort"/>
-                     <String fx:value="SelectionSport"/>
+                     <String fx:value="SelectionSort"/>
                      <String fx:value="QuickSort"/>
                   </FXCollections>
                </items>
