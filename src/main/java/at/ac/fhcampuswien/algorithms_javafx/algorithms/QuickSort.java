@@ -35,14 +35,14 @@ public class QuickSort {
     /**
      * Represents the number of comparisons made during the Quick Sort algorithm.
      */
-    private int comparisonsQuickSort;
+    private long comparisonsQuickSort;
 
     /**
      * Sets the number of comparisons made during the Quick Sort algorithm.
      *
      * @param comparisons the number of comparisons made during the Quick Sort algorithm
      */
-    public void setComparisonsQuickSort(int comparisons) {
+    public void setComparisonsQuickSort(long comparisons) {
         this.comparisonsQuickSort = comparisons;
     }
 
@@ -51,21 +51,21 @@ public class QuickSort {
      *
      * @return the number of comparisons made during the Quick Sort algorithm
      */
-    public int getComparisonsQuickSort() {
+    public long getComparisonsQuickSort() {
         return comparisonsQuickSort;
     }
 
     /**
      * Represents the number of swaps made during the Quick Sort algorithm.
      */
-    private int swapsQuickSort;
+    private long swapsQuickSort;
 
     /**
      * Sets the number of swaps made during the Quick Sort algorithm.
      *
      * @param swaps the number of swaps made during the Quick Sort algorithm
      */
-    public void setSwapsQuickSort(int swaps) {
+    public void setSwapsQuickSort(long swaps) {
         this.swapsQuickSort = swaps;
     }
 
@@ -74,7 +74,7 @@ public class QuickSort {
      *
      * @return the number of swaps made during the Quick Sort algorithm
      */
-    public int getSwapsQuickSort() {
+    public long getSwapsQuickSort() {
         return swapsQuickSort;
     }
 

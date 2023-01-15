@@ -160,5 +160,4 @@ public class CycleSort {
         // set execution time
         setTotalExecutionTimeCycleSort(executionTime);
     }
-
 }

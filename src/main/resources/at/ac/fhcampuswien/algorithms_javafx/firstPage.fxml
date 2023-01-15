@@ -61,7 +61,7 @@
       <AnchorPane layoutY="170.0" prefHeight="541.0" prefWidth="702.0">
          <children>
             <Rectangle fill="#868686" height="35.0" layoutY="508.0" stroke="#bcbcbc" strokeType="INSIDE" width="700.0" />
-            <Label layoutX="382.0" layoutY="519.0" prefHeight="17.0" prefWidth="316.0" text="Sorting Algorithms 2022 - Burak Kongo, Besim Kurteshi, Ferdaws Kukcha" textFill="WHITE">
+            <Label layoutX="382.0" layoutY="515.0" prefHeight="17.0" prefWidth="316.0" text="Sorting Algorithms 2022 - Burak Kongo, Besim Kurteshi, Ferdaws Kukcha" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cbSelectedAlgorithm" layoutX="172.0" layoutY="139.0" prefHeight="25.0" prefWidth="355.0">
+            <ComboBox fx:id="cbSelectedAlgorithm" layoutX="166.0" layoutY="139.0" prefHeight="25.0" prefWidth="355.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="BubbleSort"/>

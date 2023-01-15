@@ -35,14 +35,14 @@ public class SelectionSort {
     /**
      * Represents the number of comparisons made during the Selection Sort algorithm.
      */
-    private int comparisonsSelectionSort;
+    private long comparisonsSelectionSort;
 
     /**
      * Sets the number of comparisons made during the Selection Sort algorithm.
      *
      * @param comparisons the number of comparisons made during the Selection Sort algorithm
      */
-    public void setComparisonsSelectionSort(int comparisons) {
+    public void setComparisonsSelectionSort(long comparisons) {
         this.comparisonsSelectionSort = comparisons;
     }
 
@@ -51,21 +51,21 @@ public class SelectionSort {
      *
      * @return the number of comparisons made during the Selection Sort algorithm
      */
-    public int getComparisonsSelectionSort() {
+    public long getComparisonsSelectionSort() {
         return comparisonsSelectionSort;
     }
 
     /**
      * Represents the number of swaps made during the Selection Sort algorithm.
      */
-    private int swapsSelectionSort;
+    private long swapsSelectionSort;
 
     /**
      * Sets the number of swaps made during the Selection Sort algorithm.
      *
      * @param swaps the number of comparisons made during the Selection Sort algorithm
      */
-    public void setSwapsSelectionSort(int swaps) {
+    public void setSwapsSelectionSort(long swaps) {
         this.swapsSelectionSort = swaps;
     }
 
@@ -74,7 +74,7 @@ public class SelectionSort {
      *
      * @return the number of swaps made during the Selection Sort algorithm
      */
-    public int getSwapsSelectionSort() {
+    public long getSwapsSelectionSort() {
         return swapsSelectionSort;
     }
 
