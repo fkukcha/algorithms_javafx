@@ -33,14 +33,14 @@ public class BubbleSort {
     /**
      * The total comparisons of the bubble sort algorithm.
      */
-    private int comparisonsBubbleSort;
+    private long comparisonsBubbleSort;
 
     /**
      * Sets the number of comparisons made by the bubble sort algorithm.
      *
      * @param comparisons the number of comparisons
      */
-    public void setComparisonsBubbleSort(int comparisons) {
+    public void setComparisonsBubbleSort(long comparisons) {
         this.comparisonsBubbleSort = comparisons;
     }
 
@@ -49,21 +49,21 @@ public class BubbleSort {
      *
      * @return the number of comparisons
      */
-    public int getComparisonsBubbleSort() {
+    public long getComparisonsBubbleSort() {
         return comparisonsBubbleSort;
     }
 
     /**
      * The number of swaps made by the bubble sort algorithm.
      */
-    private int swapsBubbleSort;
+    private long swapsBubbleSort;
 
     /**
      * Sets the number of swaps made by the bubble sort algorithm.
      *
      * @param swaps the number of swaps
      */
-    public void setSwapsBubbleSort(int swaps) {
+    public void setSwapsBubbleSort(long swaps) {
         this.swapsBubbleSort = swaps;
     }
 
@@ -72,7 +72,7 @@ public class BubbleSort {
      *
      * @return the number of swaps
      */
-    public int getSwapsBubbleSort() {
+    public long getSwapsBubbleSort() {
         return swapsBubbleSort;
     }
 

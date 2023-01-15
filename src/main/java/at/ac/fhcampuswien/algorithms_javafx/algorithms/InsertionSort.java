@@ -37,14 +37,14 @@ public class InsertionSort {
     /**
      * Represents the number of comparisons made during the Insertion Sort algorithm.
      */
-    private int comparisonsInsertionSort;
+    private long comparisonsInsertionSort;
 
     /**
      * Sets the number of comparisons made during the Insertion Sort algorithm.
      *
      * @param comparisons the number of comparisons made during the Insertion Sort algorithm
      */
-    public void setComparisonsInsertionSort(int comparisons) {
+    public void setComparisonsInsertionSort(long comparisons) {
         this.comparisonsInsertionSort = comparisons;
     }
 
@@ -53,7 +53,7 @@ public class InsertionSort {
      *
      * @return the number of comparisons made during the Insertion Sort algorithm
      */
-    public int getComparisonsInsertionSort() {
+    public long getComparisonsInsertionSort() {
         return comparisonsInsertionSort;
     }
 
@@ -61,14 +61,14 @@ public class InsertionSort {
     /**
      * Represents the number of swaps made during the Insertion Sort algorithm.
      */
-    private int swapsInsertionSort;
+    private long swapsInsertionSort;
 
     /**
      * Sets the number of swaps made during the Insertion Sort algorithm.
      *
      * @param swaps the number of swaps made during the Insertion Sort algorithm
      */
-    public void setSwapsInsertionSort(int swaps) {
+    public void setSwapsInsertionSort(long swaps) {
         this.swapsInsertionSort = swaps;
     }
 
@@ -77,7 +77,7 @@ public class InsertionSort {
      *
      * @return the number of swaps made during the Insertion Sort algorithm
      */
-    public int getSwapsInsertionSort() {
+    public long getSwapsInsertionSort() {
         return swapsInsertionSort;
     }
 
