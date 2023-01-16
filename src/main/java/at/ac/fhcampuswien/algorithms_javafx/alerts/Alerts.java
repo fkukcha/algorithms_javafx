@@ -15,5 +15,4 @@ public class Alerts {
         alert.setHeaderText("Please select both algorithms for comparison and also the array size.");
         alert.showAndWait();
     }
-
 }

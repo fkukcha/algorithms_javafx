@@ -11,11 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Objects;
-
 
 public class Page2Controller {
     /**
@@ -48,19 +46,19 @@ public class Page2Controller {
     private Label lbExecutionTimeTwo;
 
     /**
-     * The ComboBox for selecting the first sorting algorithm.
+     * The combo box for selecting the first sorting algorithm.
      */
     @FXML
     private ComboBox cBSelectedAlgorithmOne;
 
     /**
-     * The ComboBox for selecting the second sorting algorithm.
+     * The combo box for selecting the second sorting algorithm.
      */
     @FXML
     private ComboBox cBSelectedAlgorithmTwo;
 
     /**
-     * The ComboBox for selecting the array size.
+     * The combo box for selecting the array size.
      */
     @FXML
     private ComboBox cBArraySize;
@@ -654,6 +652,7 @@ public class Page2Controller {
                 case "QuickSort" -> quickSortOne(randomArrayAlgorithmOne);
 
                 default -> {
+                    Alerts.emptySelection();
                 }
             }
 
@@ -681,6 +680,7 @@ public class Page2Controller {
                 case "QuickSort" -> quickSortTwo(randomArrayAlgorithmTwo);
 
                 default -> {
+                    Alerts.emptySelection();
                 }
             }
         } catch (NullPointerException e) {

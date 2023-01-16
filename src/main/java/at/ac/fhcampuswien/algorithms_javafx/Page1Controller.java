@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.algorithms_javafx;
 
+import at.ac.fhcampuswien.algorithms_javafx.alerts.Alerts;
 import at.ac.fhcampuswien.algorithms_javafx.algorithms.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,13 +57,13 @@ public class Page1Controller {
     private Label lbSelectedAlgorithm;
 
     /**
-     * The Box for selecting the sorting algorithm.
+     * The combo box for selecting the sorting algorithm.
      */
     @FXML
     private ComboBox cbSelectedAlgorithm;
 
     /**
-     * The Box for selecting the array size.
+     * The combo box for selecting the array size.
      */
     @FXML
     private ComboBox cbArraySize;
@@ -335,41 +336,46 @@ public class Page1Controller {
     @FXML
     protected void onBtnSortArrayClick() {
 
-        // Get the selected algorithm and array size
-        cbSelectedAlgorithm.getValue();
-        cbArraySize.getValue();
+        try {
+            // Get the selected algorithm and array size
+            cbSelectedAlgorithm.getValue();
+            cbArraySize.getValue();
 
-        // Convert the selected algorithm and array size to strings and store them in variables
-        String selectedAlgorithm =  cbSelectedAlgorithm.getValue().toString();
-        String selectedArraySize =  cbArraySize.getValue().toString();
+            // Convert the selected algorithm and array size to strings and store them in variables
+            String selectedAlgorithm =  cbSelectedAlgorithm.getValue().toString();
+            String selectedArraySize =  cbArraySize.getValue().toString();
 
-        // Use a switch statement to convert the selected array size string to an int
-        int arraySize = switch (selectedArraySize) {
-            case "Thousand" -> 1000;
-            case "Ten thousand" -> 10000;
-            case "Hundred thousand" -> 100000;
-            default -> 0;
-        };
+            // Use a switch statement to convert the selected array size string to an int
+            int arraySize = switch (selectedArraySize) {
+                case "Thousand" -> 1000;
+                case "Ten thousand" -> 10000;
+                case "Hundred thousand" -> 100000;
+                default -> 0;
+            };
 
-        // Creation of a random array of the selected size
-        CreateRandomArray createRandomArray = new CreateRandomArray(arraySize);
-        int[] randomArray = createRandomArray.getRandomArray();
+            // Creation of a random array of the selected size
+            CreateRandomArray createRandomArray = new CreateRandomArray(arraySize);
+            int[] randomArray = createRandomArray.getRandomArray();
 
-        // Use a switch statement to sort the array using the selected algorithm
-        // and display the execution time, number of comparisons and number of swaps
-        switch (selectedAlgorithm) {
-            case "BubbleSort" -> bubbleSort(randomArray);
-            case "CocktailSort" -> cocktailSort(randomArray);
-            case "CombSort" -> combSort(randomArray);
-            case "CycleSort" -> cycleSort(randomArray);
-            case "GnomeSort" -> gnomeSort(randomArray);
-            case "HeapSort" -> heapSort(randomArray);
-            case "OddEvenSort" -> oddEvenSort(randomArray);
-            case "InsertionSort" -> insertionSort(randomArray);
-            case "SelectionSort" -> selectionSort(randomArray);
-            case "QuickSort" -> quickSort(randomArray);
-            default -> {
+            // Use a switch statement to sort the array using the selected algorithm
+            // and display the execution time, number of comparisons and number of swaps
+            switch (selectedAlgorithm) {
+                case "BubbleSort" -> bubbleSort(randomArray);
+                case "CocktailSort" -> cocktailSort(randomArray);
+                case "CombSort" -> combSort(randomArray);
+                case "CycleSort" -> cycleSort(randomArray);
+                case "GnomeSort" -> gnomeSort(randomArray);
+                case "HeapSort" -> heapSort(randomArray);
+                case "OddEvenSort" -> oddEvenSort(randomArray);
+                case "InsertionSort" -> insertionSort(randomArray);
+                case "SelectionSort" -> selectionSort(randomArray);
+                case "QuickSort" -> quickSort(randomArray);
+                default -> {
+                    Alerts.emptySelection();
+                }
             }
+        } catch (NullPointerException e) {
+            Alerts.emptySelection();
         }
     }
 
