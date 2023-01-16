@@ -29,7 +29,7 @@ public class Page1Controller {
     /**
      * A {@link DecimalFormat} object for formatting decimal numbers.
      */
-    DecimalFormat df = new DecimalFormat("0.0000");
+    final DecimalFormat df = new DecimalFormat("0.0000");
 
     /**
      * The label for displaying the execution time.
@@ -68,6 +68,265 @@ public class Page1Controller {
     private ComboBox cbArraySize;
 
     /**
+     * Method for sorting the array with the usage of the bubble sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void bubbleSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Bubble Sort");
+
+        // Create a new BubbleSort object
+        BubbleSort bubbleSort = new BubbleSort();
+
+        // Sort the array using the bubble sort algorithm
+        bubbleSort.bubbleSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(bubbleSort.getTotalExecutionTimeBubbleSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(bubbleSort.getComparisonsBubbleSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(bubbleSort.getSwapsBubbleSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the cocktail sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void cocktailSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Cocktail Sort");
+        // Create a CocktailSort object
+        CocktailSort cocktailSort = new CocktailSort();
+
+        // Sort the array using the cocktail sort algorithm
+        cocktailSort.cocktailSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(cocktailSort.getTotalExecutionTimeCocktailSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(cocktailSort.getComparisonsCocktailSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(cocktailSort.getSwapsCocktailSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the comb sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void combSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Comb Sort");
+
+        // Create a CombSort object
+        CombSort combSort = new CombSort();
+
+        // Sort the array using the comb sort algorithm
+        combSort.combSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(combSort.getTotalExecutionTimeCombSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(combSort.getComparisonsCombSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(combSort.getSwapsCombSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the cycle sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void cycleSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Cycle Sort");
+
+        // Create a CycleSort object
+        CycleSort cycleSort = new CycleSort();
+
+        // Sort the array using the cycle sort algorithm
+        cycleSort.cycleSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(cycleSort.getTotalExecutionTimeCycleSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(cycleSort.getComparisonsCycleSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(cycleSort.getSwapsCycleSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the gnome sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void gnomeSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Gnome Sort");
+
+        // Create a GnomeSort object
+        GnomeSort gnomeSort = new GnomeSort();
+
+        // Sort the array using the gnome sort algorithm
+        gnomeSort.gnomeSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(gnomeSort.getTotalExecutionTimeGnomeSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(gnomeSort.getComparisonsGnomeSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(gnomeSort.getSwapsGnomeSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the heap sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void heapSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Heap Sort");
+
+        // Create a HeapSort object
+        HeapSort heapSort = new HeapSort();
+
+        // Sort the array using the heap sort algorithm
+        heapSort.heapSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(heapSort.getTotalExecutionTimeHeapSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(heapSort.getSwapsHeapSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the insertion sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void insertionSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Insertion Sort");
+
+        //Create an InsertionSort Object
+        InsertionSort insertionSort = new InsertionSort();
+
+        // Sort the array using the insertion sort algorithm
+        insertionSort.insertionSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(insertionSort.getTotalExecutionTimeInsertionSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(insertionSort.getSwapsInsertionSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the odd/even sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void oddEvenSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Odd/Even Sort");
+
+        //Create an OddEvenSort Object
+        OddEvenSort oddEvenSort = new OddEvenSort();
+
+        // Sort the array using the odd-even sort algorithm
+        oddEvenSort.oddEvenSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(oddEvenSort.getTotalExecutionTimeOddEvenSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(oddEvenSort.getComparisonsOddEvenSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(oddEvenSort.getSwapsOddEvenSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the quick sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void quickSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Quick Sort");
+
+        //Create a QuickSort Object
+        QuickSort quickSort = new QuickSort();
+
+        // Sort the array using the quick sort algorithm
+        quickSort.quickSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(quickSort.getTotalExecutionTimeQuickSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(quickSort.getSwapsQuickSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
+     * Method for sorting the array with the usage of the selection sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void selectionSort(int[] randomArray){
+        // Set the text for the selected algorithm label
+        lbSelectedAlgorithm.setText("Selection Sort");
+
+        //Create a SelectionSort Object
+        SelectionSort selectionSort = new SelectionSort();
+
+        // Sort the array using the selection sort algorithm
+        selectionSort.selectionSort(randomArray);
+
+        // Set the text for the execution time label
+        lbExecutionTime.setText(df.format(selectionSort.getTotalExecutionTimeSelectionSort() / 1000000F) + " ms");
+
+        // Set the text for the comparisons label
+        String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
+        lbComparisons.setText(comparisons);
+
+        // Set the text for the swaps label
+        String swaps = String.valueOf(selectionSort.getSwapsSelectionSort());
+        lbArraySwaps.setText(swaps);
+    }
+
+    /**
      * This method is called when the "Sort Array" button is clicked.
      * It gets the selected sorting algorithm and array size,
      * creates a random array, sorts it using the selected algorithm, and displays the execution time,
@@ -92,266 +351,23 @@ public class Page1Controller {
             default -> 0;
         };
 
-        // Create a new CreateRandomArray object with the specified array size
+        // Creation of a random array of the selected size
         CreateRandomArray createRandomArray = new CreateRandomArray(arraySize);
-
-        // Initialize the total execution time to 0
-        long totalExecutionTime = 0;
+        int[] randomArray = createRandomArray.getRandomArray();
 
         // Use a switch statement to sort the array using the selected algorithm
-        // and display the execution time, number of comparisons,
-        // and number of swaps
+        // and display the execution time, number of comparisons and number of swaps
         switch (selectedAlgorithm) {
-            case "BubbleSort" -> {
-
-                // Create a new BubbleSort object
-                BubbleSort bubbleSort = new BubbleSort();
-
-                // Sort the array using the bubble sort algorithm
-                bubbleSort.bubbleSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = bubbleSort.getTotalExecutionTimeBubbleSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(bubbleSort.getComparisonsBubbleSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(bubbleSort.getSwapsBubbleSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Bubble Sort");
-            }
-            case "CocktailSort" -> {
-
-                // Create a CocktailSort object
-                CocktailSort cocktailSort = new CocktailSort();
-
-                // Sort the array using the cocktail sort algorithm
-                cocktailSort.cocktailSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = cocktailSort.getTotalExecutionTimeCocktailSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(cocktailSort.getComparisonsCocktailSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(cocktailSort.getSwapsCocktailSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Cocktail Sort");
-            }
-            case "CombSort" -> {
-
-                // Create a CombSort object
-                CombSort combSort = new CombSort();
-
-                // Sort the array using the comb sort algorithm
-                combSort.combSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = combSort.getTotalExecutionTimeCombSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(combSort.getComparisonsCombSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(combSort.getSwapsCombSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Comb Sort");
-            }
-            case "CycleSort" -> {
-
-                // Create a CycleSort object
-                CycleSort cycleSort = new CycleSort();
-
-                // Sort the array using the cycle sort algorithm
-                cycleSort.cycleSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = cycleSort.getTotalExecutionTimeCycleSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(cycleSort.getComparisonsCycleSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(cycleSort.getSwapsCycleSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Cycle Sort");
-            }
-            case "GnomeSort" -> {
-
-                // Create a GnomeSort object
-                GnomeSort gnomeSort = new GnomeSort();
-
-                // Sort the array using the gnome sort algorithm
-                gnomeSort.gnomeSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = gnomeSort.getTotalExecutionTimeGnomeSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(gnomeSort.getComparisonsGnomeSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(gnomeSort.getSwapsGnomeSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Gnome Sort");
-            }
-            case "HeapSort" -> {
-
-                // Create a HeapSort object
-                HeapSort heapSort = new HeapSort();
-
-                // Sort the array using the heap sort algorithm
-                heapSort.heapSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = heapSort.getTotalExecutionTimeHeapSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(heapSort.getSwapsHeapSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Heap Sort");
-            }
-            case "OddEvenSort" -> {
-
-                //Create an OddEvenSort Object
-                OddEvenSort oddEvenSort = new OddEvenSort();
-
-                // Sort the array using the odd-even sort algorithm
-                oddEvenSort.oddEvenSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = oddEvenSort.getTotalExecutionTimeOddEvenSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(oddEvenSort.getComparisonsOddEvenSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(oddEvenSort.getSwapsOddEvenSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Odd/Even Sort");
-            }
-            case "InsertionSort" -> {
-
-                //Create an InsertionSort Object
-                InsertionSort insertionSort = new InsertionSort();
-
-                // Sort the array using the insertion sort algorithm
-                insertionSort.insertionSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = insertionSort.getTotalExecutionTimeInsertionSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(insertionSort.getSwapsInsertionSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Insertion Sort");
-            }
-            case "SelectionSort" -> {
-
-                //Create a SelectionSort Object
-                SelectionSort selectionSort = new SelectionSort();
-
-                // Sort the array using the selection sort algorithm
-                selectionSort.selectionSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = selectionSort.getTotalExecutionTimeSelectionSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(selectionSort.getSwapsSelectionSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Selection Sort");
-            }
-            case "QuickSort" -> {
-
-                //Create a QuickSort Object
-                QuickSort quickSort = new QuickSort();
-
-                // Sort the array using the quick sort algorithm
-                quickSort.quickSort(createRandomArray.getRandomArray());
-
-                // Get the execution time and store it in the totalExecutionTime variable
-                totalExecutionTime = quickSort.getTotalExecutionTimeQuickSort();
-
-                // Set the text for the execution time label
-                lbExecutionTime.setText(df.format(totalExecutionTime / 1000000F) + " ms");
-
-                // Set the text for the comparisons label
-                String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
-                lbComparisons.setText(comparisons);
-
-                // Set the text for the swaps label
-                String swaps = String.valueOf(quickSort.getSwapsQuickSort());
-                lbArraySwaps.setText(swaps);
-
-                // Set the text for the selected algorithm label
-                lbSelectedAlgorithm.setText("Quick Sort");
-            }
+            case "BubbleSort" -> bubbleSort(randomArray);
+            case "CocktailSort" -> cocktailSort(randomArray);
+            case "CombSort" -> combSort(randomArray);
+            case "CycleSort" -> cycleSort(randomArray);
+            case "GnomeSort" -> gnomeSort(randomArray);
+            case "HeapSort" -> heapSort(randomArray);
+            case "OddEvenSort" -> oddEvenSort(randomArray);
+            case "InsertionSort" -> insertionSort(randomArray);
+            case "SelectionSort" -> selectionSort(randomArray);
+            case "QuickSort" -> quickSort(randomArray);
             default -> {
             }
         }
@@ -367,8 +383,8 @@ public class Page1Controller {
     protected void onChangeToSecondScene (ActionEvent event) throws IOException {
 
         // Get the Stage and set it to the current window
-        Stage stage;
-        stage = (Stage) btnPage2.getScene().getWindow();
+        Stage switchToSceneTwo;
+        switchToSceneTwo = (Stage) btnPage2.getScene().getWindow();
 
         // Load the FXML file for the second page and set it as the root node
         Parent root;
@@ -378,7 +394,7 @@ public class Page1Controller {
         Scene scene = new Scene(root);
 
         // Set the Scene for the Stage and show it
-        stage.setScene(scene);
-        stage.show();
+        switchToSceneTwo.setScene(scene);
+        switchToSceneTwo.show();
     }
 }

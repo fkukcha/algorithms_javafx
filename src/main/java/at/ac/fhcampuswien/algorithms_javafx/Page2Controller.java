@@ -104,7 +104,7 @@ public class Page2Controller {
     /**
      * Method for resetting the combo boxes and the labels when an exception occurs
      */
-    public void resetBoxes(){
+    public void resetBoxes() {
 
         cBSelectedAlgorithmOne.setValue(null);
         lBSelectedAlgorithmOne.setText(null);
@@ -119,7 +119,11 @@ public class Page2Controller {
         lBSelectedAlgorithmTwo.setText(null);
     }
 
-    public void bubbleSortOne(long executionTime, int[] randomArray) {
+    /**
+     * Methods for sorting the array with the usage of the bubble sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void bubbleSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Bubble Sort");
 
@@ -129,11 +133,8 @@ public class Page2Controller {
         // Sort the array using the bubble sort algorithm
         bubbleSort.bubbleSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = bubbleSort.getTotalExecutionTimeBubbleSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(bubbleSort.getTotalExecutionTimeBubbleSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(bubbleSort.getComparisonsBubbleSort());
@@ -143,7 +144,7 @@ public class Page2Controller {
         String swaps = String.valueOf(bubbleSort.getSwapsBubbleSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void bubbleSortTwo(long executionTime, int[] randomArray) {
+    public void bubbleSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Bubble Sort");
 
@@ -153,11 +154,8 @@ public class Page2Controller {
         // Sort the array using the bubble sort algorithm
         bubbleSort.bubbleSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = bubbleSort.getTotalExecutionTimeBubbleSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(bubbleSort.getTotalExecutionTimeBubbleSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(bubbleSort.getComparisonsBubbleSort());
@@ -168,7 +166,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void cocktailSortOne(long executionTime, int[] randomArray) {
+    /**
+     * Methods for sorting the array with the usage of the cocktail sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void cocktailSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Cocktail Sort");
 
@@ -178,11 +180,8 @@ public class Page2Controller {
         // Sort the array using the cocktail sort algorithm
         cocktailSort.cocktailSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = cocktailSort.getTotalExecutionTimeCocktailSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(cocktailSort.getTotalExecutionTimeCocktailSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(cocktailSort.getComparisonsCocktailSort());
@@ -192,7 +191,7 @@ public class Page2Controller {
         String swaps = String.valueOf(cocktailSort.getSwapsCocktailSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void cocktailSortTwo(long executionTime, int[] randomArray) {
+    public void cocktailSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Cocktail Sort");
 
@@ -202,11 +201,8 @@ public class Page2Controller {
         // Sort the array using the cocktail sort algorithm
         cocktailSort.cocktailSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = cocktailSort.getTotalExecutionTimeCocktailSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(cocktailSort.getTotalExecutionTimeCocktailSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(cocktailSort.getComparisonsCocktailSort());
@@ -217,7 +213,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void combSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the comb sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void combSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Comb Sort");
 
@@ -227,11 +227,8 @@ public class Page2Controller {
         // Sort the array using the comb sort algorithm
         combSort.combSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = combSort.getTotalExecutionTimeCombSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(combSort.getTotalExecutionTimeCombSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(combSort.getComparisonsCombSort());
@@ -241,7 +238,7 @@ public class Page2Controller {
         String swaps = String.valueOf(combSort.getSwapsCombSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void combSortTwo(long executionTime, int[] randomArray) {
+    public void combSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Comb Sort");
 
@@ -251,11 +248,8 @@ public class Page2Controller {
         // Sort the array using the comb sort algorithm
         combSort.combSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = combSort.getTotalExecutionTimeCombSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(combSort.getTotalExecutionTimeCombSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(combSort.getComparisonsCombSort());
@@ -266,7 +260,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void cycleSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the cycle sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void cycleSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Cycle Sort");
 
@@ -276,11 +274,8 @@ public class Page2Controller {
         // Sort the array using the cycle sort algorithm
         cycleSort.cycleSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = cycleSort.getTotalExecutionTimeCycleSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(cycleSort.getTotalExecutionTimeCycleSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(cycleSort.getComparisonsCycleSort());
@@ -290,7 +285,7 @@ public class Page2Controller {
         String swaps = String.valueOf(cycleSort.getSwapsCycleSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void cycleSortTwo(long executionTime, int[] randomArray){
+    public void cycleSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Cycle Sort");
 
@@ -300,11 +295,8 @@ public class Page2Controller {
         // Sort the array using the cycle sort algorithm
         cycleSort.cycleSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = cycleSort.getTotalExecutionTimeCycleSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(cycleSort.getTotalExecutionTimeCycleSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(cycleSort.getComparisonsCycleSort());
@@ -315,7 +307,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void gnomeSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the gnome sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void gnomeSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Gnome Sort");
 
@@ -325,11 +321,8 @@ public class Page2Controller {
         // Sort the array using the gnome sort algorithm
         gnomeSort.gnomeSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = gnomeSort.getTotalExecutionTimeGnomeSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(gnomeSort.getTotalExecutionTimeGnomeSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(gnomeSort.getComparisonsGnomeSort());
@@ -339,7 +332,7 @@ public class Page2Controller {
         String swaps = String.valueOf(gnomeSort.getSwapsGnomeSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void gnomeSortTwo(long executionTime, int[] randomArray){
+    public void gnomeSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Gnome Sort");
 
@@ -349,11 +342,8 @@ public class Page2Controller {
         // Sort the array using the gnome sort algorithm
         gnomeSort.gnomeSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = gnomeSort.getTotalExecutionTimeGnomeSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(gnomeSort.getTotalExecutionTimeGnomeSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(gnomeSort.getComparisonsGnomeSort());
@@ -364,7 +354,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void heapSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the heap sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void heapSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Heap Sort");
 
@@ -374,11 +368,8 @@ public class Page2Controller {
         // Sort the array using the heap sort algorithm
         heapSort.heapSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = heapSort.getTotalExecutionTimeHeapSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(heapSort.getTotalExecutionTimeHeapSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
@@ -388,7 +379,7 @@ public class Page2Controller {
         String swaps = String.valueOf(heapSort.getSwapsHeapSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void heapSortTwo(long executionTime, int[] randomArray){
+    public void heapSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Heap Sort");
 
@@ -398,11 +389,8 @@ public class Page2Controller {
         // Sort the array using the heap sort algorithm
         heapSort.heapSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = heapSort.getTotalExecutionTimeHeapSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(heapSort.getTotalExecutionTimeHeapSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
@@ -413,7 +401,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void insertionSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the insertion sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void insertionSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Insertion Sort");
 
@@ -423,11 +415,8 @@ public class Page2Controller {
         // Sort the array using the insertion sort algorithm
         insertionSort.insertionSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = insertionSort.getTotalExecutionTimeInsertionSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(insertionSort.getTotalExecutionTimeInsertionSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
@@ -437,7 +426,7 @@ public class Page2Controller {
         String swaps = String.valueOf(insertionSort.getSwapsInsertionSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void insertionSortTwo(long executionTime, int[] randomArray){
+    public void insertionSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Insertion Sort");
 
@@ -447,11 +436,8 @@ public class Page2Controller {
         // Sort the array using the insertion sort algorithm
         insertionSort.insertionSort(randomArray);
 
-        // Get the execution time and store it in the totalExecutionTimeTwo variable
-        executionTime = insertionSort.getTotalExecutionTimeInsertionSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(insertionSort.getTotalExecutionTimeInsertionSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(insertionSort.getComparisonsInsertionSort());
@@ -462,7 +448,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void oddEvenSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the odd/even sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void oddEvenSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Odd/Even Sort");
 
@@ -472,11 +462,8 @@ public class Page2Controller {
         // Sort the array using the odd-even sort algorithm
         oddEvenSort.oddEvenSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = oddEvenSort.getTotalExecutionTimeOddEvenSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(oddEvenSort.getTotalExecutionTimeOddEvenSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(oddEvenSort.getComparisonsOddEvenSort());
@@ -486,7 +473,7 @@ public class Page2Controller {
         String swaps = String.valueOf(oddEvenSort.getSwapsOddEvenSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void oddEvenSortTwo(long executionTime, int[] randomArray){
+    public void oddEvenSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Odd/Even Sort");
 
@@ -496,11 +483,8 @@ public class Page2Controller {
         // Sort the array using the odd-even sort algorithm
         oddEvenSort.oddEvenSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = oddEvenSort.getTotalExecutionTimeOddEvenSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(oddEvenSort.getTotalExecutionTimeOddEvenSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(oddEvenSort.getComparisonsOddEvenSort());
@@ -511,7 +495,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void quickSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the quick sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void quickSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Quick Sort");
 
@@ -521,11 +509,8 @@ public class Page2Controller {
         // Sort the array using the quick sort algorithm
         quickSort.quickSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = quickSort.getTotalExecutionTimeQuickSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(quickSort.getTotalExecutionTimeQuickSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
@@ -535,7 +520,7 @@ public class Page2Controller {
         String swaps = String.valueOf(quickSort.getSwapsQuickSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void quickSortTwo(long executionTime, int[] randomArray){
+    public void quickSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Quick Sort");
 
@@ -545,11 +530,8 @@ public class Page2Controller {
         // Sort the array using the quick sort algorithm
         quickSort.quickSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = quickSort.getTotalExecutionTimeQuickSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(quickSort.getTotalExecutionTimeQuickSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(quickSort.getComparisonsQuickSort());
@@ -560,7 +542,11 @@ public class Page2Controller {
         lbArraySwapsTwo.setText(swaps);
     }
 
-    public void selectionSortOne(long executionTime, int[] randomArray){
+    /**
+     * Methods for sorting the array with the usage of the selection sort algorithm and outputting the
+     * results in the designated labels
+     */
+    public void selectionSortOne(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmOne.setText("Selection Sort");
 
@@ -570,11 +556,8 @@ public class Page2Controller {
         // Sort the array using the selection sort algorithm
         selectionSort.selectionSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = selectionSort.getTotalExecutionTimeSelectionSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeOne.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeOne.setText(df.format(selectionSort.getTotalExecutionTimeSelectionSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
@@ -584,7 +567,7 @@ public class Page2Controller {
         String swaps = String.valueOf(selectionSort.getSwapsSelectionSort());
         lbArraySwapsOne.setText(swaps);
     }
-    public void selectionSortTwo(long executionTime, int[] randomArray){
+    public void selectionSortTwo(int[] randomArray) {
         // Set the text for the selected algorithm label
         lBSelectedAlgorithmTwo.setText("Selection Sort");
 
@@ -594,11 +577,8 @@ public class Page2Controller {
         // Sort the array using the selection sort algorithm
         selectionSort.selectionSort(randomArray);
 
-        // Get the execution time and store it in the executionTime variable
-        executionTime = selectionSort.getTotalExecutionTimeSelectionSort();
-
         // Set the text for the execution time label
-        lbExecutionTimeTwo.setText(df.format(executionTime / 1000000F) + " ms");
+        lbExecutionTimeTwo.setText(df.format(selectionSort.getTotalExecutionTimeSelectionSort() / 1000000F) + " ms");
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(selectionSort.getComparisonsSelectionSort());
@@ -649,33 +629,29 @@ public class Page2Controller {
             int[] randomArrayAlgorithmOne = randomArray.clone();
             int[] randomArrayAlgorithmTwo = randomArray.clone();
 
-            // Initialize the total execution times for both algorithms
-            long totalExecutionTimeOne = 0;
-            long totalExecutionTimeTwo = 0;
-
             // Using a switch statement to sort the array using the first selected algorithm
             // to display the execution time, number of comparisons, and number of swaps
 
             switch (selectedAlgorithmOne) {
-                case "BubbleSort" -> bubbleSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "BubbleSort" -> bubbleSortOne(randomArrayAlgorithmOne);
 
-                case "CocktailSort" -> cocktailSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "CocktailSort" -> cocktailSortOne(randomArrayAlgorithmOne);
 
-                case "CombSort" -> combSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "CombSort" -> combSortOne(randomArrayAlgorithmOne);
 
-                case "CycleSort" -> cycleSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "CycleSort" -> cycleSortOne(randomArrayAlgorithmOne);
 
-                case "GnomeSort" -> gnomeSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "GnomeSort" -> gnomeSortOne(randomArrayAlgorithmOne);
 
-                case "HeapSort" -> heapSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "HeapSort" -> heapSortOne(randomArrayAlgorithmOne);
 
-                case "OddEvenSort" -> oddEvenSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "OddEvenSort" -> oddEvenSortOne(randomArrayAlgorithmOne);
 
-                case "InsertionSort" -> insertionSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "InsertionSort" -> insertionSortOne(randomArrayAlgorithmOne);
 
-                case "SelectionSort" -> selectionSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "SelectionSort" -> selectionSortOne(randomArrayAlgorithmOne);
 
-                case "QuickSort" -> quickSortOne(totalExecutionTimeOne, randomArrayAlgorithmOne);
+                case "QuickSort" -> quickSortOne(randomArrayAlgorithmOne);
 
                 default -> {
                 }
@@ -684,25 +660,25 @@ public class Page2Controller {
             // Using a switch statement to sort the array using the second selected algorithm
             // to display the execution time, number of comparisons, and number of swaps
             switch (selectedAlgorithmTwo) {
-                case "BubbleSort" -> bubbleSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "BubbleSort" -> bubbleSortTwo(randomArrayAlgorithmTwo);
 
-                case "CocktailSort" -> cocktailSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "CocktailSort" -> cocktailSortTwo(randomArrayAlgorithmTwo);
 
-                case "CombSort" -> combSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "CombSort" -> combSortTwo(randomArrayAlgorithmTwo);
 
-                case "CycleSort" -> cycleSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "CycleSort" -> cycleSortTwo(randomArrayAlgorithmTwo);
 
-                case "GnomeSort" -> gnomeSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "GnomeSort" -> gnomeSortTwo(randomArrayAlgorithmTwo);
 
-                case "HeapSort" -> heapSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "HeapSort" -> heapSortTwo(randomArrayAlgorithmTwo);
 
-                case "OddEvenSort" -> oddEvenSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "OddEvenSort" -> oddEvenSortTwo(randomArrayAlgorithmTwo);
 
-                case "InsertionSort" -> insertionSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "InsertionSort" -> insertionSortTwo(randomArrayAlgorithmTwo);
 
-                case "SelectionSort" -> selectionSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "SelectionSort" -> selectionSortTwo(randomArrayAlgorithmTwo);
 
-                case "QuickSort" -> quickSortTwo(totalExecutionTimeTwo, randomArrayAlgorithmTwo);
+                case "QuickSort" -> quickSortTwo(randomArrayAlgorithmTwo);
 
                 default -> {
                 }
@@ -736,6 +712,4 @@ public class Page2Controller {
         switchToSceneOne.setScene(scene);
         switchToSceneOne.show();
     }
-
-
 }
