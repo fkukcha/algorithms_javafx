@@ -23,12 +23,6 @@ public class Page2Controller {
     public Button btnPage1;
 
     /**
-     * The Stage for the second page.
-     */
-    @FXML
-    private Stage stage;
-
-    /**
      * A {@link DecimalFormat} object for formatting decimal numbers.
      */
     final DecimalFormat df = new DecimalFormat("0.0000");
@@ -591,7 +585,7 @@ public class Page2Controller {
      * This method is called when the "Sort Arrays" button is clicked. It gets the selected sorting algorithms
      * and array size, creates 2 random arrays, sorts them using the selected algorithms, and displays the
      * execution time, number of comparisons, and number of swaps of both arrays.
-     * Also it gets checked if the user selected two different sorting algorithms.
+     * Also, it gets checked if the user selected two different sorting algorithms.
      */
     @FXML
     protected void onBtnSortArrayClick() {
@@ -629,59 +623,32 @@ public class Page2Controller {
 
             // Using a switch statement to sort the array using the first selected algorithm
             // to display the execution time, number of comparisons, and number of swaps
-
             switch (selectedAlgorithmOne) {
                 case "BubbleSort" -> bubbleSortOne(randomArrayAlgorithmOne);
-
                 case "CocktailSort" -> cocktailSortOne(randomArrayAlgorithmOne);
-
                 case "CombSort" -> combSortOne(randomArrayAlgorithmOne);
-
                 case "CycleSort" -> cycleSortOne(randomArrayAlgorithmOne);
-
                 case "GnomeSort" -> gnomeSortOne(randomArrayAlgorithmOne);
-
                 case "HeapSort" -> heapSortOne(randomArrayAlgorithmOne);
-
-                case "OddEvenSort" -> oddEvenSortOne(randomArrayAlgorithmOne);
-
                 case "InsertionSort" -> insertionSortOne(randomArrayAlgorithmOne);
-
-                case "SelectionSort" -> selectionSortOne(randomArrayAlgorithmOne);
-
+                case "OddEvenSort" -> oddEvenSortOne(randomArrayAlgorithmOne);
                 case "QuickSort" -> quickSortOne(randomArrayAlgorithmOne);
-
-                default -> {
-                    Alerts.emptySelection();
-                }
+                case "SelectionSort" -> selectionSortOne(randomArrayAlgorithmOne);
             }
 
             // Using a switch statement to sort the array using the second selected algorithm
             // to display the execution time, number of comparisons, and number of swaps
             switch (selectedAlgorithmTwo) {
                 case "BubbleSort" -> bubbleSortTwo(randomArrayAlgorithmTwo);
-
                 case "CocktailSort" -> cocktailSortTwo(randomArrayAlgorithmTwo);
-
                 case "CombSort" -> combSortTwo(randomArrayAlgorithmTwo);
-
                 case "CycleSort" -> cycleSortTwo(randomArrayAlgorithmTwo);
-
                 case "GnomeSort" -> gnomeSortTwo(randomArrayAlgorithmTwo);
-
                 case "HeapSort" -> heapSortTwo(randomArrayAlgorithmTwo);
-
-                case "OddEvenSort" -> oddEvenSortTwo(randomArrayAlgorithmTwo);
-
                 case "InsertionSort" -> insertionSortTwo(randomArrayAlgorithmTwo);
-
-                case "SelectionSort" -> selectionSortTwo(randomArrayAlgorithmTwo);
-
+                case "OddEvenSort" -> oddEvenSortTwo(randomArrayAlgorithmTwo);
                 case "QuickSort" -> quickSortTwo(randomArrayAlgorithmTwo);
-
-                default -> {
-                    Alerts.emptySelection();
-                }
+                case "SelectionSort" -> selectionSortTwo(randomArrayAlgorithmTwo);
             }
         } catch (NullPointerException e) {
             Alerts.emptySelection();

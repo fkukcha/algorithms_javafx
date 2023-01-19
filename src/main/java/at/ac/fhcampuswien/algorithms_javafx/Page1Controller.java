@@ -341,7 +341,7 @@ public class Page1Controller {
             cbSelectedAlgorithm.getValue();
             cbArraySize.getValue();
 
-            // Convert the selected algorithm and array size to strings and store them in variables
+            // Convert the selected algorithm and array size to Strings and store them in variables
             String selectedAlgorithm =  cbSelectedAlgorithm.getValue().toString();
             String selectedArraySize =  cbArraySize.getValue().toString();
 
@@ -366,13 +366,10 @@ public class Page1Controller {
                 case "CycleSort" -> cycleSort(randomArray);
                 case "GnomeSort" -> gnomeSort(randomArray);
                 case "HeapSort" -> heapSort(randomArray);
-                case "OddEvenSort" -> oddEvenSort(randomArray);
                 case "InsertionSort" -> insertionSort(randomArray);
-                case "SelectionSort" -> selectionSort(randomArray);
+                case "OddEvenSort" -> oddEvenSort(randomArray);
                 case "QuickSort" -> quickSort(randomArray);
-                default -> {
-                    Alerts.emptySelection();
-                }
+                case "SelectionSort" -> selectionSort(randomArray);
             }
         } catch (NullPointerException e) {
             Alerts.emptySelection();
