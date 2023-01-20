@@ -386,7 +386,7 @@ public class Page2Controller {
 
         // Set the text for the comparisons label
         String comparisons = String.valueOf(heapSort.getComparisonsHeapSort());
-        lbComparisonsOne.setText(comparisons);
+        lbComparisonsTwo.setText(comparisons);
 
         // Set the text for the swaps label
         String swaps = String.valueOf(heapSort.getSwapsHeapSort());

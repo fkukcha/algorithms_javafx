@@ -5,7 +5,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class CycleSort {
 
@@ -15,13 +15,14 @@ public class CycleSort {
     private long totalExecutionTimeCycleSort;
 
     /**
-     * Sets the total execution time of the cycle sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time, in nanoseconds
+     * The number of comparisons made by the cycle sort algorithm.
      */
-    public void setTotalExecutionTimeCycleSort(long totalExecutionTime) {
-        this.totalExecutionTimeCycleSort = totalExecutionTime;
-    }
+    private long comparisonsCycleSort;
+
+    /**
+     * The number of swaps made by the cycle sort algorithm.
+     */
+    private long swapsCycleSort;
 
     /**
      * Gets the total execution time of the cycle sort algorithm.
@@ -33,40 +34,12 @@ public class CycleSort {
     }
 
     /**
-     * The number of comparisons made by the cycle sort algorithm.
-     */
-    private long comparisonsCycleSort;
-
-    /**
-     * Sets the number of comparisons made by the cycle sort algorithm.
-     *
-     * @param comparisons the number of comparisons
-     */
-    public void setComparisonsCycleSort(long comparisons) {
-        this.comparisonsCycleSort = comparisons;
-    }
-
-    /**
      * Gets the number of comparisons made by the cycle sort algorithm.
      *
      * @return the number of comparisons
      */
     public long getComparisonsCycleSort() {
         return comparisonsCycleSort;
-    }
-
-    /**
-     * The number of swaps made by the cycle sort algorithm.
-     */
-    private long swapsCycleSort;
-
-    /**
-     * Sets the number of swaps made by the cycle sort algorithm.
-     *
-     * @param swaps the number of swaps
-     */
-    public void setSwapsCycleSort(long swaps) {
-        this.swapsCycleSort = swaps;
     }
 
     /**
@@ -86,8 +59,10 @@ public class CycleSort {
      */
     public void cycleSort(int[] inputArray) {
 
-        long startTime = System.nanoTime();  // start timer
-        int arrayLength = inputArray.length; // get the length of the array
+        // Get the current time in nanoseconds.
+        long startTime = System.nanoTime();
+
+        int arrayLength = inputArray.length;
 
         // loop through the array
         for (int cycleStart = 0; cycleStart < arrayLength - 1; cycleStart++) {
@@ -104,8 +79,7 @@ public class CycleSort {
                     pos++;
                 }
 
-                // increment the comparison count
-                setComparisonsCycleSort(getComparisonsCycleSort()+1);
+                this.comparisonsCycleSort++;
             }
 
             // if the item is already in the correct position, move on to the next item
@@ -123,8 +97,7 @@ public class CycleSort {
             item = inputArray[pos];
             inputArray[pos] = temp;
 
-            // increment the swap count
-            setSwapsCycleSort(getSwapsCycleSort()+1);
+            this.swapsCycleSort++;
 
             // rotate the rest of the cycle
             while (pos != cycleStart) {
@@ -148,16 +121,13 @@ public class CycleSort {
                 item = inputArray[pos];
                 inputArray[pos] = temp;
 
-                // increment the swap count
-                setSwapsCycleSort(getSwapsCycleSort()+1);
+                this.swapsCycleSort++;
             }
         }
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeCycleSort(executionTime);
+        this.totalExecutionTimeCycleSort = endTime - startTime;
     }
 }

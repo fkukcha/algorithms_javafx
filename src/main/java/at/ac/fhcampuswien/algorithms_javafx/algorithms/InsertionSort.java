@@ -6,7 +6,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class InsertionSort {
 
@@ -16,13 +16,15 @@ public class InsertionSort {
     private long totalExecutionTimeInsertionSort;
 
     /**
-     * Sets the total execution time of the Insertion Sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time of the Insertion Sort algorithm
+     * Represents the number of comparisons made during the Insertion Sort algorithm.
      */
-    public void setTotalExecutionTimeInsertionSort(long totalExecutionTime) {
-        this.totalExecutionTimeInsertionSort = totalExecutionTime;
-    }
+    private long comparisonsInsertionSort;
+
+    /**
+     * Represents the number of swaps made during the Insertion Sort algorithm.
+     */
+    private long swapsInsertionSort;
+
 
     /**
      * Returns the total execution time of the Insertion Sort algorithm.
@@ -31,21 +33,6 @@ public class InsertionSort {
      */
     public long getTotalExecutionTimeInsertionSort() {
         return totalExecutionTimeInsertionSort;
-    }
-
-
-    /**
-     * Represents the number of comparisons made during the Insertion Sort algorithm.
-     */
-    private long comparisonsInsertionSort;
-
-    /**
-     * Sets the number of comparisons made during the Insertion Sort algorithm.
-     *
-     * @param comparisons the number of comparisons made during the Insertion Sort algorithm
-     */
-    public void setComparisonsInsertionSort(long comparisons) {
-        this.comparisonsInsertionSort = comparisons;
     }
 
     /**
@@ -57,21 +44,6 @@ public class InsertionSort {
         return comparisonsInsertionSort;
     }
 
-
-    /**
-     * Represents the number of swaps made during the Insertion Sort algorithm.
-     */
-    private long swapsInsertionSort;
-
-    /**
-     * Sets the number of swaps made during the Insertion Sort algorithm.
-     *
-     * @param swaps the number of swaps made during the Insertion Sort algorithm
-     */
-    public void setSwapsInsertionSort(long swaps) {
-        this.swapsInsertionSort = swaps;
-    }
-
     /**
      * Returns the number of swaps made during the Insertion Sort algorithm.
      *
@@ -81,13 +53,19 @@ public class InsertionSort {
         return swapsInsertionSort;
     }
 
+    /**
+     * Sorts an array using the insertion sort algorithm and prints out the execution time,
+     * number of comparisons, and number of swaps.
+     *
+     * @param inputArray the array to sort
+     */
     public void insertionSort(int[] inputArray) {
+
+        // Get the current time in nanoseconds
+        long startTime = System.nanoTime();
 
         // Get the length of the array.
         int arrayLength = inputArray.length;
-
-        // Start the timer
-        long startTime = System.nanoTime();
 
         // Iterate through the array, starting at the second element.
         for (int i = 1; i < arrayLength; i++) {
@@ -109,25 +87,20 @@ public class InsertionSort {
                 // Decrement the counter.
                 j = j - 1;
 
-                // Increment the counter for the number of swaps made in the Insertion Sort algorithm.
-                setSwapsInsertionSort(getSwapsInsertionSort()+1);
+                this.swapsInsertionSort++;
 
-                // Increment the counter for the number of comparisons made in the Insertion Sort algorithm.
-                setComparisonsInsertionSort(getComparisonsInsertionSort()+1);
+                this.comparisonsInsertionSort++;
             }
 
             // Insert the key into its proper position.
             inputArray[j + 1] = key;
 
-            // Increment the counter for the number of comparisons made in the Insertion Sort algorithm.
-            setComparisonsInsertionSort(getComparisonsInsertionSort()+1);
+            this.comparisonsInsertionSort++;
         }
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeInsertionSort(executionTime);
+        this.totalExecutionTimeInsertionSort = endTime - startTime;
     }
 }

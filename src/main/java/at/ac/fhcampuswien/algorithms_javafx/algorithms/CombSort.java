@@ -5,23 +5,23 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class CombSort {
-
     /**
      * The total execution time of the comb sort algorithm, in nanoseconds.
      */
     private long totalExecutionTimeCombSort;
 
     /**
-     * Sets the total execution time of the comb sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time, in nanoseconds
+     * The number of comparisons made by the comb sort algorithm.
      */
-    public void setTotalExecutionTimeCombSort(long totalExecutionTime) {
-        this.totalExecutionTimeCombSort = totalExecutionTime;
-    }
+    private long comparisonsCombSort;
+
+    /**
+     * The number of swaps made by the comb sort algorithm.
+     */
+    private long swapsCombSort;
 
     /**
      * Gets the total execution time of the comb sort algorithm.
@@ -33,40 +33,12 @@ public class CombSort {
     }
 
     /**
-     * The number of comparisons made by the comb sort algorithm.
-     */
-    private long comparisonsCombSort;
-
-    /**
-     * Sets the number of comparisons made by the comb sort algorithm.
-     *
-     * @param comparisons the number of comparisons
-     */
-    public void setComparisonsCombSort(long comparisons) {
-        this.comparisonsCombSort = comparisons;
-    }
-
-    /**
      * Gets the number of comparisons made by the comb sort algorithm.
      *
      * @return the number of comparisons
      */
     public long getComparisonsCombSort() {
         return comparisonsCombSort;
-    }
-
-    /**
-     * The number of swaps made by the comb sort algorithm.
-     */
-    private long swapsCombSort;
-
-    /**
-     * Sets the number of swaps made by the comb sort algorithm.
-     *
-     * @param swaps the number of swaps
-     */
-    public void setSwapsCombSort(long swaps) {
-        this.swapsCombSort = swaps;
     }
 
     /**
@@ -86,13 +58,14 @@ public class CombSort {
      */
     public void combSort(int[] inputArray) {
 
-        long startTime = System.nanoTime();  // start timer
+        // Get the current time in nanoseconds.
+        long startTime = System.nanoTime();
 
         // get the length of the array
-        int n = inputArray.length;
+        int arrayLength = inputArray.length;
 
         // initialize gap size to the length of the array
-        int gap = n;
+        int gap = arrayLength;
 
         // flag to keep track of whether any swaps have been made
         boolean swapped = true;
@@ -112,7 +85,7 @@ public class CombSort {
             swapped = false;
 
             // loop through the array, comparing elements separated by the gap
-            for (int i = 0; i + gap < n; i++) {
+            for (int i = 0; i + gap < arrayLength; i++) {
 
                 // calculate the index of the element to compare
                 int j = i + gap;
@@ -128,20 +101,16 @@ public class CombSort {
                     //set the swapped flag to true
                     swapped = true;
 
-                    //increment the swap count
-                    setSwapsCombSort(getSwapsCombSort()+1);
+                    this.swapsCombSort++;
                 }
 
-                //increment the comparison count
-                setComparisonsCombSort(getComparisonsCombSort()+1);
+                this.comparisonsCombSort++;
             }
         }
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeCombSort(executionTime);
+        this.totalExecutionTimeCombSort = endTime - startTime;
     }
 }

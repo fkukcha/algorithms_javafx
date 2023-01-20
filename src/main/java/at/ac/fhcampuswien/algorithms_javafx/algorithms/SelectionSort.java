@@ -5,7 +5,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class SelectionSort {
 
@@ -15,13 +15,14 @@ public class SelectionSort {
     private long totalExecutionTimeSelectionSort;
 
     /**
-     * Sets the total execution time of the Selection Sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time of the Selection Sort algorithm
+     * Represents the number of comparisons made during the Selection Sort algorithm.
      */
-    public void setTotalExecutionTimeSelectionSort(long totalExecutionTime) {
-        this.totalExecutionTimeSelectionSort = totalExecutionTime;
-    }
+    private long comparisonsSelectionSort;
+
+    /**
+     * Represents the number of swaps made during the Selection Sort algorithm.
+     */
+    private long swapsSelectionSort;
 
     /**
      * Returns the total execution time of the Selection Sort algorithm.
@@ -30,20 +31,6 @@ public class SelectionSort {
      */
     public long getTotalExecutionTimeSelectionSort() {
         return totalExecutionTimeSelectionSort;
-    }
-
-    /**
-     * Represents the number of comparisons made during the Selection Sort algorithm.
-     */
-    private long comparisonsSelectionSort;
-
-    /**
-     * Sets the number of comparisons made during the Selection Sort algorithm.
-     *
-     * @param comparisons the number of comparisons made during the Selection Sort algorithm
-     */
-    public void setComparisonsSelectionSort(long comparisons) {
-        this.comparisonsSelectionSort = comparisons;
     }
 
     /**
@@ -56,20 +43,6 @@ public class SelectionSort {
     }
 
     /**
-     * Represents the number of swaps made during the Selection Sort algorithm.
-     */
-    private long swapsSelectionSort;
-
-    /**
-     * Sets the number of swaps made during the Selection Sort algorithm.
-     *
-     * @param swaps the number of comparisons made during the Selection Sort algorithm
-     */
-    public void setSwapsSelectionSort(long swaps) {
-        this.swapsSelectionSort = swaps;
-    }
-
-    /**
      * Returns the number of swaps made during the Selection Sort algorithm.
      *
      * @return the number of swaps made during the Selection Sort algorithm
@@ -78,13 +51,19 @@ public class SelectionSort {
         return swapsSelectionSort;
     }
 
+    /**
+     * Sorts an array using the selection sort algorithm and prints out the execution time,
+     * number of comparisons, and number of swaps.
+     *
+     * @param inputArray the array to sort
+     */
     public void selectionSort(int[] inputArray) {
+
+        // Get the current time in nanoseconds
+        long startTime = System.nanoTime();
 
         // set the array length
         int arrayLength = inputArray.length;
-
-        // Start the timer
-        long startTime = System.nanoTime();
 
         // Loop through the array, starting at the first element
         for (int i = 0; i < arrayLength - 1; i++) {
@@ -99,8 +78,7 @@ public class SelectionSort {
                 if (inputArray[j] < inputArray[minIndex]) {
                     minIndex = j;
 
-                    //Increment the number of comparisons made by the Selection Sort
-                    setComparisonsSelectionSort(getComparisonsSelectionSort()+1);
+                    this.comparisonsSelectionSort++;
                 }
             }
 
@@ -109,15 +87,12 @@ public class SelectionSort {
             inputArray[minIndex] = inputArray[i];
             inputArray[i] = temp;
 
-            //Increment the number of swaps
-            setSwapsSelectionSort(getSwapsSelectionSort()+1);
+            this.swapsSelectionSort++;
         }
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeSelectionSort(executionTime);
+        this.totalExecutionTimeSelectionSort = endTime - startTime;
     }
 }

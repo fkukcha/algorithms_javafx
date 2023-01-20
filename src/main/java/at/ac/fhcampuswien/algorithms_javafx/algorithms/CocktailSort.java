@@ -5,23 +5,24 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class CocktailSort {
-
     /**
      * The total execution time of the cocktail sort algorithm, in nanoseconds.
      */
     private long totalExecutionTimeCocktailSort;
 
     /**
-     * Sets the total execution time for the Cocktail Sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time, in nanoseconds
+     * The number of comparisons made by the cocktail sort algorithm.
      */
-    public void setTotalExecutionTimeCocktailSort(long totalExecutionTime) {
-        this.totalExecutionTimeCocktailSort = totalExecutionTime;
-    }
+    private long comparisonsCocktailSort;
+
+    /**
+     * The number of swaps made by the cocktail sort algorithm.
+     */
+    private long swapsCocktailSort;
+
 
     /**
      * Returns the total execution time for the Cocktail Sort algorithm.
@@ -30,20 +31,6 @@ public class CocktailSort {
      */
     public long getTotalExecutionTimeCocktailSort() {
         return totalExecutionTimeCocktailSort;
-    }
-
-    /**
-     * The number of comparisons made by the cocktail sort algorithm.
-     */
-    private long comparisonsCocktailSort;
-
-    /**
-     * Sets the number of comparisons performed during the Cocktail Sort algorithm.
-     *
-     * @param comparisons the number of comparisons
-     */
-    public void setComparisonsCocktailSort(long comparisons) {
-        this.comparisonsCocktailSort = comparisons;
     }
 
     /**
@@ -56,20 +43,6 @@ public class CocktailSort {
     }
 
     /**
-     * The number of swaps made by the cocktail sort algorithm.
-     */
-    private long swapsCocktailSort;
-
-    /**
-     * Sets the number of swaps performed during the Cocktail Sort algorithm.
-     *
-     * @param swaps the number of swaps
-     */
-    public void setSwapsCocktailSort(long swaps) {
-        this.swapsCocktailSort = swaps;
-    }
-
-    /**
      * Returns the number of swaps performed during the Cocktail Sort algorithm.
      *
      * @return the number of swaps
@@ -77,7 +50,6 @@ public class CocktailSort {
     public long getSwapsCocktailSort() {
         return swapsCocktailSort;
     }
-
 
     /**
      * Sorts an array using the cocktail sort algorithm, and also measures the
@@ -108,12 +80,11 @@ public class CocktailSort {
             for (int i = start; i < end - 1; i++) {
 
                 // Increment the counter for the number of comparisons made in the Cocktail Sort algorithm.
-                setComparisonsCocktailSort(getComparisonsCocktailSort()+1);
+                this.comparisonsCocktailSort++;
 
                 if (inputArray[i] > inputArray[i + 1]) {
 
-                    //Increment the counter for the number of swaps made in the Cocktail Sort Algorithm
-                    setSwapsCocktailSort(getSwapsCocktailSort()+1);
+                    this.swapsCocktailSort++;
 
                     //Swap the elements and set "isSorted" to false indicating that the array is not yet sorted
                     int temp = inputArray[i];
@@ -137,14 +108,11 @@ public class CocktailSort {
             // Loop through the array from index "end - 1" down to index "start".
             for (int i = end - 1; i >= start; i--) {
 
-                // Increment the counter for the number of comparisons made in the Cocktail Sort algorithm.
-                setComparisonsCocktailSort(getComparisonsCocktailSort()+1);
-
+                this.comparisonsCocktailSort++;
 
                 if (inputArray[i] > inputArray[i + 1]) {
 
-                    //Increment the counter for the number of swaps made in the Cocktail Sort Algorithm
-                    setSwapsCocktailSort(getSwapsCocktailSort()+1);
+                    this.swapsCocktailSort++;
 
                     //Swap the elements and set "isSorted" to false indicating that the array is not yet sorted
                     int temp = inputArray[i];
@@ -160,9 +128,7 @@ public class CocktailSort {
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeCocktailSort(executionTime);
+        this.totalExecutionTimeCocktailSort = endTime - startTime;
     }
 }

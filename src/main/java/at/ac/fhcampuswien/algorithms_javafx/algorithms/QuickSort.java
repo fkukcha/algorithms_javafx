@@ -5,7 +5,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class QuickSort {
 
@@ -15,13 +15,15 @@ public class QuickSort {
     private long totalExecutionTimeQuickSort;
 
     /**
-     * Sets the total execution time of the Quick Sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time of the Quick Sort algorithm
+     * Represents the number of comparisons made during the Quick Sort algorithm.
      */
-    public void setTotalExecutionTimeQuickSort(long totalExecutionTime) {
-        this.totalExecutionTimeQuickSort = totalExecutionTime;
-    }
+    private long comparisonsQuickSort;
+
+    /**
+     * Represents the number of swaps made during the Quick Sort algorithm.
+     */
+    private long swapsQuickSort;
+
 
     /**
      * Returns the total execution time of the Quick Sort algorithm.
@@ -33,40 +35,12 @@ public class QuickSort {
     }
 
     /**
-     * Represents the number of comparisons made during the Quick Sort algorithm.
-     */
-    private long comparisonsQuickSort;
-
-    /**
-     * Sets the number of comparisons made during the Quick Sort algorithm.
-     *
-     * @param comparisons the number of comparisons made during the Quick Sort algorithm
-     */
-    public void setComparisonsQuickSort(long comparisons) {
-        this.comparisonsQuickSort = comparisons;
-    }
-
-    /**
      * Returns the number of comparisons made during the Quick Sort algorithm.
      *
      * @return the number of comparisons made during the Quick Sort algorithm
      */
     public long getComparisonsQuickSort() {
         return comparisonsQuickSort;
-    }
-
-    /**
-     * Represents the number of swaps made during the Quick Sort algorithm.
-     */
-    private long swapsQuickSort;
-
-    /**
-     * Sets the number of swaps made during the Quick Sort algorithm.
-     *
-     * @param swaps the number of swaps made during the Quick Sort algorithm
-     */
-    public void setSwapsQuickSort(long swaps) {
-        this.swapsQuickSort = swaps;
     }
 
     /**
@@ -87,21 +61,19 @@ public class QuickSort {
      */
     public void quickSort(int[] inputArray) {
 
+        // Get the current time in nanoseconds
+        long startTime = System.nanoTime();
+
         //Set the length of the array
         int arrayLength = inputArray.length;
-
-        // Start the timer
-        long startTime = System.nanoTime();
 
         //Call the quickSortHelperMethod to sort the array
         quickSortHelperMethod(inputArray, 0, arrayLength - 1);
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeQuickSort(executionTime);
+        this.totalExecutionTimeQuickSort = endTime - startTime;
     }
 
     /**
@@ -157,15 +129,12 @@ public class QuickSort {
                 array[i] = array[j];
                 array[j] = temp;
 
-                // Increment the number of swaps
-                setSwapsQuickSort(getSwapsQuickSort()+1);
+                this.swapsQuickSort++;
 
-                // Increment the number of comparisons
-                setComparisonsQuickSort(getComparisonsQuickSort()+1);
+                this.comparisonsQuickSort++;
             }
 
-            // Increment the number of comparisons
-            setComparisonsQuickSort(getComparisonsQuickSort()+1);
+            this.comparisonsQuickSort++;
         }
 
         // Swap array[i+1] and array[high] (or pivot)
@@ -173,8 +142,7 @@ public class QuickSort {
         array[i + 1] = array[high];
         array[high] = temp;
 
-        // Increment the number of swaps
-        setSwapsQuickSort(getSwapsQuickSort()+1);
+        this.swapsQuickSort++;
 
         //Return partition index
         return i + 1;
