@@ -27,6 +27,9 @@ public class BubbleSort {
             // value on the right then they are swapped.
             for (int j=0; j<i; j++) {
                 if (arrayStructures.getArray()[j] > arrayStructures.getArray()[j+1]) {
+                    System.out.println(arrayStructures.getArray()[j] + " at index " + j +
+                            " will be swapped with " + arrayStructures.getArray()[j+1] + " at index "
+                            + (j+1));
                     arrayStructures.swapValues(j, j+1);
                     arrayStructures.printHorizontalArray(i, j);
                 }
