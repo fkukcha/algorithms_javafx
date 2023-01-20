@@ -5,7 +5,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class OddEvenSort {
 
@@ -15,13 +15,15 @@ public class OddEvenSort {
     private long totalExecutionTimeOddEvenSort;
 
     /**
-     * Sets the total execution time of the Odd-Even Sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time of the Odd-Even Sort algorithm
+     * Represents the number of comparisons made during the Odd-Even Sort algorithm.
      */
-    public void setTotalExecutionTimeOddEvenSort(long totalExecutionTime) {
-        this.totalExecutionTimeOddEvenSort = totalExecutionTime;
-    }
+    private long comparisonsOddEvenSort;
+
+    /**
+     * Represents the number of swaps made during the Odd-Even Sort algorithm.
+     */
+    private long swapsOddEvenSort;
+
 
     /**
      * Returns the total execution time of the Odd-Even Sort algorithm.
@@ -32,21 +34,6 @@ public class OddEvenSort {
         return totalExecutionTimeOddEvenSort;
     }
 
-
-    /**
-     * Represents the number of comparisons made during the Odd-Even Sort algorithm.
-     */
-    private long comparisonsOddEvenSort;
-
-    /**
-     * Sets the number of comparisons made during the Odd-Even Sort algorithm.
-     *
-     * @param comparisons the number of comparisons made during the Odd-Even Sort algorithm
-     */
-    public void setComparisonsOddEvenSort(long comparisons) {
-        this.comparisonsOddEvenSort = comparisons;
-    }
-
     /**
      * Returns the number of comparisons made during the Odd-Even Sort algorithm.
      *
@@ -54,20 +41,6 @@ public class OddEvenSort {
      */
     public long getComparisonsOddEvenSort() {
         return comparisonsOddEvenSort;
-    }
-
-    /**
-     * Represents the number of swaps made during the Odd-Even Sort algorithm.
-     */
-    private long swapsOddEvenSort;
-
-    /**
-     * Sets the number of swaps made during the Odd-Even Sort algorithm.
-     *
-     * @param swaps the number of comparisons made during the Odd-Even Sort algorithm
-     */
-    public void setSwapsOddEvenSort(long swaps) {
-        this.swapsOddEvenSort = swaps;
     }
 
     /**
@@ -87,7 +60,7 @@ public class OddEvenSort {
      */
     public void oddEvenSort(int[] inputArray) {
 
-        // start the timer
+        // Get the current time in nanoseconds
         long startTime = System.nanoTime();
 
         // Set the sorted flag to false
@@ -108,12 +81,10 @@ public class OddEvenSort {
                     inputArray[i + 1] = temp;
                     isSorted = false;
 
-                    // Increment the number of swaps
-                    setSwapsOddEvenSort(getSwapsOddEvenSort() + 1);
+                    this.swapsOddEvenSort++;
                 }
 
-                // Increment the number of comparisons
-                setComparisonsOddEvenSort(getComparisonsOddEvenSort() + 1);
+                this.comparisonsOddEvenSort++;
             }
 
             // Perform the sort on the odd indices
@@ -126,20 +97,16 @@ public class OddEvenSort {
                     inputArray[i + 1] = temp;
                     isSorted = false;
 
-                    // Increment the number of swaps
-                    setSwapsOddEvenSort(getSwapsOddEvenSort() + 1);
+                    this.swapsOddEvenSort++;
                 }
 
-                // Increment the number of comparisons
-                setComparisonsOddEvenSort(getComparisonsOddEvenSort() + 1);
+                this.comparisonsOddEvenSort++;
             }
 
             // Get the current time in nanoseconds and calculate the execution time.
             long endTime = System.nanoTime();
-            long executionTime = endTime - startTime;
 
-            // set execution time
-            setTotalExecutionTimeOddEvenSort(executionTime);
+            this.totalExecutionTimeOddEvenSort = endTime - startTime;
         }
     }
 }

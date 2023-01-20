@@ -5,7 +5,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 
 public class BubbleSort {
@@ -15,12 +15,14 @@ public class BubbleSort {
     private long totalExecutionTimeBubbleSort;
 
     /**
-     * Sets the total execution time of the bubble sort algorithm.
-     * @param totalExecutionTime the total execution time, in nanoseconds
+     * The total comparisons of the bubble sort algorithm.
      */
-    public void setTotalExecutionTimeBubbleSort(long totalExecutionTime) {
-        this.totalExecutionTimeBubbleSort = totalExecutionTime;
-    }
+    private long comparisonsBubbleSort;
+
+    /**
+     * The number of swaps made by the bubble sort algorithm.
+     */
+    private long swapsBubbleSort;
 
     /**
      * Gets the total execution time of the bubble sort algorithm.
@@ -31,40 +33,12 @@ public class BubbleSort {
     }
 
     /**
-     * The total comparisons of the bubble sort algorithm.
-     */
-    private long comparisonsBubbleSort;
-
-    /**
-     * Sets the number of comparisons made by the bubble sort algorithm.
-     *
-     * @param comparisons the number of comparisons
-     */
-    public void setComparisonsBubbleSort(long comparisons) {
-        this.comparisonsBubbleSort = comparisons;
-    }
-
-    /**
      * Gets the number of comparisons made by the bubble sort algorithm.
      *
      * @return the number of comparisons
      */
     public long getComparisonsBubbleSort() {
         return comparisonsBubbleSort;
-    }
-
-    /**
-     * The number of swaps made by the bubble sort algorithm.
-     */
-    private long swapsBubbleSort;
-
-    /**
-     * Sets the number of swaps made by the bubble sort algorithm.
-     *
-     * @param swaps the number of swaps
-     */
-    public void setSwapsBubbleSort(long swaps) {
-        this.swapsBubbleSort = swaps;
     }
 
     /**
@@ -83,7 +57,6 @@ public class BubbleSort {
      */
     public void bubbleSort(int[] inputArray) {
 
-        // record start time
         long startTime = System.nanoTime();
 
         // perform bubble sort
@@ -92,8 +65,7 @@ public class BubbleSort {
             // Iterate through the array, comparing pairs of elements
             for (int j = 0; j < inputArray.length - i - 1; j++) {
 
-                // Increment the comparison count
-                setComparisonsBubbleSort(getComparisonsBubbleSort()+1);
+                this.comparisonsBubbleSort++;
 
                 // If the current element is greater than the next element, swap them
                 if (inputArray[j] > inputArray[j + 1]) {
@@ -101,17 +73,14 @@ public class BubbleSort {
                     inputArray[j] = inputArray[j + 1];
                     inputArray[j + 1] = temp;
 
-                    // Increment the swap count
-                    setSwapsBubbleSort(getSwapsBubbleSort()+1);
+                    this.swapsBubbleSort++;
                 }
             }
         }
 
-        // Get the current time in nanoseconds and calculate the execution time.
+        // Get the current time in nanoseconds
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-        // set execution time
-        setTotalExecutionTimeBubbleSort(executionTime);
+        this.totalExecutionTimeBubbleSort = endTime - startTime;
     }
 }

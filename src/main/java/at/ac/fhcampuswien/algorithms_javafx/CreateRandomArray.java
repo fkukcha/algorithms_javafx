@@ -13,15 +13,6 @@ public class CreateRandomArray {
     private int[] randomArray;
 
     /**
-     * Sets the value for the random Array.
-     *
-     * @param randomArray the new value for the random Array.
-     */
-    private void setRandomArray(int[] randomArray) {
-        this.randomArray = randomArray;
-    }
-
-    /**
      * Get the value of the random Array.
      *
      * @return the value of the random Array.
@@ -47,6 +38,6 @@ public class CreateRandomArray {
             randomlyCreatedArray[i] = randomNumber.nextInt();
         }
         // Set the class's randomArray field to the newly created array
-        setRandomArray(randomlyCreatedArray);
+        this.randomArray = randomlyCreatedArray;
     }
 }

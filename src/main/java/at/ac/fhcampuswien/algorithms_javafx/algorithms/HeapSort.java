@@ -5,7 +5,7 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms;
  * the execution time, total number of comparisons, and total number of swaps.
  *
  * @author  Burak Kongo
- * @version 1.0
+ * @version 1.1
  */
 public class HeapSort {
 
@@ -15,13 +15,14 @@ public class HeapSort {
     private long totalExecutionTimeHeapSort;
 
     /**
-     * Sets the total execution time of the Heap Sort algorithm.
-     *
-     * @param totalExecutionTime the total execution time of the Heap Sort algorithm
+     * Represents the number of comparisons made during the Heap Sort algorithm.
      */
-    public void setTotalExecutionTimeHeapSort(long totalExecutionTime) {
-        this.totalExecutionTimeHeapSort = totalExecutionTime;
-    }
+    private long comparisonsHeapSort;
+
+    /**
+     * Represents the number of swaps made during the Heap Sort algorithm.
+     */
+    private long swapsHeapSort;
 
     /**
      * Returns the total execution time of the Heap Sort algorithm.
@@ -33,40 +34,12 @@ public class HeapSort {
     }
 
     /**
-     * Represents the number of comparisons made during the Heap Sort algorithm.
-     */
-    private long comparisonsHeapSort;
-
-    /**
-     * Sets the number of comparisons made during the Heap Sort algorithm.
-     *
-     * @param comparisons the number of comparisons made during the Heap Sort algorithm
-     */
-    public void setComparisonsHeapSort(long comparisons) {
-        this.comparisonsHeapSort = comparisons;
-    }
-
-    /**
      * Returns the number of comparisons made during the Heap Sort algorithm.
      *
      * @return the number of comparisons made during the Heap Sort algorithm
      */
     public long getComparisonsHeapSort() {
         return comparisonsHeapSort;
-    }
-
-    /**
-     * Represents the number of swaps made during the Heap Sort algorithm.
-     */
-    private long swapsHeapSort;
-
-    /**
-     * Sets the number of swaps made during the Heap Sort algorithm.
-     *
-     * @param swaps the number of swaps made during the Heap Sort algorithm
-     */
-    public void setSwapsHeapSort(long swaps) {
-        this.swapsHeapSort = swaps;
     }
 
     /**
@@ -86,7 +59,8 @@ public class HeapSort {
      */
     public void heapSort(int[] inputArray) {
 
-        long startTime = System.nanoTime();  // start timer
+        // Get the current time in nanoseconds.
+        long startTime = System.nanoTime();
 
         // Build the heap
         for (int i = inputArray.length / 2 - 1; i >= 0; i--) {
@@ -103,11 +77,8 @@ public class HeapSort {
 
         // Get the current time in nanoseconds and calculate the execution time.
         long endTime = System.nanoTime();
-        long executionTime = endTime - startTime;
 
-
-        // set execution time
-        setTotalExecutionTimeHeapSort(executionTime);
+        this.totalExecutionTimeHeapSort = endTime - startTime;
     }
 
     /**
@@ -129,8 +100,7 @@ public class HeapSort {
         // Compare the root with its left child. If the left child is larger, set it as the largest element.
         if (leftChild < heapSize) {
 
-            // Increment the counter for the number of comparisons made in the Heap Sort algorithm.
-            setComparisonsHeapSort(getComparisonsHeapSort()+1);
+            this.comparisonsHeapSort++;
 
             if (array[leftChild] > array[largest]) {
                 largest = leftChild;
@@ -140,8 +110,7 @@ public class HeapSort {
         // Compare the root with its right child. If the right child is larger, set it as the largest element.
         if (rightChild < heapSize) {
 
-            // Increment the counter for the number of comparisons made in the Heap Sort algorithm.
-            setComparisonsHeapSort(getComparisonsHeapSort()+1);
+            this.comparisonsHeapSort++;
 
             if (array[rightChild] > array[largest]) {
                 largest = rightChild;
@@ -152,8 +121,7 @@ public class HeapSort {
         // and continue heapifying
         if (largest != index) {
 
-            // Increment the counter for the number of swaps made in the Heap Sort algorithm.
-            setSwapsHeapSort(getSwapsHeapSort()+1);
+            this.swapsHeapSort++;
 
             swap(array, index, largest);
             heapify(array, heapSize, largest);
