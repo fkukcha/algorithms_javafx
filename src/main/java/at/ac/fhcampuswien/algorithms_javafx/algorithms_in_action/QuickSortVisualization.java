@@ -9,7 +9,12 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 public class QuickSortVisualization extends Application {
-    int[] array = {5, 1, 4, 2, 8};
+
+    private ArrayStructures arrayStructures = new ArrayStructures();
+
+    public QuickSortVisualization() {
+        arrayStructures.generateRandomArray();
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -25,8 +30,7 @@ public class QuickSortVisualization extends Application {
         BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setTitle("Quick Sort Visualization");
 
-        // Create a copy of the original unsorted array
-        int[] unsortedArray = array.clone();
+        int[] unsortedArray = arrayStructures.getArray().clone();
 
         // Add unsorted data to the chart
         XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
@@ -36,39 +40,29 @@ public class QuickSortVisualization extends Application {
         }
         chart.getData().add(unsortedData);
 
-        // Sort the original array and update the chart to reflect changes
-        int low = 0;
-        int high = array.length - 1;
-        quickSort(chart, array, low, high);
-
-        // Add sorted data to the chart
+        // Add unsorted data to the chart
         XYChart.Series<String, Number> sortedData = new XYChart.Series<>();
         sortedData.setName("Sorted Data");
-        for (int i = 0; i < array.length; i++) {
-            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), array[i]));
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
+            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
         }
         chart.getData().add(sortedData);
-
-        // Add the chart to the scene and display
+        int low = 0;
+        int high = arrayStructures.getArraySize() - 1;
+        quickSort(chart, arrayStructures.getArray(), low, high);
         Scene scene = new Scene(chart, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+
     public void quickSort(BarChart<String, Number> chart, int[] array, int low, int high) {
         if (low < high) {
-            int pivotIndex = partition(chart, array, low, high);
-            // Take snapshot of array state before partitioning left side
-            int[] leftArraySnapshot = array.clone();
-            updateChart(chart, leftArraySnapshot);
-            quickSort(chart, array, low, pivotIndex - 1);
-            // Take snapshot of array state before partitioning right side
-            int[] rightArraySnapshot = array.clone();
-            updateChart(chart, rightArraySnapshot);
-            quickSort(chart, array, pivotIndex + 1, high);
+            int partitionIndex = partition(chart, array, low, high);
+            quickSort(chart, array, low, partitionIndex - 1);
+            quickSort(chart, array, partitionIndex + 1, high);
         }
     }
-
 
     public int partition(BarChart<String, Number> chart, int[] array, int low, int high) {
         int pivot = array[high];
@@ -79,6 +73,7 @@ public class QuickSortVisualization extends Application {
                 int temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
+                updateChart(chart, array);
             }
         }
         int temp = array[i + 1];
@@ -90,16 +85,14 @@ public class QuickSortVisualization extends Application {
 
     public void updateChart(BarChart<String, Number> chart, int[] array) {
         for (int i = 0; i < array.length; i++) {
-            XYChart.Series<String, Number> series = (XYChart.Series<String, Number>) chart.getData().get(0);
-            series.getData().get(i).setYValue(array[i]);
-        }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            XYChart.Data<String, Number> data = (XYChart.Data<String, Number>) chart.getData().get(0).getData().get(i);
+            data.setYValue(array[i]);
         }
     }
 }
+
+
+
 
 
 
