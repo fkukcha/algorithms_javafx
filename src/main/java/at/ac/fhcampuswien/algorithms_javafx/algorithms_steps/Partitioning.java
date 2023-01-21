@@ -23,10 +23,12 @@ public class Partitioning {
     }
 
     public void partitionArray(int pivot) {
-        // If leftPointer finds an item that is greater
-        // than pivot it stops and waits for the rightPointer
-        // to find a value less than pivot. Then the items
-        // are switched.
+        /*If leftPointer finds an item that is greater
+        than pivot it stops and waits for the rightPointer
+        to find a value less than pivot. Then the items
+        are switched.
+         */
+
         // Starts at the left side of array before index 0.
         int leftPointer = -1;
         // Starts at the right side of the array after the last index.

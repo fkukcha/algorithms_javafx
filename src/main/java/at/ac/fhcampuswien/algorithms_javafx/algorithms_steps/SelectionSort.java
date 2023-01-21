@@ -12,18 +12,33 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 
 public class SelectionSort {
-    // Selection sort search for the smallest number in the array
-    // saves it in the minimum spot and then repeats searching
-    // through the entire array each time.
-    public void selectionSort() {
-        ArrayStructures arrayStructures = new ArrayStructures();
+
+    private int arraySize;
+    private int[] array;
+    private ArrayStructures arrayStructures = new ArrayStructures();
+
+    public SelectionSort() {
+        this.arraySize = arrayStructures.getArraySize();
+        this.array = arrayStructures.getArray();
         arrayStructures.generateRandomArray();
+    }
+
+    public int[] getArray() {
+        return array;
+    }
+
+    /*
+    Selection sort search for the smallest number in the array
+    saves it in the minimum spot and then repeats searching
+    through the entire array each time.
+     */
+    public void selectionSort() {
+
         for (int m=0; m<arrayStructures.getArraySize(); m++) {
             int min = m;
             for (int n=m; n<arrayStructures.getArraySize(); n++) {
-                // To change direction of sort just change
-                // this from > to <
                 if (arrayStructures.getArray()[min] > arrayStructures.getArray()[n]) {
+                    System.out.println("Array[" + n + "] will be added to Array[" + m + "]");
                     min = n;
                 }
             }

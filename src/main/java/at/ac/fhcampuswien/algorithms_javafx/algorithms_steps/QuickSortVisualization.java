@@ -33,20 +33,20 @@ public class QuickSortVisualization extends Application {
         int[] unsortedArray = arrayStructures.getArray().clone();
 
         // Add unsorted data to the chart
-        XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
-        unsortedData.setName("Unsorted Data");
-        for (int i = 0; i < unsortedArray.length; i++) {
-            unsortedData.getData().add(new XYChart.Data<>(Integer.toString(i), unsortedArray[i]));
-        }
-        chart.getData().add(unsortedData);
-
-        // Add unsorted data to the chart
         XYChart.Series<String, Number> sortedData = new XYChart.Series<>();
         sortedData.setName("Sorted Data");
-        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
-            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
+        for (int i = 0; i < unsortedArray.length; i++) {
+            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), unsortedArray[i]));
         }
         chart.getData().add(sortedData);
+
+        // Add unsorted data to the chart
+        XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
+        unsortedData.setName("Unsorted Data");
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
+            unsortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
+        }
+        chart.getData().add(unsortedData);
         int low = 0;
         int high = arrayStructures.getArraySize() - 1;
         quickSort(chart, arrayStructures.getArray(), low, high);

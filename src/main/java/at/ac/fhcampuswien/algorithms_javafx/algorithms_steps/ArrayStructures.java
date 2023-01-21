@@ -78,7 +78,6 @@ public class ArrayStructures {
 
     public static void main(String[] args) {
 
-        ArrayStructures arrayStructures = new ArrayStructures();
         Scanner scanner = new Scanner(System.in);
         String userInput;
         do {
@@ -102,7 +101,13 @@ public class ArrayStructures {
                     break;
                 case "InsertionSort":
                     InsertionSort myInsertion = new InsertionSort();
+                    System.out.println("Array to be sorted: ");
+                    System.out.println(Arrays.toString(myInsertion.getArray()));
+                    System.out.println();
                     myInsertion.insertionSort();
+                    System.out.println();
+                    System.out.println("Sorted Array: ");
+                    System.out.println(Arrays.toString(myInsertion.getArray()));
                     System.out.println();
                     break;
                 case "QuickSort":
@@ -118,7 +123,13 @@ public class ArrayStructures {
                     break;
                 case "SelectionSort":
                     SelectionSort mySelection = new SelectionSort();
+                    System.out.println("Array to be sorted: ");
+                    System.out.println(Arrays.toString(mySelection.getArray()));
+                    System.out.println();
                     mySelection.selectionSort();
+                    System.out.println();
+                    System.out.println("Sorted Array: ");
+                    System.out.println(Arrays.toString(mySelection.getArray()));
                     System.out.println();
                     break;
                 case "ShellSort":
