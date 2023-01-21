@@ -8,7 +8,7 @@
  * In most situations the QuickSort is the fastest algorithm.
  */
 
-package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 public class QuickSort {
     private static int[] myArray;

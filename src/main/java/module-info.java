@@ -13,7 +13,7 @@ module at.ac.fhcampuswien.algorithms_javafx {
     opens at.ac.fhcampuswien.algorithms_javafx to javafx.fxml;
     exports at.ac.fhcampuswien.algorithms_javafx;
 
-    exports at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+    exports at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
     requires javafx.graphics;
 
 

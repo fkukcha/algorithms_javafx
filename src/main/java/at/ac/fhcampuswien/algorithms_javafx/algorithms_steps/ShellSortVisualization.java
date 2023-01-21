@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

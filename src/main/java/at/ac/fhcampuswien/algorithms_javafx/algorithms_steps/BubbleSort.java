@@ -8,7 +8,7 @@
  * sort iterates.
  */
 
-package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 public class BubbleSort {
 

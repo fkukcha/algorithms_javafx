@@ -6,7 +6,7 @@
  * the beginning of the array, and it grows as elements are added to it.
  */
 
-package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 public class InsertionSort {
     // The Insertion Sort is normally the best of

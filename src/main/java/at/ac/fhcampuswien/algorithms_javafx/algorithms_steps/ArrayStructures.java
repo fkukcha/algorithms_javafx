@@ -3,11 +3,10 @@
  * Data structures are the way data is arranged in memory.
  */
 
-package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import javafx.stage.Stage;
 
 
 public class ArrayStructures {

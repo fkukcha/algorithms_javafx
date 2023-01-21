@@ -5,9 +5,7 @@
  * until it can be easily processed or sorted.
  */
 
-package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
-
-import java.util.Arrays;
+package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
 public class Partitioning {
 
