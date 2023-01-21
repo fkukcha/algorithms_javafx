@@ -11,11 +11,24 @@
 package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
 
 public class BubbleSort {
-    // This bubble sort will sort everything from smallest
-    // to largest.
-    public void bubbleSort() {
-        ArrayStructures arrayStructures = new ArrayStructures();
+
+    private int arraySize;
+    private int[] array;
+    private ArrayStructures arrayStructures = new ArrayStructures();
+
+    public BubbleSort() {
+        this.arraySize = arrayStructures.getArraySize();
+        this.array = arrayStructures.getArray();
         arrayStructures.generateRandomArray();
+    }
+
+    public int[] getArray() {
+        return array;
+    }
+
+    public void bubbleSort() {
+        //ArrayStructures arrayStructures = new ArrayStructures();
+        //arrayStructures.generateRandomArray();
 
         // i starts at the end of the Array.
         // As it is decremented all indexes greater
@@ -37,4 +50,5 @@ public class BubbleSort {
             }
         }
     }
+
 }
