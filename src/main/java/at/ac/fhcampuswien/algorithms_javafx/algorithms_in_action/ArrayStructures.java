@@ -7,9 +7,11 @@ package at.ac.fhcampuswien.algorithms_javafx.algorithms_in_action;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import javafx.stage.Stage;
+
 
 public class ArrayStructures {
-    private int[] array = new int[50];
+    private int[] array = new int[10];
     private int arraySize = 10;
 
     public int[] getArray() {
@@ -77,6 +79,7 @@ public class ArrayStructures {
 
     public static void main(String[] args) {
 
+        ArrayStructures arrayStructures = new ArrayStructures();
         Scanner scanner = new Scanner(System.in);
         String userInput;
         do {
@@ -89,7 +92,13 @@ public class ArrayStructures {
             switch (userInput) {
                 case "BubbleSort":
                     BubbleSort myBubble = new BubbleSort();
+                    System.out.println("Array to be sorted: ");
+                    System.out.println(Arrays.toString(myBubble.getArray()));
+                    System.out.println();
                     myBubble.bubbleSort();
+                    System.out.println();
+                    System.out.println("Sorted Array: ");
+                    System.out.println(Arrays.toString(myBubble.getArray()));
                     System.out.println();
                     break;
                 case "InsertionSort":
@@ -119,6 +128,7 @@ public class ArrayStructures {
                     System.out.println(Arrays.toString(myShell.getMyArray()));
                     System.out.println();
                     myShell.shellSort();
+                    System.out.println();
                     System.out.println("Sorted Array: ");
                     System.out.println(Arrays.toString(myShell.getMyArray()));
                     System.out.println();
