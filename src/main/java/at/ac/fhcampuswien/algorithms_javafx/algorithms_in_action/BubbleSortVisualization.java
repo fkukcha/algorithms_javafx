@@ -10,8 +10,11 @@ import javafx.stage.Stage;
 
 
 public class BubbleSortVisualization extends Application {
+    private ArrayStructures arrayStructures = new ArrayStructures();
 
-    int[] array = {21, 13, 2, 6, 3, 44, 54, 2, 8, 6};
+    public BubbleSortVisualization() {
+        arrayStructures.generateRandomArray();
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -29,8 +32,8 @@ public class BubbleSortVisualization extends Application {
 
         // Add data to the chart
         XYChart.Series<String, Number> data = new XYChart.Series<>();
-        for (int i = 0; i < array.length; i++) {
-            data.getData().add(new XYChart.Data<>(Integer.toString(i), array[i]));
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
+            data.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
         }
         chart.getData().add(data);
 
@@ -44,16 +47,16 @@ public class BubbleSortVisualization extends Application {
     }
 
     public void bubbleSort(BarChart<String, Number> chart, XYChart.Series<String, Number> data) {
-        for (int i = array.length - 1; i > 1; i--) {
+        for (int i = arrayStructures.getArraySize() - 1; i > 1; i--) {
             for (int j = 0; j < i; j++) {
-                if (array[j] > array[j + 1]) {
+                if (arrayStructures.getArray()[j] > arrayStructures.getArray()[j + 1]) {
                     // Swap the elements
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+                    int temp = arrayStructures.getArray()[j];
+                    arrayStructures.getArray()[j] = arrayStructures.getArray()[j + 1];
+                    arrayStructures.getArray()[j + 1] = temp;
                     // Update the chart
-                    data.getData().get(j).setYValue(array[j]);
-                    data.getData().get(j+1).setYValue(array[j+1]);
+                    data.getData().get(j).setYValue(arrayStructures.getArray()[j]);
+                    data.getData().get(j+1).setYValue(arrayStructures.getArray()[j+1]);
                     try {
                         Thread.sleep(1000); // added delay to visualize
                     } catch (InterruptedException e) {
