@@ -9,7 +9,12 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 public class InsertionSortVisualization extends Application {
-    int[] array = {5, 1, 4, 2, 8};
+
+    private ArrayStructures arrayStructures = new ArrayStructures();
+
+    public InsertionSortVisualization() {
+        arrayStructures.generateRandomArray();
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -26,15 +31,15 @@ public class InsertionSortVisualization extends Application {
         chart.setTitle("Insertion Sort Visualization");
 
         // Create a copy of the array to store the sorted data
-        int[] sortedArray = array.clone();
+        int[] sortedArray = arrayStructures.getArray().clone();
         // Sort the array
         insertionSort(sortedArray);
 
         // Add unsorted data to the chart
         XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
         unsortedData.setName("Unsorted Data");
-        for (int i = 0; i < array.length; i++) {
-            unsortedData.getData().add(new XYChart.Data<>(Integer.toString(i), array[i]));
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
+            unsortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
         }
         chart.getData().add(unsortedData);
 

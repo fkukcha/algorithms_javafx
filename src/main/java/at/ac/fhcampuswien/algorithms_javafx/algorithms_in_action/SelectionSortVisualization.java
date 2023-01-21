@@ -9,7 +9,12 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 public class SelectionSortVisualization extends Application {
-    int[] array = {5, 1, 4, 2, 8};
+
+    private ArrayStructures arrayStructures = new ArrayStructures();
+
+    public SelectionSortVisualization() {
+        arrayStructures.generateRandomArray();
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -28,19 +33,19 @@ public class SelectionSortVisualization extends Application {
         // Add unsorted data to the chart
         XYChart.Series<String, Number> sortedData = new XYChart.Series<>();
         sortedData.setName("Sorted Data");
-        for (int i = 0; i < array.length; i++) {
-            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), array[i]));
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
+            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
         }
         chart.getData().add(sortedData);
 
         // Sort the array and update the chart to reflect changes
-        int[] sortedArray = array.clone();
+        int[] sortedArray = arrayStructures.getArray().clone();
         selectionSort(chart, sortedArray);
 
         // Add sorted data to the chart
         XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
         unsortedData.setName("Unsorted Data");
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
             unsortedData.getData().add(new XYChart.Data<>(Integer.toString(i), sortedArray[i]));
         }
         chart.getData().add(unsortedData);
