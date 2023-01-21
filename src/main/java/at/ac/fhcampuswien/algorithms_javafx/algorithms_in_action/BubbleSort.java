@@ -27,17 +27,18 @@ public class BubbleSort {
     }
 
     public void bubbleSort() {
-        //ArrayStructures arrayStructures = new ArrayStructures();
-        //arrayStructures.generateRandomArray();
-
-        // i starts at the end of the Array.
-        // As it is decremented all indexes greater
-        // than it are sorted.
+        /*
+        i starts at the end of the Array.
+        As it is decremented all indexes greater
+        than it are sorted.
+         */
         for (int i=arrayStructures.getArraySize()-1; i>1; i--) {
-            // The inner loop starts at the beginning of
-            // the array and compares each value next to each
-            // other. If the value on the left is greater than the
-            // value on the right then they are swapped.
+            /*
+            The inner loop starts at the beginning of
+            the array and compares each value next to each
+            other. If the value on the left is greater than the
+            value on the right then they are swapped.
+             */
             for (int j=0; j<i; j++) {
                 if (arrayStructures.getArray()[j] > arrayStructures.getArray()[j+1]) {
                     System.out.println(arrayStructures.getArray()[j] + " at index " + j +
