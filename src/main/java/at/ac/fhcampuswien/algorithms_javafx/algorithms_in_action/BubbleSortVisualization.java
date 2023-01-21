@@ -30,15 +30,22 @@ public class BubbleSortVisualization extends Application {
         BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setTitle("Bubble Sort Visualization");
 
-        // Add data to the chart
-        XYChart.Series<String, Number> data = new XYChart.Series<>();
+        // Add unsorted data to the chart
+        XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
+        unsortedData.setName("Unsorted Data");
         for (int i = 0; i < arrayStructures.getArraySize(); i++) {
-            data.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
+            unsortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
         }
-        chart.getData().add(data);
+        chart.getData().add(unsortedData);
 
-        // Sort the array and update the chart to reflect changes
-        bubbleSort(chart, data);
+        // Sort the array and add sorted data to the chart
+        XYChart.Series<String, Number> sortedData = new XYChart.Series<>();
+        sortedData.setName("Sorted Data");
+        for (int i = 0; i < arrayStructures.getArraySize(); i++) {
+            sortedData.getData().add(new XYChart.Data<>(Integer.toString(i), arrayStructures.getArray()[i]));
+        }
+        bubbleSort(chart, sortedData);
+        chart.getData().add(sortedData);
 
         // Add the chart to the scene and display
         Scene scene = new Scene(chart, 800, 600);
