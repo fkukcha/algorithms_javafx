@@ -61,11 +61,6 @@ public class SelectionSortVisualization extends Application {
             XYChart.Series<String, Number> series = (XYChart.Series<String, Number>) chart.getData().get(0);
             series.getData().get(i).setYValue(array[i]);
         }
-        try {
-            Thread.sleep(1000); // added delay to visualize
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void selectionSort(BarChart<String, Number> chart, int[] array) {

@@ -5,6 +5,8 @@
 
 package at.ac.fhcampuswien.algorithms_javafx.algorithms_steps;
 
+import javafx.application.Application;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -23,6 +25,7 @@ public class ArrayStructures {
 
     public void generateRandomArray() {
         for (int i=0; i<arraySize; i++) {
+            // Numbers between 10 bis 19.
             array[i] = (int) (Math.random()*10) + 10;
         }
     }
@@ -83,12 +86,14 @@ public class ArrayStructures {
         do {
             System.out.println("Choose an algorithm from the following list to see" +
                     "how it sorts step by step:");
-            System.out.println("[BubbleSort, InsertionSort, QuickSort, SelectionSort, ShellSort]");
+            System.out.println("[1 = BubbleSort, 2 = BubbleSortVisualization, 3 = InsertionSort,  4 = InsertionSortVisualization, " +
+                    "5 = QuickSort, 6 = QuickSortVisualization, 7 = SelectionSort, 8 = SelectionSortVisualization, " +
+                    "9 = ShellSort, 10 = ShellSortVisualization]");
             System.out.println("Enter (exit) to quit.");
             userInput = scanner.next();
 
             switch (userInput) {
-                case "BubbleSort":
+                case "1":
                     BubbleSort myBubble = new BubbleSort();
                     System.out.println("Array to be sorted: ");
                     System.out.println(Arrays.toString(myBubble.getArray()));
@@ -99,7 +104,11 @@ public class ArrayStructures {
                     System.out.println(Arrays.toString(myBubble.getArray()));
                     System.out.println();
                     break;
-                case "InsertionSort":
+                case "2":
+                    BubbleSortVisualization bubbleSortVisualization = new BubbleSortVisualization();
+                    Application.launch(bubbleSortVisualization.getClass());
+                    break;
+                case "3":
                     InsertionSort myInsertion = new InsertionSort();
                     System.out.println("Array to be sorted: ");
                     System.out.println(Arrays.toString(myInsertion.getArray()));
@@ -110,7 +119,11 @@ public class ArrayStructures {
                     System.out.println(Arrays.toString(myInsertion.getArray()));
                     System.out.println();
                     break;
-                case "QuickSort":
+                case "4":
+                    InsertionSortVisualization insertionSortVisualization = new InsertionSortVisualization();
+                    Application.launch(insertionSortVisualization.getClass());
+                    break;
+                case "5":
                     QuickSort myQuickSort = new QuickSort(10);
                     System.out.println("Array to be sorted: ");
                     System.out.println(Arrays.toString(myQuickSort.getMyArray()));
@@ -121,7 +134,11 @@ public class ArrayStructures {
                     System.out.println(Arrays.toString(myQuickSort.getMyArray()));
                     System.out.println();
                     break;
-                case "SelectionSort":
+                case "6":
+                    QuickSortVisualization quickSortVisualization = new QuickSortVisualization();
+                    Application.launch(quickSortVisualization.getClass());
+                    break;
+                case "7":
                     SelectionSort mySelection = new SelectionSort();
                     System.out.println("Array to be sorted: ");
                     System.out.println(Arrays.toString(mySelection.getArray()));
@@ -132,7 +149,11 @@ public class ArrayStructures {
                     System.out.println(Arrays.toString(mySelection.getArray()));
                     System.out.println();
                     break;
-                case "ShellSort":
+                case "8":
+                    SelectionSortVisualization selectionSortVisualization = new SelectionSortVisualization();
+                    Application.launch(selectionSortVisualization.getClass());
+                    break;
+                case "9":
                     ShellSort myShell = new ShellSort(10);
                     System.out.println("Array to be sorted: ");
                     System.out.println(Arrays.toString(myShell.getMyArray()));
@@ -143,13 +164,15 @@ public class ArrayStructures {
                     System.out.println(Arrays.toString(myShell.getMyArray()));
                     System.out.println();
                     break;
+                case "10":
+                    ShellSortVisualization shellSortVisualization = new ShellSortVisualization();
+                    Application.launch(shellSortVisualization.getClass());
+                    break;
                 case "exit":
                     userInput = "exit";
                     break;
                 default:
                     System.out.println("Please choose an algorithm from the given list.");
-                    System.out.println("Or have you maybe spelled the name of the algorithm " +
-                            "differently than it is spelled in the list.");
                     System.out.println();
             }
         } while (!(userInput.equals("exit"))) ;

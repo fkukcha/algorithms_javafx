@@ -42,8 +42,8 @@ public class InsertionSort {
             }
             arrayStructures.getArray()[j] = toInsert;
             arrayStructures.printHorizontalArray(i, j);
-            System.out.println("\nArray[" + i + "] = " + arrayStructures.getArray()[i] +
-                    " Array[" + j + "] = " + arrayStructures.getArray()[j] + " toInsert = " + toInsert);
+            System.out.println("\nArray[i] = " + arrayStructures.getArray()[i] +
+                    " Array[j] = " + arrayStructures.getArray()[j] + " toInsert = " + toInsert);
         }
     }
 }

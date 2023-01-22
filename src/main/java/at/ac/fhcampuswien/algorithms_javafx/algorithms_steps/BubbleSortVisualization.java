@@ -64,11 +64,6 @@ public class BubbleSortVisualization extends Application {
                     // Update the chart
                     data.getData().get(j).setYValue(arrayStructures.getArray()[j]);
                     data.getData().get(j+1).setYValue(arrayStructures.getArray()[j+1]);
-                    try {
-                        Thread.sleep(1000); // added delay to visualize
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }
             }
         }
