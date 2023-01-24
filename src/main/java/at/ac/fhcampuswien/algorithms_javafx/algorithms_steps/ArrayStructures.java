@@ -106,7 +106,12 @@ public class ArrayStructures {
                     break;
                 case "2":
                     BubbleSortVisualization bubbleSortVisualization = new BubbleSortVisualization();
-                    Application.launch(bubbleSortVisualization.getClass());
+                    try {
+                        Application.launch(bubbleSortVisualization.getClass());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        System.out.println();
+                    }
                     break;
                 case "3":
                     InsertionSort myInsertion = new InsertionSort();
@@ -121,7 +126,12 @@ public class ArrayStructures {
                     break;
                 case "4":
                     InsertionSortVisualization insertionSortVisualization = new InsertionSortVisualization();
-                    Application.launch(insertionSortVisualization.getClass());
+                    try {
+                        Application.launch(insertionSortVisualization.getClass());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        System.out.println();
+                    }
                     break;
                 case "5":
                     QuickSort myQuickSort = new QuickSort(10);
@@ -136,7 +146,12 @@ public class ArrayStructures {
                     break;
                 case "6":
                     QuickSortVisualization quickSortVisualization = new QuickSortVisualization();
-                    Application.launch(quickSortVisualization.getClass());
+                    try {
+                        Application.launch(quickSortVisualization.getClass());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        System.out.println();
+                    }
                     break;
                 case "7":
                     SelectionSort mySelection = new SelectionSort();
@@ -151,7 +166,12 @@ public class ArrayStructures {
                     break;
                 case "8":
                     SelectionSortVisualization selectionSortVisualization = new SelectionSortVisualization();
-                    Application.launch(selectionSortVisualization.getClass());
+                    try {
+                        Application.launch(selectionSortVisualization.getClass());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        System.out.println();
+                    }
                     break;
                 case "9":
                     ShellSort myShell = new ShellSort(10);
@@ -166,7 +186,12 @@ public class ArrayStructures {
                     break;
                 case "10":
                     ShellSortVisualization shellSortVisualization = new ShellSortVisualization();
-                    Application.launch(shellSortVisualization.getClass());
+                    try {
+                        Application.launch(shellSortVisualization.getClass());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        System.out.println();
+                    }
                     break;
                 case "exit":
                     userInput = "exit";
