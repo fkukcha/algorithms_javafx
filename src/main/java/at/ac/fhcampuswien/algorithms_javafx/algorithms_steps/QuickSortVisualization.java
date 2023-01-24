@@ -32,7 +32,7 @@ public class QuickSortVisualization extends Application {
 
         int[] unsortedArray = arrayStructures.getArray().clone();
 
-        // Add unsorted data to the chart
+        // Add sorted data to the chart
         XYChart.Series<String, Number> sortedData = new XYChart.Series<>();
         sortedData.setName("Sorted Data");
         for (int i = 0; i < unsortedArray.length; i++) {

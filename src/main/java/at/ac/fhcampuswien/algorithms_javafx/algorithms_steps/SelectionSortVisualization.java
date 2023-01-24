@@ -30,7 +30,7 @@ public class SelectionSortVisualization extends Application {
         BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setTitle("Selection Sort Visualization");
 
-        // Add unsorted data to the chart
+        // Add sorted data to the chart
         XYChart.Series<String, Number> sortedData = new XYChart.Series<>();
         sortedData.setName("Sorted Data");
         for (int i = 0; i < arrayStructures.getArraySize(); i++) {
@@ -42,7 +42,7 @@ public class SelectionSortVisualization extends Application {
         int[] sortedArray = arrayStructures.getArray().clone();
         selectionSort(chart, sortedArray);
 
-        // Add sorted data to the chart
+        // Add unsorted data to the chart
         XYChart.Series<String, Number> unsortedData = new XYChart.Series<>();
         unsortedData.setName("Unsorted Data");
         for (int i = 0; i < arrayStructures.getArraySize(); i++) {
